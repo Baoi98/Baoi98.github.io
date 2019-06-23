@@ -345,10 +345,9 @@ SqlSession的执行过程构建SqlSessionFactory过程
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为#{}和${}。而这两种方式之间存在一定的差异。
+          简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。
 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使用：ORDER BY ${columnName}
-#{}表示一个占位符号主要有以下几点功能：
-...
+#{}表示一个占位符号主要有以下几点...
         </p>
         <p class="article-more-link">
           <a href="/2019/06/23/Mybatis中#{}与&{}的区别/#more">Read More</a>
@@ -423,58 +422,6 @@ SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionF
 
 
   
-    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
     <article id="post-MyBatis配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -509,6 +456,63 @@ SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionF
         </p>
         <p class="article-more-link">
           <a href="/2019/06/23/MyBatis配置/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-MyBatis级联" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/23/MyBatis级联/">MyBatis级联</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis级联/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维护。
+MyBatis的级联分为3种：
+
+鉴别器（discriminator）：它是一个根据某些条件决定采用具体实现类级联的方案。
+一对一（association）：比如身份证和人就是一种一对一的级联关系。
+一对多（collection）：比如班主任和学生就是一...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/06/23/MyBatis级联/#more">Read More</a>
         </p>
       
     </div>
@@ -582,7 +586,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 
 
   
-    <article id="post-MyBatis级联" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -590,7 +594,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis级联/">MyBatis级联</a>
+      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
     </h1>
   
 
@@ -598,7 +602,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis级联/" class="article-date">
+	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
 	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
 	</a>
 
@@ -612,15 +616,10 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维护。
-MyBatis的级联分为3种：
-
-鉴别器（discriminator）：它是一个根据某些条件决定采用具体实现类级联的方案。
-一对一（association）：比如身份证和人就是一种一对一的级联关系。
-一对多（collection）：比如班主任和学生就是一...
+          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
         </p>
         <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis级联/#more">Read More</a>
+          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
         </p>
       
     </div>

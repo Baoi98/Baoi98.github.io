@@ -11,18 +11,18 @@
   
   
   
-  <meta name="description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为#{}和${}。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使">
+  <meta name="description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和">
 <meta name="keywords" content="MyBatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis中#{}与&amp;{}的区别">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/Mybatis中#{}与&{}的区别/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为#{}和${}。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使">
+<meta property="og:description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:51:47.987Z">
+<meta property="og:updated_time" content="2019-06-23T15:59:20.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis中#{}与&amp;{}的区别">
-<meta name="twitter:description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为#{}和${}。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使">
+<meta name="twitter:description" content="简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。 默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -198,7 +198,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为#{}和${}。而这两种方式之间存在一定的差异。</p>
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。</p>
 <p>默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使用：ORDER BY ${columnName}</p>
 <h2 id="表示一个占位符号"><a href="#表示一个占位符号" class="headerlink" title="#{}表示一个占位符号"></a>#{}表示一个占位符号</h2><p>主要有以下几点功能：</p>
 <ul>
