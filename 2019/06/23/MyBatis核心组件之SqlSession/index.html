@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis | Ronin Blog</title>
+  <title>mybatis核心组件之sqlsession | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="MyBatis">
@@ -11,20 +11,18 @@
   
   
   
-  <meta name="description" content="MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。 iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Ac">
+  <meta name="description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
 <meta name="keywords" content="MyBatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis">
-<meta property="og:url" content="http://yoursite.com/2019/06/22/MyBatis/index.html">
+<meta property="og:title" content="MyBatis核心组件之SqlSession">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。 iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Ac">
+<meta property="og:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:image" content="http://www.mybatis.org/images/mybatis-logo.png">
-<meta property="og:updated_time" content="2019-06-22T14:41:39.005Z">
+<meta property="og:updated_time" content="2019-06-23T15:46:40.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis">
-<meta name="twitter:description" content="MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。 iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Ac">
-<meta name="twitter:image" content="http://www.mybatis.org/images/mybatis-logo.png">
+<meta name="twitter:title" content="MyBatis核心组件之SqlSession">
+<meta name="twitter:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -165,7 +163,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-MyBatis核心组件之SqlSession" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -173,7 +171,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis
+      MyBatis核心组件之SqlSession
     </h1>
   
 
@@ -181,8 +179,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/22/MyBatis/" class="article-date">
-	  <time datetime="2019-06-22T14:40:20.000Z" itemprop="datePublished">2019-06-22</time>
+	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
+	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
 	</a>
 
       
@@ -200,48 +198,20 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://www.mybatis.org/images/mybatis-logo.png" alt></p>
-<p>MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
-<p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）</p>
-<p>当前，最新版本是MyBatis 3.5.1 ，其发布时间是2019年4月8日。</p>
-<h3 id="持久层的概念和MyBatis的特点"><a href="#持久层的概念和MyBatis的特点" class="headerlink" title="持久层的概念和MyBatis的特点"></a>持久层的概念和MyBatis的特点</h3><p>上面介绍到MyBatis是一个持久层的框架，它是对JDBC进行了简单的封装，那么我们来讲讲什么是持久层。</p>
-<p>持久层是三层架构（控制层、业务逻辑层、持久层）中的一层，持久层可以将业务数据存储到磁盘，具备长期存储的能力，只要磁盘不损坏，在断电或者其他情况下，重新开启系统仍然可以读取到这些数据。一般执行持久任务的都是数据库系统，持久层可以使用巨大的磁盘空间，也比较廉价，它的缺点就是比较慢。当然，慢是针对内存来说的，在一般的系统中运行是不存在问题的。但是在互联网的秒杀场景下，慢是不能接受的，极有可能导致宕机，在这样的场景下考虑使用Redis处理。</p>
-<h5 id="MyBatis的三大特点："><a href="#MyBatis的三大特点：" class="headerlink" title="MyBatis的三大特点："></a>MyBatis的三大特点：</h5><ul>
-<li>不屏蔽SQL，意味着可以更为精确的定位SQL语句，可以对其进行优化和改造，这有利于互联网系统性能的提高，符合互联网需要性能优化的特点。</li>
-<li>提供强大、灵活的映射机制，方便Java开发者使用，提供动态SQL的功能，允许我们根据不同条件组装SQL，这个功能远比其他工具或者Java编码的可读性和可维护性高的多，满足各种应用系统的同时也满足了需求经常变化的互联网应用的要求。</li>
-<li>在MaBatis中，提供了使用Mapper的接口编程，只要一个接口和一个XML就能创建映射器，进一步简化我们的工作，使得很多框架API在MyBatis中消失，开发者能更集中于业务逻辑。</li>
-</ul>
-<h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><p>这里我们介绍一下什么叫做ORM。</p>
-<p>ORM也称对象关系映射，是一种程序技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。从效果上说，它其实是创建了一个可在编程语言里使用的–“虚拟对象数据库”。</p>
-<p>面向对象是从软件工程基本原则（如耦合、聚合、封装）的基础上发展起来的，而关系数据库则是从数学理论发展而来的，两套理论存在显著的区别。为了解决这个不匹配的现象，对象关系映射技术应运而生。</p>
-<p>对象关系映射（ORM）提供了概念性的、易于理解的模型化数据的方法。<br>ORM方法论基于三个核心原则： </p>
+        <h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
+<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
 <ul>
-<li>简单：以最基本的形式建模数据。</li>
-<li>传达性：数据库结构被任何人都能理解的语言文档化。</li>
-<li>精确性：基于数据模型创建正确标准化的结构。</li>
+<li>获取Mapper接口</li>
+<li>发送SQL给数据库</li>
+<li>控制数据库事务</li>
 </ul>
-<p>典型地，建模者通过收集来自那些熟悉应用程序但不熟练的数据建模者的人的信息开发信息模型。建模者必须能够用非技术企业专家可以理解的术语在概念层次上与数据结构进行通讯。建模者也必须能以简单的单元分析信息，对样本数据进行处理。ORM专门被设计为改进这种联系。</p>
-<p>简单的说：ORM相当于中继数据。具体到产品上，例如ADO.NET Entity Framework。DLINQ中实体类的属性[Table]就算是一种中继数据。</p>
-<h3 id="MyBatis与Hibernate"><a href="#MyBatis与Hibernate" class="headerlink" title="MyBatis与Hibernate"></a>MyBatis与Hibernate</h3><p>说到ORM框架，第一个想到的持久层框架应该就是Hibernate，Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的ORM框架，hibernate可以自动生成SQL语句，自动执行。</p>
-<p>MyBatis严格来说是一个半ORM框架，相对于Hibernate，它并没有像Hibernate一样完全的ORM，但是正是因为它的半ORM以及简单快速的开发效率，让MyBatis成为现在互联网项目首选的持久层框架之一。</p>
-<h5 id="MyBatis与Hibernate两者对比"><a href="#MyBatis与Hibernate两者对比" class="headerlink" title="MyBatis与Hibernate两者对比"></a>MyBatis与Hibernate两者对比</h5><ol>
-<li>开发速度</li>
-</ol>
-<p>就开发速度而言，Hibernate的真正掌握要比Mybatis来得难些。Mybatis框架相对简单很容易上手，但也相对简陋些。</p>
-<p>比起两者的开发速度，不仅仅要考虑到两者的特性及性能，更要根据项目需求去考虑究竟哪一个更适合项目开发，比如：一个项目中用到的复杂查询基本没有，就是简单的增删改查，这样选择hibernate效率就很快了，因为基本的sql语句已经被封装好了，根本不需要你去写sql语句，这就节省了大量的时间，但是对于一个大型项目，复杂语句较多，这样再去选择hibernate就不是一个太好的选择，选择mybatis就会加快许多，而且语句的管理也比较方便。</p>
-<ol start="2">
-<li>开发工作量</li>
-</ol>
-<p>Hibernate和MyBatis都有相应的代码生成工具。可以生成简单基本的DAO层方法。针对高级查询，Mybatis需要手动编写SQL语句，以及ResultMap。而Hibernate有良好的映射机制，开发者无需关心SQL的生成与结果映射，可以更专注于业务流程。</p>
-<ol start="3">
-<li>SQL优化</li>
-</ol>
-<p>Hibernate的查询会将表中的所有字段查询出来，这一点会有性能消耗。Hibernate也可以自己写SQL来指定需要查询的字段，但这样就破坏了Hibernate开发的简洁性。而Mybatis的SQL是手动编写的，所以可以按需求指定查询的字段。</p>
-<p>Hibernate HQL语句的调优需要将SQL打印出来，而Hibernate的SQL被很多人嫌弃因为太丑了。MyBatis的SQL是自己手动写的所以调整方便。但Hibernate具有自己的日志统计。Mybatis本身不带日志统计，使用Log4j进行日志记录。</p>
-<ol start="4">
-<li>对象管理的对比</li>
-</ol>
-<p>Hibernate 是完整的对象/关系映射解决方案，它提供了对象状态管理（state management）的功能，使开发者不再需要理会底层数据库系统的细节。也就是说，相对于常见的 JDBC/SQL 持久层方案中需要管理 SQL 语句，Hibernate采用了更自然的面向对象的视角来持久化 Java 应用中的数据。</p>
+<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
+
+<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义SqlSession</span><br><span class="line">SqlSession sqlSession  = null;</span><br><span class="line">try&#123;</span><br><span class="line">	//打开SqlSession会话</span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	//业务逻辑代码.....</span><br><span class="line">	// 提交事务</span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;catch(Exception ex)&#123;</span><br><span class="line">	//事务回滚</span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	//在finally语句中确保资源顺利关闭</span><br><span class="line">	if(sqlSession != null)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
 
       
     </div>
@@ -268,7 +238,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/22/MyBatis/" target="_blank" title="MyBatis">http://yoursite.com/2019/06/22/MyBatis/</a>
+          <a href="/2019/06/23/MyBatis核心组件之SqlSession/" target="_blank" title="MyBatis核心组件之SqlSession">http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -318,15 +288,20 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/23/MyBatis级联/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis核心组件之SqlSessionFactory
+          MyBatis级联
         
       </div>
     </a>
   
+  
+    <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MyBatis核心组件之SQL Mapper</div>
+    </a>
   
 </nav>
 
@@ -339,7 +314,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#持久层的概念和MyBatis的特点"><span class="nav-number">1.</span> <span class="nav-text">持久层的概念和MyBatis的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MyBatis的三大特点："><span class="nav-number">1.0.1.</span> <span class="nav-text">MyBatis的三大特点：</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM"><span class="nav-number">2.</span> <span class="nav-text">ORM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis与Hibernate"><span class="nav-number">3.</span> <span class="nav-text">MyBatis与Hibernate</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MyBatis与Hibernate两者对比"><span class="nav-number">3.0.1.</span> <span class="nav-text">MyBatis与Hibernate两者对比</span></a></li></ol></li>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession"><span class="nav-number">1.</span> <span class="nav-text">SqlSession</span></a></li></ol>
     
     </div>
   </aside>

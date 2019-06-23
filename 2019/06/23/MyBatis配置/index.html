@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>mybatis配置 | Ronin Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="MyBatis">
+  
+  
+  
+  
+  <meta name="description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
+<meta name="keywords" content="MyBatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis配置">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis配置/index.html">
+<meta property="og:site_name" content="Ronin Blog">
+<meta property="og:description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
+<meta property="og:locale" content="en | zh-CN |zh-TW">
+<meta property="og:updated_time" content="2019-06-23T15:48:43.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MyBatis配置">
+<meta name="twitter:description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
+  
+    <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/logo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/logo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/logo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-MyBatis配置" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      MyBatis配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis配置/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;&lt;!-- 配置 --&gt;</span><br><span class="line">	&lt;!-- 属性 --&gt;</span><br><span class="line">	&lt;properties&gt;&lt;/properties&gt;</span><br><span class="line">	&lt;!-- 设置 --&gt;</span><br><span class="line">	&lt;settings&gt;&lt;/settings&gt;</span><br><span class="line">	&lt;!-- 设置别名 --&gt;</span><br><span class="line">	&lt;typeAliases&gt;&lt;/typeAliases&gt;</span><br><span class="line">	&lt;!-- 类型处理器 --&gt;</span><br><span class="line">	&lt;typeHandlers&gt;&lt;/typeHandlers&gt;</span><br><span class="line">	&lt;!-- 对象工厂 --&gt;</span><br><span class="line">	&lt;objectFactory&gt;&lt;/objectFactory&gt;</span><br><span class="line">	&lt;!-- 插件 --&gt;</span><br><span class="line">	&lt;plugins&gt;&lt;/plugins&gt;</span><br><span class="line">	&lt;!-- 环境配置 --&gt;</span><br><span class="line">	&lt;environments&gt;</span><br><span class="line">		&lt;environment&gt;</span><br><span class="line">			&lt;!-- 事务管理器 --&gt;</span><br><span class="line">			&lt;transactionManager&gt;&lt;/transactionManager&gt;</span><br><span class="line">			&lt;!-- 数据源 --&gt;</span><br><span class="line">			&lt;dataSource&gt;&lt;/dataSource&gt;</span><br><span class="line">		&lt;/environment&gt;</span><br><span class="line">	&lt;/environments&gt;</span><br><span class="line">	&lt;!-- 数据库厂商 --&gt;</span><br><span class="line">	&lt;databaseIdProvider&gt;&lt;/databaseIdProvider&gt;</span><br><span class="line">	&lt;!-- 映射器 --&gt;</span><br><span class="line">	&lt;mappers&gt;&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述的代码是整个MyBatis配置文件中包含的所有重要的节点元素，要注意的是，这些节点元素的顺序不能够颠倒！</p>
+<h4 id="properties属性"><a href="#properties属性" class="headerlink" title="properties属性"></a>properties属性</h4><p>properties属性可以给系统配置运行参数，可以放在XML文件或者properties文件中，这样的好处可以方便我们进行参数的修改，不会引起代码的重新编译。MyBatis提供了三种方式使用properties：</p>
+<ul>
+<li>property子元素</li>
+<li>properties文件</li>
+<li>程序代码传递</li>
+</ul>
+<p>MyBatis通过properties的属性resource来引入properties文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties resource=&quot;jdbc.properties&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在这三种方式中，最优先的是使用程序传递的方式，其次是使用properties文件的方式，最后是使用property子元素的方式，MyBatis会根据优先级来覆盖原先配置的属性值。</p>
+<h4 id="settings属性"><a href="#settings属性" class="headerlink" title="settings属性"></a>settings属性</h4><p>settings的配置项很多，但是常用的就只有几个，比如缓存的cacheEnabled，关于级联的lazyLoadingEnabled和aggressiveLazyLoading，关于自动映射的autoMappingBehavior和mapUnderscoreToCamelCase，关于执行器类型的defaultExecutorType等。</p>
+<h4 id="typeAliases属性"><a href="#typeAliases属性" class="headerlink" title="typeAliases属性"></a>typeAliases属性</h4><p>该属性是用于定义类的别名，MyBatis中允许通过typeAliases属性定义一个简写来代表这个类，别名分为系统定义别名和自定义别名，在MyBatis中别名由类TypeAliasRegistry定义的，在MyBatis中别名不区分大小写。</p>
+<h4 id="typeHandler属性"><a href="#typeHandler属性" class="headerlink" title="typeHandler属性"></a>typeHandler属性</h4><p>该属性为类型转换器，在JDBC中，需要在PreparedStatement对象中设置那些已经预编译过的SQL语句的参数。执行SQL后，会通过ResultSet对象获取得到数据库的数据，而这些MyBatis是根据数据的类型通过typeHandler来实现的。</p>
+<p>typeHandler中分为javaType和jdbcType两种，其中javaType用于定义java类型，jdbcType用于定义数据库类型，typeHandler的作用就是承担javaType和jdbcType之间的转换。跟别名一样，MyBatis中也存在着系统定义的typeHandler和自定义的typeHandler，MyBatis会根据javaType和jdbcType决定采用哪个typeHandler处理转换规则。</p>
+<h4 id="objectFactory属性"><a href="#objectFactory属性" class="headerlink" title="objectFactory属性"></a>objectFactory属性</h4><p>当创建结果集的时候，MyBatis会使用一个对象工厂来完成创建这个结果集的实例，默认情况下会使用其定义的对象工厂–DefaultObjectFactory来完成工作。当然，MyBatis也支持自定义的ObjectFactory，只需要实现接口org.apache.ibatis.reflection.factory.ObjectFactory,并给予配置。</p>
+<h4 id="environment属性"><a href="#environment属性" class="headerlink" title="environment属性"></a>environment属性</h4><p>该属性主要用于配置数据库环境信息，下级节点包含了：事务管理器（transactionManager）和数据源（dataSource）。</p>
+<h6 id="transactionManager"><a href="#transactionManager" class="headerlink" title="transactionManager"></a>transactionManager</h6><p>它的主要工作就是提交（commit）、回滚（rollback）和关闭（close）数据库的事务。MyBatis为Transaction提供了两个实现类：JdbcTransaction和ManagedTransaction。</p>
+<p>对于两种事务管理器，配置分别为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;transactionManager type=&quot;JDBC&quot;/&gt;</span><br><span class="line">&lt;transactionManager type=&quot;MANAGED&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JDBC使用JdbcTransactionFactory生成的JdbcTransaction对象实现，它是以JDBC的方式对数据库的提交和回滚进行操作。<br>MANAGED使用ManagedTransactionFactory生成的ManagedTransaction对象实现，它的提交和回滚方法不用任何操作，而是把事务交给容器处理。默认情况下它会关闭连接，需要将closeConnection属性设置为false。</p>
+<h6 id="dataSource"><a href="#dataSource" class="headerlink" title="dataSource"></a>dataSource</h6><p>数据源存在三种类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;dataSource type=&quot;UNPOOLED&quot;/&gt;</span><br><span class="line">&lt;dataSource type=&quot;POOLED&quot;/&gt;</span><br><span class="line">&lt;dataSource type=&quot;JNDI&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>UNPOOLED采用非数据库池的管理方式，每次请求都会打开一个新的数据库连接，创建速度较慢，可以配置以下属性：</p>
+<ul>
+<li>driver</li>
+<li>url</li>
+<li>username</li>
+<li>password</li>
+<li>defaultTransactionIsolationLevel 默认的连接事务隔离级别</li>
+</ul>
+<p>POOLED利用“池”的概念将JDBC的Connection对象组织起来，刚开始会有空置，但是再次请求时无须再建立和验证，省去创建新连接的时间，相比UNPOOLED的方式，它有更多于UNPOOLED属性：</p>
+<ul>
+<li>poolMaximumActiveConnections 任意时间存在的连接数，默认为10</li>
+<li>poolMaximumIdleConnections 任意时间存在的空闲连接数</li>
+<li>poolMaximumCheckoutTime 被强制返回之前，池中连接被检出的时间，默认20000毫秒</li>
+<li>poolTimeToWait</li>
+<li>poolPingQuery</li>
+<li>poolPingEnabled 是否启用侦测查询</li>
+<li>poolPingConnectionsNotUsedFor 配置poolPingQuery的使用频度</li>
+</ul>
+<p>JNDI实现是为了能在如EJB或应用服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置一个JNDI上下文引用，它需要两种属性：</p>
+<ul>
+<li>initial_context 用来在InitialContext中寻找上下文</li>
+<li>data_source 引用数据源实例位置上下文的路径</li>
+</ul>
+<h4 id="mappers属性"><a href="#mappers属性" class="headerlink" title="mappers属性"></a>mappers属性</h4><p>映射器定义命名空间的方法，命名空间对应的是一个接口的全路径，而不是实现类，映射器引入的方法有很多，分别为：</p>
+<ol>
+<li>用文件路径引入映射器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;mapper resource=&quot;com/etc/ssm/mapper/UserMapper.xml&quot;/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>用包名引入映射器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;mapper name=&quot;com.etc.ssm.mapper&quot;/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>用类注册引入映射器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;mapper class=&quot;com.etc.ssm.mapper.UserMapper&quot;/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://imgits.com/images/2019/06/22/2991e5d593fb45efb233fecc50380140.jpg',
+  alipayImage: 'https://imgits.com/images/2019/06/22/a3b958f0316cb9f0f2d61ecd2eb3d6c5.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>RoninTottoo
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/06/23/MyBatis配置/" target="_blank" title="MyBatis配置">http://yoursite.com/2019/06/23/MyBatis配置/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MyBatis映射器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/23/MyBatis一级缓存和二级缓存/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MyBatis一级缓存和二级缓存</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#properties属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">properties属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#settings属性"><span class="nav-number">1.0.2.</span> <span class="nav-text">settings属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeAliases属性"><span class="nav-number">1.0.3.</span> <span class="nav-text">typeAliases属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeHandler属性"><span class="nav-number">1.0.4.</span> <span class="nav-text">typeHandler属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#objectFactory属性"><span class="nav-number">1.0.5.</span> <span class="nav-text">objectFactory属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#environment属性"><span class="nav-number">1.0.6.</span> <span class="nav-text">environment属性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#transactionManager"><span class="nav-number">1.0.6.0.1.</span> <span class="nav-text">transactionManager</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dataSource"><span class="nav-number">1.0.6.0.2.</span> <span class="nav-text">dataSource</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mappers属性"><span class="nav-number">1.0.7.</span> <span class="nav-text">mappers属性</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Ronin Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Ronin Blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 RoninTottoo All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

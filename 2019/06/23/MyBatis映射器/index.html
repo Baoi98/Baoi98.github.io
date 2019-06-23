@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>mybatis映射器 | Ronin Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="MyBatis">
+  
+  
+  
+  
+  <meta name="description" content="简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述">
+<meta name="keywords" content="MyBatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis映射器">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis映射器/index.html">
+<meta property="og:site_name" content="Ronin Blog">
+<meta property="og:description" content="简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述">
+<meta property="og:locale" content="en | zh-CN |zh-TW">
+<meta property="og:updated_time" content="2019-06-23T15:49:28.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MyBatis映射器">
+<meta name="twitter:description" content="简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述">
+  
+    <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/logo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/logo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/logo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-MyBatis映射器" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      MyBatis映射器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。<br>| 元素名称         | 描述                                                       | 备注                                                |<br>| —————- | ———————————————————- | ————————————————— |<br>| select           | 查询语句，最常用、最复杂的元素之一                         | 可以自定义参数，返回结果集等                        |<br>| insert           | 插入语句                                                   | 执行后返回一个整数，代表插入的条数                  |<br>| update           | 更新语句                                                   | 执行后返回一个整数，代表更新的条数                  |<br>| delete           | 删除语句                                                   | 执行后返回一个整数，代表删除的条数                  |<br>| <del>parameterMap</del> | 定义参数映射关系                                           | 即将被删除的元素，<strong>不建议大家使用</strong>                |<br>| sql              | 定义一部分SQL，在各个地方引用它                            | 例如，一张表列名，一次定义，可以在多个SQL语句中使用 |<br>| resultMap        | 用来描述从数据库结果集中加载对象，它是最复杂、最强大的元素 | 提供映射规则                                        |<br>| cache            | 给定命名空间的缓存配置                                     |                                                     |<br>| cache-ref        | 其他命名空间缓存配置的引用                                 |                                                     |</p>
+<h2 id="select元素"><a href="#select元素" class="headerlink" title="select元素"></a>select元素</h2><p>先来看看select元素的几个重要配置：<br>| 元素             | 说明                                                         | 备注                                                       |<br>| —————- | ———————————————————— | ———————————————————- |<br>| id               | 它和Mapper的命名空间组合起来是唯一的，供MyBatis调用          | 如果命名空间和id结合起来不唯一，MyBatis会抛出异常          |<br>| parameterType    | 类的全命名，也可以是别名，但是别名必须是MyBatis内部定义的    | 可以选择JavaBean、Map等简单参数类型传递给SQL               |<br>| <del>parameterMap</del> | 即将废弃的元素                                               |                                                            |<br>| resultType       | 定义类的全路径，结果集将通过JavaBean的规范映射或者定义成int、double等参数，也可以使用别名 | 常用的参数之一                                             |<br>| resultMap        | 它是映射集的引用，执行强大的映射功能，resultMap能提供自定义的映射规则 | MyBatis最复杂的元素，可以配置映射规则、级联、typeHandler等 |<br>| useCache         | 启动二级缓存的开关，是否要求MyBatis将此次结果缓存            | 取值为布尔值，默认值为true                                 |</p>
+<p>简单的select例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findArticleById&quot; parameterType=&quot;integer&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">    SELECT * FROM article WHERE id = #&#123;id&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>id配合Mapper的全限定名，成为一个唯一的标识，标识这条SQL</li>
+<li>parameterType为入参的类型</li>
+<li>resultMap为SQL语句返回的结果集的映射</li>
+</ul>
+<h5 id="自动映射和驼峰映射"><a href="#自动映射和驼峰映射" class="headerlink" title="自动映射和驼峰映射"></a>自动映射和驼峰映射</h5><p>MyBatis提供了自动映射功能，默认情况下自动映射是开启的，使用自动映射功能可以大量减少映射配置，在setting元素中有两个配置的选项 autoMappingBehavior 和 mapUnderscoreToCamelCase，它们是控制自动映射和驼峰映射的开关。</p>
+<p>配置自动映射的 autoMappingBehavior 选项取值范围是：</p>
+<ul>
+<li>NONE  不进行自动映射</li>
+<li>PARTIAL  默认值，只对没有嵌套结果集进行自动映射</li>
+<li>FULL  对所有结果集进行自动映射，包括嵌套结果集</li>
+</ul>
+<h5 id="传参问题"><a href="#传参问题" class="headerlink" title="传参问题"></a>传参问题</h5><p>在上面的例子中，只有一个参数传递，现实需求可能需要多个参数，MyBatis提供了多种方法来解决多参传入的问题。</p>
+<ul>
+<li>使用map接口传递参数</li>
+</ul>
+<p>接口定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(Map&lt;String,Object&gt;parameterMap);</span><br></pre></td></tr></table></figure>
+
+<p>映射器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; parameterType=&quot;map&quot; resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意，参数id和name，要求的是map的键！</strong></p>
+<ul>
+<li>使用注解传递多个参数 @Param</li>
+</ul>
+<p>使用map传递参数有个弊端–代码可读性差，MyBatis提供了一个注解@Param，可以通过它去定义映射器的参数名称。</p>
+<p>接口定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(@Param(&quot;id&quot;)Integer id,@Param(&quot;name&quot;)String name);</span><br></pre></td></tr></table></figure>
+
+<p>映射器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意，这里使用了@Param注解就不需要给出parameterType属性，MyBatis可以自动探索。</strong></p>
+<ul>
+<li>通过JavaBean传递多个参数</li>
+</ul>
+<p>定义POJO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class UserSelect&#123;</span><br><span class="line">	private Integer id;</span><br><span class="line">	private String name;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(UserSelect userSelect);</span><br></pre></td></tr></table></figure>
+
+<p>映射器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; parameterType=&quot;com.ssm.vo.UserSelect&quot;  resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;userSelect.id&#125; and name = #&#123;userSelect.name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="insert、update、delete元素"><a href="#insert、update、delete元素" class="headerlink" title="insert、update、delete元素"></a>insert、update、delete元素</h2><p>由于insert、update、delete这三个元素使用方法类似，这里就将三种元素放在一起。</p>
+<p>MyBatis在执行完insert、update、delete语句之后，会返回一个整数来表示其影响的数据库记录数。</p>
+<p><strong>insert</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insert&quot; parameterType=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    insert into article (article_user_id, article_title, article_summary,</span><br><span class="line">      article_view_count, article_comment_count, </span><br><span class="line">      article_like_count, article_is_comment, article_status, </span><br><span class="line">      article_update_time, article_create_time, </span><br><span class="line">      article_html, article_content)</span><br><span class="line">    values ( #&#123;articleUserId,jdbcType=INTEGER&#125;, #&#123;articleTitle,jdbcType=VARCHAR&#125;, </span><br><span class="line">      #&#123;articleViewCount,jdbcType=INTEGER&#125;, #&#123;articleCommentCount,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleLikeCount,jdbcType=INTEGER&#125;, #&#123;articleIsComment,jdbcType=INTEGER&#125;, #&#123;articleStatus,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;, #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;, </span><br><span class="line">      #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;, #&#123;articleContent,jdbcType=LONGVARCHAR&#125;)</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="主键回填"><a href="#主键回填" class="headerlink" title="主键回填"></a>主键回填</h5><p>可以看出上面这条语句没有插入id列，因为MySql中表格采用了主键自增，MySql数据库会自动生成主键，我们也可以在MyBatis插入数据时获取到数据库生成的主键值。在insert语句中有个开关属性 useGeneratedKeys，用来控制是否打开这个功能，默认值是false。打开时要配置其属性 keyProperty 或 keyColumn，告诉系统把生成的主键放入哪个属性,如果存在多个主键，用逗号（，）隔开。</p>
+<p><strong>update</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id=&quot;updateByPrimaryKey&quot; parameterType=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    update article</span><br><span class="line">    set article_user_id = #&#123;articleUserId,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_title = #&#123;articleTitle,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_summary = #&#123;articleSummary,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_view_count = #&#123;articleViewCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_comment_count = #&#123;articleCommentCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_like_count = #&#123;articleLikeCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_is_comment = #&#123;articleIsComment,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_status = #&#123;articleStatus,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_update_time = #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_create_time = #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_html = #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;,</span><br><span class="line">      article_content = #&#123;articleContent,jdbcType=LONGVARCHAR&#125;</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/update&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>delete</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;delete id=&quot;deleteByPrimaryKey&quot; parameterType=&quot;java.lang.Integer&quot; &gt;</span><br><span class="line">    delete from article</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line">&lt;/delete&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sql元素"><a href="#sql元素" class="headerlink" title="sql元素"></a>sql元素</h2><p>sql元素的作用在于可以定义一条SQL的一部分，方便后面的SQL引用它，把重复的SQL语句抽取出来，降低耦合性。</p>
+<p>定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;sql id=&quot;articleAndTagLine&quot;&gt;</span><br><span class="line">    a.* , t.tag_id , t.tag_description , t.tag_name , u.user_id , u.user_name</span><br><span class="line">&lt;/sql&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectTopArticle&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">    select &lt;include refid=&quot;articleLine&quot;/&gt; from article</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="resultMap元素"><a href="#resultMap元素" class="headerlink" title="resultMap元素"></a>resultMap元素</h2><p>resultMap的作用是定义映射规则、级联的更新、定制类型转化器等。resultMap定义的主要是一个结果集的映射关系，就是SQL到JavaBean的映射关系定义，它也支持级联等特性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap id=&quot;BaseResultMap&quot; type=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    &lt;id column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;title&quot; property=&quot;title&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;keywords&quot; property=&quot;keywords&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;desci&quot; property=&quot;desci&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;pic&quot; property=&quot;pic&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;click&quot; property=&quot;click&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;time&quot; property=&quot;time&quot; jdbcType=&quot;TIMESTAMP&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;catalog_id&quot; property=&quot;catalogId&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">  &lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://imgits.com/images/2019/06/22/2991e5d593fb45efb233fecc50380140.jpg',
+  alipayImage: 'https://imgits.com/images/2019/06/22/a3b958f0316cb9f0f2d61ecd2eb3d6c5.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>RoninTottoo
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/06/23/MyBatis映射器/" target="_blank" title="MyBatis映射器">http://yoursite.com/2019/06/23/MyBatis映射器/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/23/MyBatis核心组件的生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MyBatis核心组件的生命周期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/23/MyBatis配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MyBatis配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select元素"><span class="nav-number">2.</span> <span class="nav-text">select元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自动映射和驼峰映射"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">自动映射和驼峰映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传参问题"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">传参问题</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#insert、update、delete元素"><span class="nav-number">3.</span> <span class="nav-text">insert、update、delete元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主键回填"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">主键回填</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql元素"><span class="nav-number">4.</span> <span class="nav-text">sql元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resultMap元素"><span class="nav-number">5.</span> <span class="nav-text">resultMap元素</span></a></li>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Ronin Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Ronin Blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 RoninTottoo All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
