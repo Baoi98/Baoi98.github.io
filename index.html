@@ -315,165 +315,6 @@ SqlSession的执行过程构建SqlSessionFactory过程
 
 
   
-    <article id="post-Mybatis中#{}与${}的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/Mybatis中#{}与${}的区别/">Mybatis中#{}与${}的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/Mybatis中#{}与${}的区别/" class="article-date">
-	  <time datetime="2019-06-23T15:51:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述在Mybatis的SQL xml映射文件中，有关参数传递的方法有两种，分别为“#{}”和“${}”。而这两种方式之间存在一定的差异。
-默认情况下，使用#{}格式的语法会导致Mybatis创建PreparedStatement参数并安全地设置参数（就像使用?一样）。这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在SQL语句中插入一个不转义的字符串。比如，像ORDER BY，你可以和这样来使用：ORDER BY ${columnName}
-#{}表示一个占位符号主要有以下几点...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/Mybatis中#{}与${}的区别/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
-SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
     <article id="post-MyBatis一级缓存和二级缓存" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -586,6 +427,59 @@ MyBatis的级联分为3种：
 
 
   
+    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
+SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-MyBatis配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -638,7 +532,7 @@ MyBatis的级联分为3种：
 
 
   
-    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -646,7 +540,7 @@ MyBatis的级联分为3种：
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
+      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
     </h1>
   
 
@@ -654,8 +548,8 @@ MyBatis的级联分为3种：
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
 	</a>
 
       
@@ -668,17 +562,10 @@ MyBatis的级联分为3种：
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
-SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
-
-获取Mapper接口
-发送SQL给数据库
-控制数据库事务
-
-从上一篇文章中...
+          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
         </p>
         <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
+          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
         </p>
       
     </div>
@@ -762,6 +649,65 @@ SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个�
 
 
   
+    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
+	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
+SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
+
+获取Mapper接口
+发送SQL给数据库
+控制数据库事务
+
+从上一篇文章中...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-MyBatis核心组件之SqlSessionFactory" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -818,12 +764,62 @@ SqlSession（会话）：一个既可以发送SQL执行返回结果，也可以�
 
 
   
-
-
-  <nav id="page-nav">
+    <article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/22/MyBatis/">MyBatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/22/MyBatis/" class="article-date">
+	  <time datetime="2019-06-22T14:40:20.000Z" itemprop="datePublished">2019-06-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
+iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）
+当前，最新版本是MyBatis 3.5.1 ，其发布时间...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/06/22/MyBatis/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+
 
 </section>
         
