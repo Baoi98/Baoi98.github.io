@@ -3,26 +3,29 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis核心组件之sqlsession | Ronin Blog</title>
+  <title>spring | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="什么是SpringSpring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis核心组件之SqlSession">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/index.html">
+<meta property="og:title" content="Spring">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/Spring/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta property="og:description" content="什么是SpringSpring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:46:40.035Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190529175131645.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdn.net/2018042410305365?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dkMjAxNDYxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2019-07-21T10:15:24.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis核心组件之SqlSession">
-<meta name="twitter:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta name="twitter:title" content="Spring">
+<meta name="twitter:description" content="什么是SpringSpring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190529175131645.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -163,7 +166,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis核心组件之SqlSession" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Spring" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -171,7 +174,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis核心组件之SqlSession
+      Spring
     </h1>
   
 
@@ -179,12 +182,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/07/21/Spring/" class="article-date">
+	  <time datetime="2019-07-21T10:04:31.400Z" itemprop="datePublished">2019-07-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -198,20 +201,42 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
-<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
-<ul>
-<li>获取Mapper接口</li>
-<li>发送SQL给数据库</li>
-<li>控制数据库事务</li>
-</ul>
-<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
-
-<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义SqlSession</span><br><span class="line">SqlSession sqlSession  = null;</span><br><span class="line">try&#123;</span><br><span class="line">	//打开SqlSession会话</span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	//业务逻辑代码.....</span><br><span class="line">	// 提交事务</span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;catch(Exception ex)&#123;</span><br><span class="line">	//事务回滚</span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	//在finally语句中确保资源顺利关闭</span><br><span class="line">	if(sqlSession != null)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
+        <p><img src="https://img-blog.csdnimg.cn/20190529175131645.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="什么是Spring"><a href="#什么是Spring" class="headerlink" title="什么是Spring"></a>什么是Spring</h2><p>Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE 应用程序开发提供集成的框架。Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。<strong>Spring的核心是控制反转（IOC）和面向切面（AOP）。</strong></p>
+<p>简单来说，Spring是一个分层的JavaSE/EE full-stack(一站式) 轻量级开源框架。</p>
+<h2 id="Spring起源"><a href="#Spring起源" class="headerlink" title="Spring起源"></a>Spring起源</h2><p>要谈Spring的历史，就要先谈J2EE。J2EE应用程序的广泛实现是在1999年和2000年开始的，它的出现带来了诸如事务管理之类的核心中间层概念的标准化，但是在实践中并没有获得绝对的成功，因为开发效率，开发难度和实际的性能都令人失望。曾经使用过EJB开发JAVA EE应用的人，一定知道，在EJB开始的学习和应用非常的艰苦，很多东西都不能一下子就很容易的理解。EJB要严格地实现各种不同类型的接口，类似的或者重复的代码大量存在。而配置也是复杂和单调，同样使用JNDI进行对象查找的代码也是单调而枯燥。虽然有一些开发工作随着xdoclet的出现，而有所缓解，但是学习EJB的高昂代价，和极低的开发效率，极高的资源消耗，都造成了EJB的使用困难。而Spring出现的初衷就是为了解决类似的这些问题。</p>
+<p>Spring的一个最大的目的就是使JAVA EE开发更加容易。同时，Spring之所以与Struts、Hibernate等单层框架不同，是因为Spring致力于提供一个以统一的、高效的方式构造整个应用，并且可以将单层框架以最佳的组合揉和在一起建立一个连贯的体系。可以说Spring是一个提供了更完善开发环境的一个框架，可以为POJO(Plain Ordinary Java Object)对象提供企业级的服务。<br>Spring的形成，最初来自Rod Jahnson所著的一本很有影响力的书籍《Expert One-on-One J2EE Design and Development》，就是在这本书中第一次出现了Spring的一些核心思想，该书出版于2002年。另外一本书《Expert One-on-One J2EE Development without EJB》，更进一步阐述了在不使用EJB开发JAVA EE企业级应用的一些设计思想和具体的做法。</p>
+<h2 id="Spring优点"><a href="#Spring优点" class="headerlink" title="Spring优点"></a>Spring优点</h2><ol>
+<li>容易解耦，简化开发</li>
+</ol>
+<p>通过Spring提供的IoC容器，我们可以将对象之间的依赖关系交由Spring进行控制，避免硬编码所造成的过度程序耦合。有了Spring，用户不必再为单实例模式类、属性文件解析等这些很底层的需求编写代码，可以更专注于上层的应用。</p>
+<ol start="2">
+<li>支持AOP（面向切面编程）</li>
+</ol>
+<p>通过Spring提供的AOP功能，方便进行面向切面的编程，许多不容易用传统OOP实现的功能可以通过AOP轻松应付。</p>
+<ol start="3">
+<li>支持事务</li>
+</ol>
+<p>在Spring中，我们可以从单调烦闷的事务管理代码中解脱出来，通过声明式方式灵活地进行事务的管理，提高开发效率和质量。</p>
+<ol start="4">
+<li>程序容易调试</li>
+</ol>
+<p>可以用非容器依赖的编程方式进行几乎所有的测试工作，在Spring里，测试不再是昂贵的操作，而是随手可做的事情。例如：Spring对Junit4支持，可以通过注解方便的测试Spring程序。</p>
+<ol start="5">
+<li>方便集成各种优秀框架</li>
+</ol>
+<p>Spring不排斥各种优秀的开源框架，相反，Spring可以降低各种框架的使用难度，Spring提供了对各种优秀框架（如MyBatis、SpringMVC、Hibernate）等的直接支持。</p>
+<ol start="6">
+<li>降低Java EE API的使用难度</li>
+</ol>
+<p>Spring对很多难用的Java EE API（如JDBC，JavaMail，远程调用等）提供了一个薄薄的封装层，通过Spring的简易封装，这些Java EE API的使用难度大为降低。</p>
+<pre><code>7. JavaBean提供了应用程序配置的最好方法</code></pre><h2 id="Spring框架结构"><a href="#Spring框架结构" class="headerlink" title="Spring框架结构"></a>Spring框架结构</h2><p><img src="https://img-blog.csdn.net/2018042410305365?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dkMjAxNDYxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=" "><br>1、Spring Core（核心容器）：核心容器提供 Spring 框架的基本功能。核心容器的主要组件是 BeanFactory，它是工厂模式的实现。BeanFactory 使用控制反转（IOC） 模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。</p>
+<p>　　2、Spring Context（上下文）：Spring 上下文是一个配置文件，向 Spring框架提供上下文信息。Spring 上下文包括企业服务，例如JNDI、EJB、电子邮件、国际化、校验和调度功能。</p>
+<p>　　3、Spring AOP：通过配置管理特性，Spring AOP 模块直接将面向切面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持AOP。Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖 EJB 组件，就可以将声明性事务管理集成到应用程序中。</p>
+<p>　　4、Spring DAO：JDBCDAO抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。</p>
+<p>　　5、Spring ORM：Spring 框架插入了若干个ORM框架，从而提供了 ORM 的对象关系工具，其中包括JDO、Hibernate和iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。</p>
+<p>　　6、Spring Web 模块：Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring框架支持与 Jakarta Struts 的集成。Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。</p>
+<p>　　7、Spring MVC 框架：MVC框架是一个全功能的构建 Web应用程序的 MVC 实现。通过策略接口，MVC框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。模型由javabean构成，存放于Map；视图是一个接口，负责显示模型；控制器表示逻辑代码，是Controller的实现。</p>
 
       
     </div>
@@ -238,7 +263,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/" target="_blank" title="MyBatis核心组件之SqlSession">http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/</a>
+          <a href="/2019/07/21/Spring/" target="_blank" title="Spring">http://yoursite.com/2019/07/21/Spring/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -278,7 +303,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -288,19 +313,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring IOC/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis映射器
+          Spring IOC
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/23/MyBatis运行原理/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis核心组件之SQL Mapper</div>
+      <div class="article-nav-title">Mybatis运行原理</div>
     </a>
   
 </nav>
@@ -314,7 +339,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession"><span class="nav-number">1.</span> <span class="nav-text">SqlSession</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Spring"><span class="nav-number">1.</span> <span class="nav-text">什么是Spring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring起源"><span class="nav-number">2.</span> <span class="nav-text">Spring起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring优点"><span class="nav-number">3.</span> <span class="nav-text">Spring优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring框架结构"><span class="nav-number">4.</span> <span class="nav-text">Spring框架结构</span></a></li></ol>
     
     </div>
   </aside>

@@ -3,26 +3,28 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis核心组件之sqlsession | Ronin Blog</title>
+  <title>spring 装配 bean | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="如何将自己开发的 Bean 装配到 Spring IOC 容器中，大部分情况下我们可以使用 ApplicationContext 的具体实现类，因为对应的 Spring IOC 容器功能强大，在 Spring 当中提供了3中方式进行配置：  XML配置 Java的接口和类中实现配置 隐式Bean的发现机制和自动装配原则  XML配置Bean12345678910&amp;lt;bean id=&amp;quot">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis核心组件之SqlSession">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/index.html">
+<meta property="og:title" content="Spring 装配 Bean">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/Spring 装配 Bean/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta property="og:description" content="如何将自己开发的 Bean 装配到 Spring IOC 容器中，大部分情况下我们可以使用 ApplicationContext 的具体实现类，因为对应的 Spring IOC 容器功能强大，在 Spring 当中提供了3中方式进行配置：  XML配置 Java的接口和类中实现配置 隐式Bean的发现机制和自动装配原则  XML配置Bean12345678910&amp;lt;bean id=&amp;quot">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:46:40.035Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-21T10:10:32.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis核心组件之SqlSession">
-<meta name="twitter:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta name="twitter:title" content="Spring 装配 Bean">
+<meta name="twitter:description" content="如何将自己开发的 Bean 装配到 Spring IOC 容器中，大部分情况下我们可以使用 ApplicationContext 的具体实现类，因为对应的 Spring IOC 容器功能强大，在 Spring 当中提供了3中方式进行配置：  XML配置 Java的接口和类中实现配置 隐式Bean的发现机制和自动装配原则  XML配置Bean12345678910&amp;lt;bean id=&amp;quot">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -163,7 +165,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis核心组件之SqlSession" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Spring 装配 Bean" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -171,7 +173,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis核心组件之SqlSession
+      Spring 装配 Bean
     </h1>
   
 
@@ -179,12 +181,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/07/21/Spring 装配 Bean/" class="article-date">
+	  <time datetime="2019-07-21T10:10:04.129Z" itemprop="datePublished">2019-07-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -198,20 +200,36 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
-<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
-<ul>
-<li>获取Mapper接口</li>
-<li>发送SQL给数据库</li>
-<li>控制数据库事务</li>
-</ul>
-<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
+        <p><img src="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
+<p>如何将自己开发的 Bean 装配到 Spring IOC 容器中，大部分情况下我们可以使用 ApplicationContext 的具体实现类，因为对应的 Spring IOC 容器功能强大，在 Spring 当中提供了3中方式进行配置：</p>
+<ol>
+<li>XML配置</li>
+<li>Java的接口和类中实现配置</li>
+<li>隐式Bean的发现机制和自动装配原则</li>
+</ol>
+<h2 id="XML配置Bean"><a href="#XML配置Bean" class="headerlink" title="XML配置Bean"></a>XML配置Bean</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;source&quot; class=&quot;com.ssm.entity.Source&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;fruit&quot; value=&quot;橙汁&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;sugar&quot; value=&quot;少糖&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;size&quot; value=&quot;大杯&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;juiceMaker&quot; class=&quot;com.ssm.entity.JuiceMaker&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;beverageShop&quot; value=&quot;贡茶&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;source&quot; ref=&quot;source&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 
-<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义SqlSession</span><br><span class="line">SqlSession sqlSession  = null;</span><br><span class="line">try&#123;</span><br><span class="line">	//打开SqlSession会话</span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	//业务逻辑代码.....</span><br><span class="line">	// 提交事务</span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;catch(Exception ex)&#123;</span><br><span class="line">	//事务回滚</span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	//在finally语句中确保资源顺利关闭</span><br><span class="line">	if(sqlSession != null)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>id 属性是 Spring 找到这个 Bean 的编号，id 不是必须的属性，如果没有声明 id，Spring 会采用“全限类名#{number}”的格式生成编号。<br>class 是一个类的全限定名。<br>property 元素是定义类的属性，name 属性定义属性名称，value 定义值。<br>ref 属性是引用对应的 Bean 的 id。</p>
+<h2 id="注解配置Bean"><a href="#注解配置Bean" class="headerlink" title="注解配置Bean"></a>注解配置Bean</h2><p>在 Spring3.0 之后已经不再推荐使用 XML 的方式装配 Bean，更多时候推荐使用注解配置，使用注解可以大量减少 XML 的配置代码，注解既能实现 XML 的功能，也提供了自动装配的功能，满足了“约定优于配置”的开发原则。</p>
+<p>Spring 中提供了两种方式让 Spring IOC 容器发现 Bean：</p>
+<ol>
+<li>组件扫描：通过定义资源的方式，让 Spring IOC 容器扫描对应的包，从而把 Bean 装配进来。</li>
+<li>自动装配：通过注解定义，使得一些依赖关系可以通过注解完成。</li>
+</ol>
+<h4 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Component(value=&quot;user&quot;)</span><br><span class="line">public class User&#123;</span><br><span class="line">	@Value(&quot;1&quot;)</span><br><span class="line">	private Long id;</span><br><span class="line">	@Value(&quot;user_name&quot;)</span><br><span class="line">	private String userName;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
+<p>@Component 注解代表 Spring IOC 会把这个类扫描生成 Bean 实例，其中 value 属性的值等同于 XML 方式中的 id，value 值不写 Spring IOC 容器就默认首字母为小写的类名替代。<br>@Value 代表的是值的注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@ComponentScan</span><br><span class="line">public class PojoConfig&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候需要在<strong>同一个包</strong>下创建一个 Java Config 告诉 Spring IOC 容器到哪里去扫描对象，@ComponentScan 代表进行扫描，默认是扫描当前包下的路径。它有两个配置选项，第一个是 basePackages，第二个是 basePackageClasses。</p>
+<h3 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h3><p>在 Spring IOC 容器中，Spring 是先完成 Bean 的定义和生成，然后寻找需要注入的资源，当 Spring 生成所有的 Bean 后，如果发现了这个注解，它就会在 Bean 中查找对应的类型注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserService&#123;</span><br><span class="line">	public void UserInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class UserController&#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private UserService userService;</span><br><span class="line"></span><br><span class="line">	...................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们定义一个 User 的接口，在 Controller 层通过 @Autowired 注解注入，Spring 在扫描到这个注解后会自动寻找对应的类型注入。</p>
+<p>有时，IOC 容器会寻找类型失败，默认情况会抛出异常，可以通过 @Autowired(required = false) 将其设置为不一定成功注入，当 IOC 容器没有找到对应的类型时，不会抛出异常。</p>
+<p>在少部分情况下，一个接口会有多个实现类，使用 @Autowired 自动装配时可能会出现 IOC 容器不知道使用哪个实现类装配的问题，导致注入失败，原因是 IOC 容器通过类型（by type）获取 Bean，多个实现类导致 Bean 不唯一，可以通过 @Primary（首要注入）注解和 @Qualifier（采用名称查找）注解解决这类问题。</p>
 
       
     </div>
@@ -238,7 +256,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/" target="_blank" title="MyBatis核心组件之SqlSession">http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/</a>
+          <a href="/2019/07/21/Spring 装配 Bean/" target="_blank" title="Spring 装配 Bean">http://yoursite.com/2019/07/21/Spring 装配 Bean/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -278,7 +296,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -288,19 +306,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring AOP/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis映射器
+          Spring AOP
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring 依赖注入（DI）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis核心组件之SQL Mapper</div>
+      <div class="article-nav-title">Spring 依赖注入（DI）</div>
     </a>
   
 </nav>
@@ -314,7 +332,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession"><span class="nav-number">1.</span> <span class="nav-text">SqlSession</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XML配置Bean"><span class="nav-number">1.</span> <span class="nav-text">XML配置Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解配置Bean"><span class="nav-number">2.</span> <span class="nav-text">注解配置Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Component"><span class="nav-number">2.0.1.</span> <span class="nav-text">@Component</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Autowired"><span class="nav-number">2.1.</span> <span class="nav-text">@Autowired</span></a></li></ol>
     
     </div>
   </aside>

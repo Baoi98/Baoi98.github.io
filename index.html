@@ -259,6 +259,453 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Spring事务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring事务/">Spring事务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring事务/" class="article-date">
+	  <time datetime="2019-07-21T10:14:26.844Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+事务是指逻辑上的一组操作，这组操作要么全部成功，要么就一同失败。
+事务的四大特性：
+原子性：事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都失败；
+隔离性：当多个用户并发访问数据库时，数据库为每一个用户开启的事务，不被其他事务的操作所干扰，多个并发事务之间要相互隔离；
+一致性：事务操作前后数据必须处于一致状态；
+持久性：一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便在数据库系统遇到故障的情况下也不会丢失事物的操作。
+
+Spring事务的隔离级别事务隔离级别...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring事务/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring 整合 MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring 整合 MyBatis/">Spring 整合 MyBatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring 整合 MyBatis/" class="article-date">
+	  <time datetime="2019-07-21T10:12:18.183Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Spring配置文件spring-config-druid.xml
+12345678910111213141516171819202122&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans"       xmlns:context="http://www.springframework.org/schema/context"     ...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring 整合 MyBatis/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring JdbcTemplate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring JdbcTemplate/">Spring JdbcTemplate</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring JdbcTemplate/" class="article-date">
+	  <time datetime="2019-07-21T10:11:23.968Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+JdbcTemplate是Spring框架自带的对JDBC操作的封装，目的是提供统一的模板方法使对数据库的操作更加方便、友好，效率也不错。但是功能还是不够强大（比如不支持级联属性），在实际应用中还需要和hibernate、mybaties等框架混合使用。
+传统JDBC弊端传统的 JDBC 即使是执行一条简单的 SQL 过程都不简单，先是打开数据库连接执行 SQL，组装结果，最后关闭资源，其中包含了太多的 try…catch…finally…  语句，造成代码泛滥，数据库资源的打开、关闭都...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring JdbcTemplate/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring AOP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring AOP/">Spring AOP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring AOP/" class="article-date">
+	  <time datetime="2019-07-21T10:10:43.034Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。不过OOP允许开发者定义纵向的关系，但并不适合定义横向的关系，例如日志功能。日志代码往往横向地散布在所有对象层次中，而与它对应的对象的核心功能毫无关系对于其他类型的代码，如安全性、异常处理和透明的持续性也都是如此，这种散布在各...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring AOP/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring 装配 Bean" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring 装配 Bean/">Spring 装配 Bean</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring 装配 Bean/" class="article-date">
+	  <time datetime="2019-07-21T10:10:04.129Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+如何将自己开发的 Bean 装配到 Spring IOC 容器中，大部分情况下我们可以使用 ApplicationContext 的具体实现类，因为对应的 Spring IOC 容器功能强大，在 Spring 当中提供了3中方式进行配置：
+
+XML配置
+Java的接口和类中实现配置
+隐式Bean的发现机制和自动装配原则
+
+XML配置Bean12345678910&lt;bean id=&quot;source&quot; class=&quot;com.ssm.entity.Source...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring 装配 Bean/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring 依赖注入（DI）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring 依赖注入（DI）/">Spring 依赖注入（DI）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring 依赖注入（DI）/" class="article-date">
+	  <time datetime="2019-07-21T10:09:24.955Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+在实际环境中实现 IOC 容器的方式主要分为两大类，一类是依赖查找，依赖查找是通过资源定位，把对应的资源查找回来；另一类是依赖注入，Spring 主要使用的是依赖注入。一般，依赖注入可以分为三种方式：
+
+构造器注入
+setter 注入
+接口注入
+
+构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的形式通过接口将它注入 Spring IOC 容器中。
+构造器注入构造器注入依赖于构造方法实现，...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring 依赖注入（DI）/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring IOC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring IOC/">Spring IOC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring IOC/" class="article-date">
+	  <time datetime="2019-07-21T10:06:22.726Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+传统编码创建对象时，我们总是通过 new 方法主动创建对象，但是在现实中，一个复杂的系统面对着成千上百的对象，如果每一个对象都通过手动创建、维护，就会十分的复杂。更多时候，我们希望通过简单方法获得想要的对象，这就是被动创建对象。
+被动创建对象，不需要程序员手动一个个 new 出对象，只需要给出想要对象的描述就可以得到对象。在Spring框架中，这样的效果可以通过 IOC 实现。
+Spring IOCIOC又称控制反转，就是将对象的创建权利发生反转，从之前自己手动的创建对象，现在变成由Sp...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring IOC/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-Spring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring/">Spring</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring/" class="article-date">
+	  <time datetime="2019-07-21T10:04:31.400Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+什么是SpringSpring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构，分层架构允许使用者选择使用哪一个组件，同时为 J2EE 应用程序开发提供集成的框架。Spring使用基本的JavaBean来完成以前只可能由EJB完...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-MyBatis运行原理" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -370,456 +817,12 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 
 
   
-    <article id="post-MyBatis级联" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
+
+
+  <nav id="page-nav">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis级联/">MyBatis级联</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis级联/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维护。
-MyBatis的级联分为3种：
-
-鉴别器（discriminator）：它是一个根据某些条件决定采用具体实现类级联的方案。
-一对一（association）：比如身份证和人就是一种一对一的级联关系。
-一对多（collection）：比如班主任和学生就是一...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis级联/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
-SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis配置/">MyBatis配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis配置/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis配置/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件之SQL Mapper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SQL Mapper/">MyBatis核心组件之SQL Mapper</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
-
-描述映射规则
-
-提供SQL语句，并可以配置SQL参数类型、返回类型、缓存刷新等信息
-
-配置缓存
-
-提供动态SQL
-映射器的主要作用就是将SQL查询到的结果映射成一个POJO（Java原生对象），或者将POJO的数据插入到数据库中，并定义一些关于缓存等的重要内容。
-
-
-下面提供两种方式实现映射器，首先我们先定义一个POJO对象：
-1234567public ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
-SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
-
-获取Mapper接口
-发送SQL给数据库
-控制数据库事务
-
-从上一篇文章中...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件之SqlSessionFactory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/">MyBatis核心组件之SqlSessionFactory</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" class="article-date">
-	  <time datetime="2019-06-23T15:28:20.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          MyBatis的核心组件MyBatis的核心组件分为4个部分：
-
-SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成SqlSessionFactory，采用的是分布构建的Builder模式。
-SqlSessionFactory（工厂接口）：依靠它来生成SqlSession，使用的是工厂模式。
-SqlSession（会话）：一个既可以发送SQL执行返回结果，也可以获取Mapper的接口。在现有的技术中，一般我们会让其在业务逻辑代码中“消失”，而使用的是My...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/22/MyBatis/">MyBatis</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/22/MyBatis/" class="article-date">
-	  <time datetime="2019-06-22T14:40:20.000Z" itemprop="datePublished">2019-06-22</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          
-MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
-iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）
-当前，最新版本是MyBatis 3.5.1 ，其发布时间...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/22/MyBatis/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         

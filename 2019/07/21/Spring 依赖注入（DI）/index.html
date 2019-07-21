@@ -3,26 +3,28 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis核心组件之sqlsession | Ronin Blog</title>
+  <title>spring 依赖注入（di） | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="在实际环境中实现 IOC 容器的方式主要分为两大类，一类是依赖查找，依赖查找是通过资源定位，把对应的资源查找回来；另一类是依赖注入，Spring 主要使用的是依赖注入。一般，依赖注入可以分为三种方式：  构造器注入 setter 注入 接口注入  构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis核心组件之SqlSession">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/index.html">
+<meta property="og:title" content="Spring 依赖注入（DI）">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/Spring 依赖注入（DI）/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta property="og:description" content="在实际环境中实现 IOC 容器的方式主要分为两大类，一类是依赖查找，依赖查找是通过资源定位，把对应的资源查找回来；另一类是依赖注入，Spring 主要使用的是依赖注入。一般，依赖注入可以分为三种方式：  构造器注入 setter 注入 接口注入  构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:46:40.035Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-21T10:09:54.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis核心组件之SqlSession">
-<meta name="twitter:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta name="twitter:title" content="Spring 依赖注入（DI）">
+<meta name="twitter:description" content="在实际环境中实现 IOC 容器的方式主要分为两大类，一类是依赖查找，依赖查找是通过资源定位，把对应的资源查找回来；另一类是依赖注入，Spring 主要使用的是依赖注入。一般，依赖注入可以分为三种方式：  构造器注入 setter 注入 接口注入  构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -163,7 +165,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis核心组件之SqlSession" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Spring 依赖注入（DI）" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -171,7 +173,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis核心组件之SqlSession
+      Spring 依赖注入（DI）
     </h1>
   
 
@@ -179,12 +181,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/07/21/Spring 依赖注入（DI）/" class="article-date">
+	  <time datetime="2019-07-21T10:09:24.955Z" itemprop="datePublished">2019-07-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -198,20 +200,27 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
-<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
-<ul>
-<li>获取Mapper接口</li>
-<li>发送SQL给数据库</li>
-<li>控制数据库事务</li>
-</ul>
-<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
+        <p><img src="https://img-blog.csdnimg.cn/20190529175139913.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
+<p>在实际环境中实现 IOC 容器的方式主要分为两大类，一类是依赖查找，依赖查找是通过资源定位，把对应的资源查找回来；另一类是依赖注入，Spring 主要使用的是依赖注入。一般，依赖注入可以分为三种方式：</p>
+<ol>
+<li>构造器注入</li>
+<li>setter 注入</li>
+<li>接口注入</li>
+</ol>
+<p>构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的形式通过接口将它注入 Spring IOC 容器中。</p>
+<h2 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h2><p>构造器注入依赖于构造方法实现，构造方法可以是有参数的或者是无参数的。大部分情况下我们是通过类的构造方法创建类对象，Spring 可以采用反射的方式，通过使用构造方法来完成注入，这就是构造器注入的原理。</p>
+<p>构造器注入代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class User&#123;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private String note;</span><br><span class="line">	...............................</span><br><span class="line">	public User(String name,String note)&#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.note = note;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义SqlSession</span><br><span class="line">SqlSession sqlSession  = null;</span><br><span class="line">try&#123;</span><br><span class="line">	//打开SqlSession会话</span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	//业务逻辑代码.....</span><br><span class="line">	// 提交事务</span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;catch(Exception ex)&#123;</span><br><span class="line">	//事务回滚</span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	//在finally语句中确保资源顺利关闭</span><br><span class="line">	if(sqlSession != null)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;user&quot; class=&quot;com.ssm.entity.User&quot;&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;0&quot; value=&quot;总经理&quot;/&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;1&quot; value=&quot;管理者&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 
-<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
+<p>constructor-arg 元素用于定义类构造方法的参数，其中 index 用于定义参数的位置，value 是设置值。</p>
+<p>构造器注入比较简单，但是缺点也很明显，参数少时可读性比较好，当参数量较多时，构造器注入就比较复杂，代码维护难。</p>
+<h2 id="setter-注入"><a href="#setter-注入" class="headerlink" title="setter 注入"></a>setter 注入</h2><p>setter 注入时 Spring 中最主流的注入方式，它利用 Java Bean 规范定义的 setter 方法完成注入，灵活并且代码可读性高，它消除了使用构造器注入时参数过多的麻烦，通过 setter 注入为其设置的值，其实也是通过 Java 的反射技术实现的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;user&quot; class=&quot;com.ssm.entity.User&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;name&quot; value=&quot;工程师&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;note&quot; value=&quot;重要人员&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Spring 会通过反射调用没有参数的构造方法生成对象，同时通过反射对应的 setter 方法注入配置的值，这种方式是 Spring 最为主要的方式，应用十分广泛。</p>
+<h2 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h2><p>有些时候资源是来自外界，比如数据库连接资源完全可以在 Tomcat 下配置，通过 JNDI 的形式去获取它，这样数据库链接资源是属于开发工程外的资源，这时就可以使用接口注入的形式获取它。</p>
 
       
     </div>
@@ -238,7 +247,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/" target="_blank" title="MyBatis核心组件之SqlSession">http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/</a>
+          <a href="/2019/07/21/Spring 依赖注入（DI）/" target="_blank" title="Spring 依赖注入（DI）">http://yoursite.com/2019/07/21/Spring 依赖注入（DI）/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -278,7 +287,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -288,19 +297,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring 装配 Bean/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis映射器
+          Spring 装配 Bean
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring IOC/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis核心组件之SQL Mapper</div>
+      <div class="article-nav-title">Spring IOC</div>
     </a>
   
 </nav>
@@ -314,7 +323,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession"><span class="nav-number">1.</span> <span class="nav-text">SqlSession</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器注入"><span class="nav-number">1.</span> <span class="nav-text">构造器注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setter-注入"><span class="nav-number">2.</span> <span class="nav-text">setter 注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口注入"><span class="nav-number">3.</span> <span class="nav-text">接口注入</span></a></li></ol>
     
     </div>
   </aside>

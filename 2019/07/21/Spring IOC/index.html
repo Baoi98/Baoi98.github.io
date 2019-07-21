@@ -3,26 +3,30 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis核心组件之sqlsession | Ronin Blog</title>
+  <title>spring ioc | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="传统编码创建对象时，我们总是通过 new 方法主动创建对象，但是在现实中，一个复杂的系统面对着成千上百的对象，如果每一个对象都通过手动创建、维护，就会十分的复杂。更多时候，我们希望通过简单方法获得想要的对象，这就是被动创建对象。 被动创建对象，不需要程序员手动一个个 new 出对象，只需要给出想要对象的描述就可以得到对象。在Spring框架中，这样的效果可以通过 IOC 实现。 Spring I">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis核心组件之SqlSession">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/index.html">
+<meta property="og:title" content="Spring IOC">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/Spring IOC/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta property="og:description" content="传统编码创建对象时，我们总是通过 new 方法主动创建对象，但是在现实中，一个复杂的系统面对着成千上百的对象，如果每一个对象都通过手动创建、维护，就会十分的复杂。更多时候，我们希望通过简单方法获得想要的对象，这就是被动创建对象。 被动创建对象，不需要程序员手动一个个 new 出对象，只需要给出想要对象的描述就可以得到对象。在Spring框架中，这样的效果可以通过 IOC 实现。 Spring I">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:46:40.035Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190529175120927.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvNzQyNzYzLzIwMTYwOC83NDI3NjMtMjAxNjA4MjYwOTQ0NTA2NzktNTMwMDExNjU3LnBuZw">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczAuYmRzdGF0aWMuY29tLzcwY0Z1SFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTMwMzc3MTgyMjEsMjU0MTIzMjI3OSZmbT0yNiZncD0wLmpwZw">
+<meta property="og:updated_time" content="2019-07-21T10:09:01.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis核心组件之SqlSession">
-<meta name="twitter:description" content="SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。 SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，">
+<meta name="twitter:title" content="Spring IOC">
+<meta name="twitter:description" content="传统编码创建对象时，我们总是通过 new 方法主动创建对象，但是在现实中，一个复杂的系统面对着成千上百的对象，如果每一个对象都通过手动创建、维护，就会十分的复杂。更多时候，我们希望通过简单方法获得想要的对象，这就是被动创建对象。 被动创建对象，不需要程序员手动一个个 new 出对象，只需要给出想要对象的描述就可以得到对象。在Spring框架中，这样的效果可以通过 IOC 实现。 Spring I">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190529175120927.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -163,7 +167,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis核心组件之SqlSession" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Spring IOC" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -171,7 +175,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis核心组件之SqlSession
+      Spring IOC
     </h1>
   
 
@@ -179,12 +183,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/07/21/Spring IOC/" class="article-date">
+	  <time datetime="2019-07-21T10:06:22.726Z" itemprop="datePublished">2019-07-21</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -198,20 +202,23 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
-<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
-<ul>
-<li>获取Mapper接口</li>
-<li>发送SQL给数据库</li>
-<li>控制数据库事务</li>
-</ul>
-<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
-
-<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//定义SqlSession</span><br><span class="line">SqlSession sqlSession  = null;</span><br><span class="line">try&#123;</span><br><span class="line">	//打开SqlSession会话</span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	//业务逻辑代码.....</span><br><span class="line">	// 提交事务</span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;catch(Exception ex)&#123;</span><br><span class="line">	//事务回滚</span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	//在finally语句中确保资源顺利关闭</span><br><span class="line">	if(sqlSession != null)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
+        <p><img src="https://img-blog.csdnimg.cn/20190529175120927.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>传统编码创建对象时，我们总是通过 new 方法主动创建对象，但是在现实中，一个复杂的系统面对着成千上百的对象，如果每一个对象都通过手动创建、维护，就会十分的复杂。更多时候，我们希望通过简单方法获得想要的对象，这就是被动创建对象。</p>
+<p>被动创建对象，不需要程序员手动一个个 new 出对象，只需要给出想要对象的描述就可以得到对象。在Spring框架中，这样的效果可以通过 IOC 实现。</p>
+<h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IOC又称<strong>控制反转</strong>，就是将对象的创建权利发生反转，从之前自己手动的创建对象，现在变成由Spring容器帮助创建生成新的对象，程序员无需关注对象的创建过程，无需关注对象的生命周期。</p>
+<p>举个例子，当你想喝水果饮料时，有两种选择，第一种是自己买水果来榨汁喝，第二种是去饮料店点一杯水果饮料。第一种解决方法就类似于手动 new 出一个对象，第二种解决方法是通过第三方直接获取对象。</p>
+<p>这个例子包含了控制反转的思想，由自己榨饮料转换成通过第三方得到饮料，将制造饮料的过程由自己反转给第三方，这就是控制反转。而在Spring中，实现控制反转的就是 IOC 容器，其实现方法是<strong>依赖注入</strong>（Dependency Injection,DI）。</p>
+<p>IOC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，指导如何设计出松耦合、更优良的程序。传统应用程序都是由我们在类内部主动创建依赖对象，从而导致类与类之间高耦合，难于测试；有了 IOC 容器后，把创建和查找依赖对象的控制权交给了容器，由容器进行注入组合对象，所以对象与对象之间是松耦合关系，使得程序的整个体系结构变得非常灵活。</p>
+<p>其实 IOC 对编程带来的最大改变不是从代码上，而是从思想上，发生了“主从换位”的变化。应用程序原本是老大，要获取什么资源都是主动出击，但是在 IOC/DI 思想中，应用程序就变成被动的了，被动的等待 IOC 容器来创建并注入它所需要的资源了。</p>
+<h2 id="Spring-IOC-容器"><a href="#Spring-IOC-容器" class="headerlink" title="Spring IOC 容器"></a>Spring IOC 容器</h2><p>Spring IOC 容器的设计主要是基于 <strong>BeanFactory</strong> 和 <strong>ApplicationContext</strong> 两个接口，其中 ApplicationContext 是 BeanFactory 的子接口之一，BeanFactory 是 Spring IOC 容器所定义的最底层接口。ApplicationContext 是对 BeanFactory 功能做了更多扩展，在大部分场景下，都是使用 ApplicationContext 作为 Spring IOC 容器。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMyMDE1LmNuYmxvZ3MuY29tL2Jsb2cvNzQyNzYzLzIwMTYwOC83NDI3NjMtMjAxNjA4MjYwOTQ0NTA2NzktNTMwMDExNjU3LnBuZw" alt=" "></p>
+<h6 id="Spring-IOC-容器初始化-Bean"><a href="#Spring-IOC-容器初始化-Bean" class="headerlink" title="Spring IOC 容器初始化 Bean"></a>Spring IOC 容器初始化 Bean</h6><p>Bean 的定义和初始化在 Spring IOC 容器中是两大步骤，Bean 的定义分为3步：</p>
+<ol>
+<li>Resource 定位，这步是 Spring IOC 容器根据开发者的配置，进行资源定位。</li>
+<li>BeanDefinition 的载入，这个时候只是将 Resource 定位到的信息保存到 Bean 定义（BeanDefinition）中，此时不会创建 Bean 实例。</li>
+<li>BeanDefinition 的注册，这个过程将 BeanDefinition 的信息发布到 Spring IOC 容器中，此时仍然没有创建 Bean 的实例。</li>
+</ol>
+<p>做完这3步，Bean 在 Spring IOC 容器中就被定义了，但是没有被初始化，更没有完成依赖注入，这时它还不能完全使用，对于初始化和依赖注入，Spring Bean 还有一个配置——<strong>lazy-init</strong>（是否初始化 Spring Bean）。默认值为 default，实际值为 false，也就是 Spring IOC 默认自动初始化 Bean，如果设置为 true，就只有在使用 Spring IOC 容器的 getBean 方法获取时才会被初始化，完成依赖注入。</p>
+<h6 id="Spring-Bean-生命周期图"><a href="#Spring-Bean-生命周期图" class="headerlink" title="Spring Bean 生命周期图"></a>Spring Bean 生命周期图</h6><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczAuYmRzdGF0aWMuY29tLzcwY0Z1SFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTMwMzc3MTgyMjEsMjU0MTIzMjI3OSZmbT0yNiZncD0wLmpwZw" alt=" "></p>
 
       
     </div>
@@ -238,7 +245,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/" target="_blank" title="MyBatis核心组件之SqlSession">http://yoursite.com/2019/06/23/MyBatis核心组件之SqlSession/</a>
+          <a href="/2019/07/21/Spring IOC/" target="_blank" title="Spring IOC">http://yoursite.com/2019/07/21/Spring IOC/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -278,7 +285,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -288,19 +295,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring 依赖注入（DI）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis映射器
+          Spring 依赖注入（DI）
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/21/Spring/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis核心组件之SQL Mapper</div>
+      <div class="article-nav-title">Spring</div>
     </a>
   
 </nav>
@@ -314,7 +321,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession"><span class="nav-number">1.</span> <span class="nav-text">SqlSession</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-IOC"><span class="nav-number">1.</span> <span class="nav-text">Spring IOC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-IOC-容器"><span class="nav-number">2.</span> <span class="nav-text">Spring IOC 容器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Spring-IOC-容器初始化-Bean"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">Spring IOC 容器初始化 Bean</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Spring-Bean-生命周期图"><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">Spring Bean 生命周期图</span></a></li></ol></li></ol>
     
     </div>
   </aside>
