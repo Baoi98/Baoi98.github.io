@@ -259,7 +259,7 @@
         
           <section id="main" style="float:none;">
   
-    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -267,7 +267,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
+      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
     </h1>
   
 
@@ -275,8 +275,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
+	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
 	</a>
 
       
@@ -289,17 +289,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
-SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
-
-获取Mapper接口
-发送SQL给数据库
-控制数据库事务
-
-从上一篇文章中...
+          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
+SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
         </p>
         <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
+          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
         </p>
       
     </div>
@@ -365,6 +359,65 @@ SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个�
         </p>
         <p class="article-more-link">
           <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
+	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
+SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
+
+获取Mapper接口
+发送SQL给数据库
+控制数据库事务
+
+从上一篇文章中...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
         </p>
       
     </div>

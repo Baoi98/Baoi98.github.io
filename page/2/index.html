@@ -259,6 +259,59 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Spring AOP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2019/07/21/Spring AOP/">Spring AOP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/07/21/Spring AOP/" class="article-date">
+	  <time datetime="2019-07-21T10:10:43.034Z" itemprop="datePublished">2019-07-21</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          
+AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。不过OOP允许开发者定义纵向的关系，但并不适合定义横向的关系，例如日志功能。日志代码往往横向地散布在所有对象层次中，而与它对应的对象的核心功能毫无关系对于其他类型的代码，如安全性、异常处理和透明的持续性也都是如此，这种散布在各...
+        </p>
+        <p class="article-more-link">
+          <a href="/2019/07/21/Spring AOP/#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-Spring 装配 Bean" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -542,7 +595,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 
 
   
-    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -550,7 +603,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
+      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
     </h1>
   
 
@@ -558,7 +611,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
+	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
 	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
 	</a>
 
@@ -572,11 +625,10 @@ SqlSession的执行过程构建SqlSessionFactory过程
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
-SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
+          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
         </p>
         <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
+          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
         </p>
       
     </div>
@@ -741,58 +793,6 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
         </p>
         <p class="article-more-link">
           <a href="/2019/06/23/MyBatis一级缓存和二级缓存/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
         </p>
       
     </div>
