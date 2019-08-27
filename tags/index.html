@@ -49,7 +49,7 @@
 
 
 <!-- header -->
-<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="/img/background/">
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://Baoi98.github.io/img/Random-img/">
 	<div class="mask">
 		<!-- Logo and navigation -->
 		<div class="h-header">
@@ -267,7 +267,7 @@
 
 	
 
-		tags
+		<i class="fa fa-pencil-square-o">总计 2 个 标签</i>
 
 	
 	
@@ -275,13 +275,22 @@
 
 		
 
-			<div class="about">
-				
+			<div class="tags">
+				<a href="/tags/MyBatis/" style="font-size: 16px; color: #000">MyBatis</a> <a href="/tags/Spring/" style="font-size: 35px; color: #f00">Spring</a>
 			</div>
 
 		
 	</div>
 
+	
+		<!-- 
+			ajax 查询相应标签or分类的文章 
+			We can use "Content filtering plugin" to instead ajax!
+		-->
+		<div class="layout-TCP-container">
+			<div id="TCP-title"></div>
+			<div id="TCP-content"></div>
+		</div>
 	
 </div>
 
