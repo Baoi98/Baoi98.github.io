@@ -3,29 +3,28 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis一级缓存和二级缓存 | Ronin Blog</title>
+  <title>spring boot热部署 | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="目前的Springboot，当发生了任何修改之后，必须关闭后再启动Application类才能够生效，显得略微麻烦。 Springboot提供了热部署的方式，当发现任何类发生了改变，马上通过JVM类加载的方式，加载最新的类到虚拟机中。这样就能够实现项目的热部署运行，修改少量的代码不需要重启项目就能看到效果  pom.xml1234567891011121314151617181920212223">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis一级缓存和二级缓存">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis一级缓存和二级缓存/index.html">
+<meta property="og:title" content="Spring Boot热部署">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/SpringBoot热部署/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
+<meta property="og:description" content="目前的Springboot，当发生了任何修改之后，必须关闭后再启动Application类才能够生效，显得略微麻烦。 Springboot提供了热部署的方式，当发现任何类发生了改变，马上通过JVM类加载的方式，加载最新的类到虚拟机中。这样就能够实现项目的热部署运行，修改少量的代码不需要重启项目就能看到效果  pom.xml1234567891011121314151617181920212223">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558770445535&di=30005c247568f0820d814080ed91e201&imgtype=0&src=http://image.wenzhihuai.com/images/20180120120015.png">
-<meta property="og:updated_time" content="2019-06-23T15:51:02.806Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190822204158976.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-27T01:38:54.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis一级缓存和二级缓存">
-<meta name="twitter:description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
-<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png">
+<meta name="twitter:title" content="Spring Boot热部署">
+<meta name="twitter:description" content="目前的Springboot，当发生了任何修改之后，必须关闭后再启动Application类才能够生效，显得略微麻烦。 Springboot提供了热部署的方式，当发现任何类发生了改变，马上通过JVM类加载的方式，加载最新的类到虚拟机中。这样就能够实现项目的热部署运行，修改少量的代码不需要重启项目就能看到效果  pom.xml1234567891011121314151617181920212223">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190822204158976.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -166,7 +165,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis一级缓存和二级缓存" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-SpringBoot热部署" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -174,7 +173,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis一级缓存和二级缓存
+      Spring Boot热部署
     </h1>
   
 
@@ -182,12 +181,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/08/27/SpringBoot热部署/" class="article-date">
+	  <time datetime="2019-08-27T01:37:48.167Z" itemprop="datePublished">2019-08-27</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -201,19 +200,11 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>mybatis提供了缓存机制减轻数据库压力，提高数据库性能。</p>
-<p>mybatis的缓存分为两级：一级缓存、二级缓存。</p>
-<h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><p>一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。<br><img src="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png" alt=" "><br>测试一级缓存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testFindUser() throws IOException &#123;</span><br><span class="line">	//读取核心配置文件</span><br><span class="line">	String file = &quot;sqlMapConfig.xml&quot;;</span><br><span class="line">	InputStream in = Resources.getResourceAsStream(file);</span><br><span class="line">	//日志</span><br><span class="line">	Logger logger = Logger.getLogger(MybatisFirstTest.class);</span><br><span class="line">	//创建sqlsessionfactory</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);</span><br><span class="line">	//创建sqlSession</span><br><span class="line">	SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">	UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">	User u = userMapper.getUser(1L);		</span><br><span class="line">	logger.info(&quot;再获取一次POJO....&quot;);</span><br><span class="line">	User u1 = userMapper.getUser(1L);	</span><br><span class="line">	</span><br><span class="line">	sqlSession.close();	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><img src="https://img-blog.csdnimg.cn/20190822204158976.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
+<p>目前的Springboot，当发生了任何修改之后，必须关闭后再启动Application类才能够生效，显得略微麻烦。 Springboot提供了热部署的方式，当发现任何类发生了改变，马上通过JVM类加载的方式，加载最新的类到虚拟机中。这样就能够实现项目的热部署运行，修改少量的代码不需要重启项目就能看到效果</p>
+<hr>
+<h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.ronin<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-tools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>spring-boot-tools<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 热部署插件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>这段代码对同一对象进行两次获取，但是在日志中显示只有一条SQL语句被执行，原因是使用了同一个SqlSession对象获取数据，当一个SqlSession第一次通过SQL和参数获取对象后会将其缓存起来，如果下一次SQL和参数没有发生变化，并且缓存没有超时或者需要刷新时，它就会从缓存中直接取数据。</p>
-<h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><p>二级缓存是在SqlSessionFactory上的缓存，默认情况下，MyBatis系统不会开启二级缓存，需要手动开启，开启二级缓存只需要在映射文件上添加代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这个时候MyBatis会序列化和反序列化对应的POJO对象，也就要求POJO需要实现序列化接口。如果实体类没有实现序列化接口，MyBatis会抛出异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class User implements Serializable&#123;</span><br><span class="line">	public static final long serialVersionUID = 598736524547906734L;</span><br><span class="line">	.........................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个时候从日志上就可以看到不同的SqlSession在获取同一条记录时，都是只发送过一次SQL获取数据，MyBatis将其保存在SqlSessionFactory层面，提供给各个SqlSession使用。<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558770445535&di=30005c247568f0820d814080ed91e201&imgtype=0&src=http://image.wenzhihuai.com/images/20180120120015.png" alt=" "></p>
 
       
     </div>
@@ -240,7 +231,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis一级缓存和二级缓存/" target="_blank" title="MyBatis一级缓存和二级缓存">http://yoursite.com/2019/06/23/MyBatis一级缓存和二级缓存/</a>
+          <a href="/2019/08/27/SpringBoot热部署/" target="_blank" title="Spring Boot热部署">http://yoursite.com/2019/08/27/SpringBoot热部署/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -280,7 +271,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -290,19 +281,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis运行原理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/27/SpringBoot整合Spring Data JPA/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Mybatis运行原理
+          Spring Boot整合Spring Data JPA
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis级联/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/27/SpringBoot整合Thymeleaf/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis级联</div>
+      <div class="article-nav-title">Spring Boot整合Thymeleaf模板引擎</div>
     </a>
   
 </nav>
@@ -316,7 +307,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一级缓存"><span class="nav-number">2.</span> <span class="nav-text">一级缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级缓存"><span class="nav-number">3.</span> <span class="nav-text">二级缓存</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#pom-xml"><span class="nav-number">1.</span> <span class="nav-text">pom.xml</span></a></li></ol>
     
     </div>
   </aside>
