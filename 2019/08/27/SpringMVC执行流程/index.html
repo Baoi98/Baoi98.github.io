@@ -3,29 +3,29 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>mybatis一级缓存和二级缓存 | Ronin Blog</title>
+  <title>springmvc执行流程 | Ronin Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="MyBatis">
+  <meta name="keywords" content="Spring">
   
   
   
   
-  <meta name="description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
-<meta name="keywords" content="MyBatis">
+  <meta name="description" content="SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：DispatcherServlet，在处理用户请求时，SpringMVC底层的请求流程如下图：  用户端发起请求到后台服务器，请求被前端控制器（DispatcherServlet）拦截  前端控制器拦截到请求后，将请求信息交给处理器映射器（HandlerMapping）查找Handler  处理器映射器向前端控制器返回处理">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis一级缓存和二级缓存">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis一级缓存和二级缓存/index.html">
+<meta property="og:title" content="SpringMVC执行流程">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/SpringMVC执行流程/index.html">
 <meta property="og:site_name" content="Ronin Blog">
-<meta property="og:description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
+<meta property="og:description" content="SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：DispatcherServlet，在处理用户请求时，SpringMVC底层的请求流程如下图：  用户端发起请求到后台服务器，请求被前端控制器（DispatcherServlet）拦截  前端控制器拦截到请求后，将请求信息交给处理器映射器（HandlerMapping）查找Handler  处理器映射器向前端控制器返回处理">
 <meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558770445535&di=30005c247568f0820d814080ed91e201&imgtype=0&src=http://image.wenzhihuai.com/images/20180120120015.png">
-<meta property="og:updated_time" content="2019-06-23T15:51:02.806Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190801211920958.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190801210423747.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-27T00:45:24.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis一级缓存和二级缓存">
-<meta name="twitter:description" content="简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。 mybatis的缓存分为两级：一级缓存、二级缓存。 一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存： 123456789101112131415161718@Testpublic void te">
-<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png">
+<meta name="twitter:title" content="SpringMVC执行流程">
+<meta name="twitter:description" content="SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：DispatcherServlet，在处理用户请求时，SpringMVC底层的请求流程如下图：  用户端发起请求到后台服务器，请求被前端控制器（DispatcherServlet）拦截  前端控制器拦截到请求后，将请求信息交给处理器映射器（HandlerMapping）查找Handler  处理器映射器向前端控制器返回处理">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190801211920958.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="Ronin Blog" type="application/atom+xml">
   
@@ -166,7 +166,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-MyBatis一级缓存和二级缓存" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-SpringMVC执行流程" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -174,7 +174,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      MyBatis一级缓存和二级缓存
+      SpringMVC执行流程
     </h1>
   
 
@@ -182,12 +182,12 @@
     
     <div class="article-meta">
       
-	<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	<a href="/2019/08/27/SpringMVC执行流程/" class="article-date">
+	  <time datetime="2019-08-27T00:43:17.470Z" itemprop="datePublished">2019-08-27</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
 
       
 	<a class="article-views">
@@ -201,19 +201,47 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>mybatis提供了缓存机制减轻数据库压力，提高数据库性能。</p>
-<p>mybatis的缓存分为两级：一级缓存、二级缓存。</p>
-<h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><p>一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。<br><img src="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png" alt=" "><br>测试一级缓存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testFindUser() throws IOException &#123;</span><br><span class="line">	//读取核心配置文件</span><br><span class="line">	String file = &quot;sqlMapConfig.xml&quot;;</span><br><span class="line">	InputStream in = Resources.getResourceAsStream(file);</span><br><span class="line">	//日志</span><br><span class="line">	Logger logger = Logger.getLogger(MybatisFirstTest.class);</span><br><span class="line">	//创建sqlsessionfactory</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);</span><br><span class="line">	//创建sqlSession</span><br><span class="line">	SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">	UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">	User u = userMapper.getUser(1L);		</span><br><span class="line">	logger.info(&quot;再获取一次POJO....&quot;);</span><br><span class="line">	User u1 = userMapper.getUser(1L);	</span><br><span class="line">	</span><br><span class="line">	sqlSession.close();	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这段代码对同一对象进行两次获取，但是在日志中显示只有一条SQL语句被执行，原因是使用了同一个SqlSession对象获取数据，当一个SqlSession第一次通过SQL和参数获取对象后会将其缓存起来，如果下一次SQL和参数没有发生变化，并且缓存没有超时或者需要刷新时，它就会从缓存中直接取数据。</p>
-<h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><p>二级缓存是在SqlSessionFactory上的缓存，默认情况下，MyBatis系统不会开启二级缓存，需要手动开启，开启二级缓存只需要在映射文件上添加代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这个时候MyBatis会序列化和反序列化对应的POJO对象，也就要求POJO需要实现序列化接口。如果实体类没有实现序列化接口，MyBatis会抛出异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class User implements Serializable&#123;</span><br><span class="line">	public static final long serialVersionUID = 598736524547906734L;</span><br><span class="line">	.........................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个时候从日志上就可以看到不同的SqlSession在获取同一条记录时，都是只发送过一次SQL获取数据，MyBatis将其保存在SqlSessionFactory层面，提供给各个SqlSession使用。<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558770445535&di=30005c247568f0820d814080ed91e201&imgtype=0&src=http://image.wenzhihuai.com/images/20180120120015.png" alt=" "></p>
+        <p><img src="https://img-blog.csdnimg.cn/20190801211920958.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
+<h5 id="SpringMVC请求流程"><a href="#SpringMVC请求流程" class="headerlink" title="SpringMVC请求流程"></a>SpringMVC请求流程</h5><p>SpringMVC中处理请求最为重要的组件就是：DispatcherServlet，在处理用户请求时，SpringMVC底层的请求流程如下图：<br><img src="https://img-blog.csdnimg.cn/20190801210423747.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
+<ol>
+<li><p>用户端发起请求到后台服务器，请求被<strong>前端控制器</strong>（DispatcherServlet）拦截</p>
+</li>
+<li><p>前端控制器拦截到请求后，将请求信息交给<strong>处理器映射器</strong>（HandlerMapping）查找Handler</p>
+</li>
+<li><p>处理器映射器向前端控制器返回处理器（Handler）</p>
+</li>
+<li><p>前端控制器得到处理器后调用<strong>处理器适配器</strong>（HandlerAdapter）执行Handler</p>
+</li>
+<li><p>处理器适配器执行Handler</p>
+</li>
+<li><p>Handler根据路径找到对应的Controller方法执行完成后给适配器返回<strong>模型和视图对象</strong>（ModelAndView）</p>
+</li>
+<li><p>处理器适配器向前端控制器返回ModelAndView</p>
+</li>
+<li><p>前端控制器请求<strong>视图解析器</strong>（ViewResolver）进行视图解析</p>
+</li>
+<li><p>视图解析器向前端控制器返回view</p>
+</li>
+<li><p>前端控制器进行视图渲染</p>
+</li>
+<li><p>前端控制器向用户响应结果</p>
+</li>
+</ol>
+<h5 id="组件说明"><a href="#组件说明" class="headerlink" title="组件说明"></a>组件说明</h5><p>每一次用户端请求SpringMVC都会执行一遍这样的流程，在这一流程中存在几个SpringMVC中重要的组件：</p>
+<ul>
+<li><p><strong>DispatcherServlet</strong> （前端控制器）</p>
+<p> 用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p>
+</li>
+<li><p><strong>HandlerMapping</strong> （处理器映射器）</p>
+<p>HandlerMapping负责根据用户请求url找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p>
+</li>
+<li><p><strong>HandlerAdapter</strong> （处理器适配器）</p>
+<p>通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p>
+</li>
+<li><p><strong>ViewResolver</strong> （视图解析器）</p>
+<p>View Resolver负责将处理结果生成View视图，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。</p>
+</li>
+</ul>
 
       
     </div>
@@ -240,7 +268,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis一级缓存和二级缓存/" target="_blank" title="MyBatis一级缓存和二级缓存">http://yoursite.com/2019/06/23/MyBatis一级缓存和二级缓存/</a>
+          <a href="/2019/08/27/SpringMVC执行流程/" target="_blank" title="SpringMVC执行流程">http://yoursite.com/2019/08/27/SpringMVC执行流程/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -280,7 +308,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
 
       
 
@@ -290,19 +318,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2019/06/23/MyBatis级联/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/27/SpringMVC拦截器/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          MyBatis级联
+          SpringMVC拦截器
         
       </div>
     </a>
   
   
-    <a href="/2019/06/23/MyBatis映射器/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/27/SpringMVC入门案例/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis映射器</div>
+      <div class="article-nav-title">SpringMVC入门案例</div>
     </a>
   
 </nav>
@@ -316,7 +344,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一级缓存"><span class="nav-number">2.</span> <span class="nav-text">一级缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级缓存"><span class="nav-number">3.</span> <span class="nav-text">二级缓存</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#SpringMVC请求流程"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC请求流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组件说明"><span class="nav-number">2.</span> <span class="nav-text">组件说明</span></a></li></ol>
     
     </div>
   </aside>
