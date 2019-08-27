@@ -1,905 +1,931 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 <!DOCTYPE html>
-<html>
+<html class="html-loading">
+		
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Yellow</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yellow">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="Yellow">
-<meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yellow">
-  
-    <link rel="alternate" href="/atom.xml" title="Yellow" type="application/atom+xml">
-  
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      Yellow
+    
+  </title>
+  <meta name="author" content="Yellow">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
 
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
   
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
 
-  <link rel="icon" href="/css/images/logo.jpg">
-  <link rel="apple-touch-icon" href="/css/images/logo.jpg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
-}
-
-  </style>
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-  
-    <link rel="stylesheet" href="/css/home.css">
-  
-
-  
-
-  
-
-  
-  
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
 </head>
-</html>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
 
 
-  <body>
-
-
-  
-    <header id="header">
-
-	<!-- 背景图模式 -->
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.jpg" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
 	
 
-    
-      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
 
-      <!-- Support rolling -->  
-        
-        <section class="awSlider">
-          <div class="carousel slide carousel-fade " data-ride="carousel">
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-               
-                  
-                    <div class="item active">
-                  
-                    <img id="carousel-img0" src="/css/images/home-bg.jpg">
-                  </div>
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
 
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img0 = new Image();
-                      var imageTag0 = document.getElementById("carousel-img0");
-                      img0.src = imageTag0.src;
-                      img0.onload=function(){
-                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag0.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag0.style.height = document.body.clientHeight + "px";
-                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img1" src="/css/images/preview.jpg">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img1 = new Image();
-                      var imageTag1 = document.getElementById("carousel-img1");
-                      img1.src = imageTag1.src;
-                      img1.onload=function(){
-                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag1.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag1.style.height = document.body.clientHeight + "px";
-                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img2" src="/css/images/12321312.jpg">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img2 = new Image();
-                      var imageTag2 = document.getElementById("carousel-img2");
-                      img2.src = imageTag2.src;
-                      img2.onload=function(){
-                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag2.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag2.style.height = document.body.clientHeight + "px";
-                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Geri</span>
-            </a>
-            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">İleri</span>
-            </a>
-          </div>
-        </section>
-        <script>
-          $('section.awSlider .carousel').carousel({
-              pause: '',
-              interval: 5000
-          });
-          var startImage = $('section.awSlider .item.active > img').attr('src');
-          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
-              var bscn = $(this).find('.item.active > img').attr('src');
-              $('section.awSlider > img').attr('src', bscn);
-          });
-        </script>
-      
-
-    
- 
-
-
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
-        
-          <div class="homelogoback" style="border: 1px solid #404040;">
-            <h1><a href="#content" id="logo">Yellow</a></h1>
-            <h3></h3>
-            <h5></h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
-  </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">Home</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">About</a>
-        
-      </p>
-  </div>
-
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
 </header>
-  
-  <div id="container">
-    <div id="wrap">
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;">
-  
-    <article id="post-MyBatis核心组件的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件的生命周期/">MyBatis核心组件的生命周期</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件的生命周期/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			主页
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			
+
+
+
+	<!--cart style-->
+	<div class="layout-cart">
+	<div id="layout-cart">
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis级联/" title=" MyBatis级联 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis级联/" itemprop="url">
+		MyBatis级联
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以我们可以根据每个组件的作用来确定其生命周期。
-SqlSessionFactoryBuilderSqlSessionFactoryBuilder的作用在于创建SqlSessionFactory，创建成功之后，SqlSessionFactoryBuilder就失去...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件的生命周期/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过...
+					
+				</p>
+				<p class="post-meta">
+					
 
 
-  
-    <article id="post-MyBatis映射器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis映射器/">MyBatis映射器</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis映射器/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis映射器/" title=" MyBatis映射器 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis映射器/" itemprop="url">
+		MyBatis映射器
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。| 元素名称         | 描述                                                       | 备注                                        ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis映射器/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等...
+					
+				</p>
+				<p class="post-meta">
+					
 
 
-  
-    <article id="post-MyBatis级联" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis级联/">MyBatis级联</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis级联/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis配置/" title=" MyBatis配置 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis配置/" itemprop="url">
+		MyBatis配置
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维护。
-MyBatis的级联分为3种：
-
-鉴别器（discriminator）：它是一个根据某些条件决定采用具体实现类级联的方案。
-一对一（association）：比如身份证和人就是一种一对一的级联关系。
-一对多（collection）：比如班主任和学生就是一...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis级联/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1...
+					
+				</p>
+				<p class="post-meta">
+					
 
 
-  
-    <article id="post-MyBatis一级缓存和二级缓存" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis一级缓存和二级缓存/">MyBatis一级缓存和二级缓存</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis核心组件的生命周期/" title=" MyBatis核心组件的生命周期 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis核心组件的生命周期/" itemprop="url">
+		MyBatis核心组件的生命周期
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。
-mybatis的缓存分为两级：一级缓存、二级缓存。
-一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。测试一级缓存：
-123456789101112131415161718@Testpublic void testFindUser() throws IOException &#123;	//读取核心配置...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis一级缓存和二级缓存/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一...
+					
+				</p>
+				<p class="post-meta">
+					
 
 
-  
-    <article id="post-MyBatis核心组件之SqlSession" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSession/">MyBatis核心组件之SqlSession</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title=" MyBatis核心组件之SQL Mapper ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" itemprop="url">
+		MyBatis核心组件之SQL Mapper
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。
-SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：
-
-获取Mapper接口
-发送SQL给数据库
-控制数据库事务
-
-从上一篇文章中...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSession/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-MyBatis核心组件之SQL Mapper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SQL Mapper/">MyBatis核心组件之SQL Mapper</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" class="article-date">
-	  <time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
 
 描述映射规则
 
-提供SQL语句，并可以配置SQL参数类型、返回类型、缓存刷新等信息
-
-配置缓存
-
-提供动态SQL
-映射器的主要作用就是将SQL查询到的结果映射成一个POJO（Java原生对象），或者将POJO的数据插入到数据库中，并定义一些关于缓存等的重要内容。
-
-
-下面提供两种方式实现映射器，首先我们先定义一个POJO对象：
-1234567public ...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SQL Mapper/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+提...
+					
+				</p>
+				<p class="post-meta">
+					
 
 
-  
-    <article id="post-MyBatis核心组件之SqlSessionFactory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/">MyBatis核心组件之SqlSessionFactory</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" class="article-date">
-	  <time datetime="2019-06-23T15:28:20.000Z" itemprop="datePublished">2019-06-23</time>
-	</a>
+					
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          MyBatis的核心组件MyBatis的核心组件分为4个部分：
-
-SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成SqlSessionFactory，采用的是分布构建的Builder模式。
-SqlSessionFactory（工厂接口）：依靠它来生成SqlSession，使用的是工厂模式。
-SqlSession（会话）：一个既可以发送SQL执行返回结果，也可以获取Mapper的接口。在现有的技术中，一般我们会让其在业务逻辑代码中“消失”，而使用的是My...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
 
 
-  
-    <article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/06/22/MyBatis/">MyBatis</a>
-    </h1>
-  
+	
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/22/MyBatis/" class="article-date">
-	  <time datetime="2019-06-22T14:40:20.000Z" itemprop="datePublished">2019-06-22</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          
-MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
-iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）
-当前，最新版本是MyBatis 3.5.1 ，其发布时间...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/06/22/MyBatis/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-</section>
-        
-      </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
-  
-
-  <div class="container">
-      	<div class="row">
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Yellow All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				UV : <span id="busuanzi_value_site_uv"></span> |  
-				PV : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
+				</p>
+			</div>
 		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis核心组件之SqlSession/" title=" MyBatis核心组件之SqlSession ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" itemprop="url">
+		MyBatis核心组件之SqlSession
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSes...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title=" MyBatis核心组件之SqlSessionFactory ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 23日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" itemprop="url">
+		MyBatis核心组件之SqlSessionFactory
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						MyBatis的核心组件MyBatis的核心组件分为4个部分：
+
+SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成S...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2019/06/22/MyBatis/" title=" MyBatis ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg">
+			</a>
+
+			<div class="post-text">
+				<p class="post-time">
+					六月 22日, 2019
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2019/06/22/MyBatis/" title="MyBatis">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2019/06/22/MyBatis/" itemprop="url">
+		MyBatis
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						
+MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了goog...
+					
+				</p>
+				<p class="post-meta">
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+				</p>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	<div id="pagination">
+		
+	</div>
+
+	
+
+</div>
+	
+
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by Yellow. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
 
 		
-  </div>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_site_pv">
+	    	本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		</span>
+
+		<span id="busuanzi_container_site_uv">
+	  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+		</span>
+		
+	
+
+
+
+
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
 </footer>
+		
+	<!-- set '1' to show motto in all pages! -->
 
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-
-
-  <script src="/js/home.js"></script>
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
 
 
 
 
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            Yellow
-          </div>
-          <div class="panel-body">
-            Copyright © 2019 Yellow All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+								
+			</div>
+		</div>
+	</div>
 </div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-</body>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
 </html>

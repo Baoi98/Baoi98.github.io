@@ -1,204 +1,350 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 <!DOCTYPE html>
-<html>
+<html class="html-loading">
+		
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>mybatis配置 | Yellow</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="keywords" content="MyBatis">
-  
-  
-  
-  
-  <meta name="description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
-<meta name="keywords" content="MyBatis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis配置">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/MyBatis配置/index.html">
-<meta property="og:site_name" content="Yellow">
-<meta property="og:description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
-<meta property="og:locale" content="en | zh-CN |zh-TW">
-<meta property="og:updated_time" content="2019-06-23T15:48:43.740Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis配置">
-<meta name="twitter:description" content="简述123456789101112131415161718192021222324252627282930&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;&amp;qu">
-  
-    <link rel="alternate" href="/atom.xml" title="Yellow" type="application/atom+xml">
-  
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      MyBatis配置 | Yellow
+    
+  </title>
+  <meta name="author" content="Yellow">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
 
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
   
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
 
-  <link rel="icon" href="/css/images/logo.jpg">
-  <link rel="apple-touch-icon" href="/css/images/logo.jpg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
-}
-
-  </style>
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-  
-    <link rel="stylesheet" href="/css/dialog.css">
-  
-
-  
-
-  
-    <link rel="stylesheet" href="/css/header-post.css">
-  
-
-  
-  
-  
-    <link rel="stylesheet" href="/css/vdonate.css">
-  
-
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
 </head>
-</html>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+<!-- header -->
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://sariay.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.jpg" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
 
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
 
-  
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
 
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
 
-            
-              <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/logo.jpg">
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="hnav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="/">Home</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/about">About</a> </li>
-                
-                  <li><div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
 </div>
+<script src="//widget.time.is/zh.js"></script>
 <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
 </script>
-<script src="/js/insight.js"></script>
-
-</div></li>
-            </ul></div>
-          </div>
-                
-      </div>
-    </div>
-
+			
+		</div>
+	</div>
 </header>
 
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
 
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
 
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-MyBatis配置" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      MyBatis配置
-    </h1>
-  
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/06/23/MyBatis配置/" class="article-date">
-	  <time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">2019-06-23</time>
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《MyBatis配置》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/06/23/MyBatis配置/" itemprop="url">
+		MyBatis配置
 	</a>
 
-      
-    <a class="article-category-link" href="/categories/MyBatis/">MyBatis</a>
+	</div>
 
-      
-	<a class="article-views">
-	<span id="busuanzi_container_page_pv">
-		PV:<span id="busuanzi_value_page_pv"></span>
-	</span>
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/06/23/MyBatis配置/" itemprop="url">
+		<time datetime="2019-06-23T15:50:40.000Z" itemprop="datePublished">
+	  		2019-06-23
+	  </time>
 	</a>
+	&nbsp;
 
-      
 
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;&lt;!-- 配置 --&gt;</span><br><span class="line">	&lt;!-- 属性 --&gt;</span><br><span class="line">	&lt;properties&gt;&lt;/properties&gt;</span><br><span class="line">	&lt;!-- 设置 --&gt;</span><br><span class="line">	&lt;settings&gt;&lt;/settings&gt;</span><br><span class="line">	&lt;!-- 设置别名 --&gt;</span><br><span class="line">	&lt;typeAliases&gt;&lt;/typeAliases&gt;</span><br><span class="line">	&lt;!-- 类型处理器 --&gt;</span><br><span class="line">	&lt;typeHandlers&gt;&lt;/typeHandlers&gt;</span><br><span class="line">	&lt;!-- 对象工厂 --&gt;</span><br><span class="line">	&lt;objectFactory&gt;&lt;/objectFactory&gt;</span><br><span class="line">	&lt;!-- 插件 --&gt;</span><br><span class="line">	&lt;plugins&gt;&lt;/plugins&gt;</span><br><span class="line">	&lt;!-- 环境配置 --&gt;</span><br><span class="line">	&lt;environments&gt;</span><br><span class="line">		&lt;environment&gt;</span><br><span class="line">			&lt;!-- 事务管理器 --&gt;</span><br><span class="line">			&lt;transactionManager&gt;&lt;/transactionManager&gt;</span><br><span class="line">			&lt;!-- 数据源 --&gt;</span><br><span class="line">			&lt;dataSource&gt;&lt;/dataSource&gt;</span><br><span class="line">		&lt;/environment&gt;</span><br><span class="line">	&lt;/environments&gt;</span><br><span class="line">	&lt;!-- 数据库厂商 --&gt;</span><br><span class="line">	&lt;databaseIdProvider&gt;&lt;/databaseIdProvider&gt;</span><br><span class="line">	&lt;!-- 映射器 --&gt;</span><br><span class="line">	&lt;mappers&gt;&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/06/23/MyBatis配置/" itemprop="url">
+		<time datetime="2019-06-23T15:50:40.000Z" itemprop="dateUpdated">
+	  		2019-06-23
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/MyBatis/" class=" ">
+			MyBatis
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;&lt;!-- 配置 --&gt;</span><br><span class="line">	&lt;!-- 属性 --&gt;</span><br><span class="line">	&lt;properties&gt;&lt;/properties&gt;</span><br><span class="line">	&lt;!-- 设置 --&gt;</span><br><span class="line">	&lt;settings&gt;&lt;/settings&gt;</span><br><span class="line">	&lt;!-- 设置别名 --&gt;</span><br><span class="line">	&lt;typeAliases&gt;&lt;/typeAliases&gt;</span><br><span class="line">	&lt;!-- 类型处理器 --&gt;</span><br><span class="line">	&lt;typeHandlers&gt;&lt;/typeHandlers&gt;</span><br><span class="line">	&lt;!-- 对象工厂 --&gt;</span><br><span class="line">	&lt;objectFactory&gt;&lt;/objectFactory&gt;</span><br><span class="line">	&lt;!-- 插件 --&gt;</span><br><span class="line">	&lt;plugins&gt;&lt;/plugins&gt;</span><br><span class="line">	&lt;!-- 环境配置 --&gt;</span><br><span class="line">	&lt;environments&gt;</span><br><span class="line">		&lt;environment&gt;</span><br><span class="line">			&lt;!-- 事务管理器 --&gt;</span><br><span class="line">			&lt;transactionManager&gt;&lt;/transactionManager&gt;</span><br><span class="line">			&lt;!-- 数据源 --&gt;</span><br><span class="line">			&lt;dataSource&gt;&lt;/dataSource&gt;</span><br><span class="line">		&lt;/environment&gt;</span><br><span class="line">	&lt;/environments&gt;</span><br><span class="line">	&lt;!-- 数据库厂商 --&gt;</span><br><span class="line">	&lt;databaseIdProvider&gt;&lt;/databaseIdProvider&gt;</span><br><span class="line">	&lt;!-- 映射器 --&gt;</span><br><span class="line">	&lt;mappers&gt;&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <p>上述的代码是整个MyBatis配置文件中包含的所有重要的节点元素，要注意的是，这些节点元素的顺序不能够颠倒！</p>
 <h4 id="properties属性"><a href="#properties属性" class="headerlink" title="properties属性"></a>properties属性</h4><p>properties属性可以给系统配置运行参数，可以放在XML文件或者properties文件中，这样的好处可以方便我们进行参数的修改，不会引起代码的重新编译。MyBatis提供了三种方式使用properties：</p>
@@ -262,295 +408,667 @@
 <ol start="3">
 <li>用类注册引入映射器</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;mapper class=&quot;com.etc.ssm.mapper.UserMapper&quot;/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: '打赏', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://imgits.com/images/2019/06/22/2991e5d593fb45efb233fecc50380140.jpg',
-  alipayImage: 'https://imgits.com/images/2019/06/22/a3b958f0316cb9f0f2d61ecd2eb3d6c5.jpg'
-});
-</script>
-      
-      
-      <div>
-        <ul class="post-copyright">
-          <li class="post-copyright-author">
-          <strong>Post author:  </strong>
-          </li>
-          <li class="post-copyright-link">
-          <strong>Post link:  </strong>
-          <a href="/2019/06/23/MyBatis配置/" target="_blank" title="MyBatis配置">http://yoursite.com/2019/06/23/MyBatis配置/</a>
-          </li>
-          <li class="post-copyright-license">
-            <strong>Copyright Notice:   </strong>
-            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-            unless stating additionally.
-          </li>
-         
-        </ul>
-<div>
-</div></div>
-      
-      
-        
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
-
-		       if (typeof LivereTower === 'function') { return; }
-
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
-
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">	&lt;mapper class=&quot;com.etc.ssm.mapper.UserMapper&quot;/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure>	
 	</div>
+	
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
 
 
-
-      
-      
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
-
-      
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/06/23/MyBatis运行原理/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Mybatis运行原理
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/06/23/MyBatis核心组件的生命周期/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MyBatis核心组件的生命周期</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-<!-- Table of Contents -->
-
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#properties属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">properties属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#settings属性"><span class="nav-number">1.0.2.</span> <span class="nav-text">settings属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeAliases属性"><span class="nav-number">1.0.3.</span> <span class="nav-text">typeAliases属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeHandler属性"><span class="nav-number">1.0.4.</span> <span class="nav-text">typeHandler属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#objectFactory属性"><span class="nav-number">1.0.5.</span> <span class="nav-text">objectFactory属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#environment属性"><span class="nav-number">1.0.6.</span> <span class="nav-text">environment属性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#transactionManager"><span class="nav-number">1.0.6.0.1.</span> <span class="nav-text">transactionManager</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dataSource"><span class="nav-number">1.0.6.0.2.</span> <span class="nav-text">dataSource</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mappers属性"><span class="nav-number">1.0.7.</span> <span class="nav-text">mappers属性</span></a></li></ol>
-    
-    </div>
-  </aside>
-
-</section>
-        
-      </div>
-      
-      <footer id="footer">
-  
-
-  <div class="container">
-      	<div class="row">
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Yellow All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				UV : <span id="busuanzi_value_site_uv"></span> |  
-				PV : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
+      		
+			</div>	
 		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">
+								Mybatis运行原理			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								原理MyBatis的运行过程分为两大步：
+
+读取配置文件缓存到Configuration对象中，用于创建SqlSessionFactory
+SqlSession的执行过程构建SqlSessionFactory过程
+通过 org.apa...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Mybatis运行原理">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">
+								MyBatis一级缓存和二级缓存			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。
+mybatis的缓存分为两级：一级缓存、二级缓存。
+一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSe...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis一级缓存和二级缓存">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">
+								MyBatis核心组件的生命周期			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis核心组件的生命周期">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis级联/" title="MyBatis级联">
+								MyBatis级联			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis级联">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">
+								MyBatis映射器			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis映射器">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+								MyBatis核心组件之SqlSession			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis核心组件之SqlSession">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">
+								MyBatis核心组件之SQL Mapper			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
+
+描述映射规则
+
+提供SQL语句，并可以配置SQL参数类型、返回类型、缓存刷新等信息
+
+配置缓存
+
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis核心组件之SQL Mapper">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">
+								MyBatis核心组件之SqlSessionFactory			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								MyBatis的核心组件MyBatis的核心组件分为4个部分：
+
+SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成SqlSessionFactory，采用的是分布构建的Builder模式。
+Sql...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/22/MyBatis/" title="MyBatis">
+								MyBatis			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 22日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="MyBatis">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">
+								Spring Boot整合MyBatis			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+SpringBoot 提供了整合 MyBatis 的功能，通过简单的配置就能完成。
+pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Spring Boot整合MyBatis">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
 
 		
-  </div>
-</footer>
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
 
 
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
 
 
 
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
 
-  <script src="/js/dialog.js"></script>
+
+	
+
+
+<!-- show math formula -->
 
 
 
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
 
+	            $(this).wrap('<div id="post-code"></div>');
 
+	        })
 
+	        $("#article-content #post-code").each(function() {
 
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
 
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
+	        })
 
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
 
+	            $(this).find('.code-language').text(language);
 
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
 	</script>
 
 
 
 
 
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
 
-  </div>
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by Yellow. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
 
 
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
 
 
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
+		</p>
+		<p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
 
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            Yellow
-          </div>
-          <div class="panel-body">
-            Copyright © 2019 Yellow All Rights Reserved.
-          </div>
-        </div>
-      </div>
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
 
 
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+								
+			</div>
+		</div>
+	</div>
 </div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
-  
-</body>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
 </html>
