@@ -49,7 +49,7 @@
 
 
 <!-- header -->
-<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/Random-img/1.jpg" data-random-max="110" data-random-src="https://Baoi98.github.io/img/Random-img/">
+<header class="fixbackground" data-img-mode="normal" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://Baoi98.github.io/img/Random-img/">
 	<div class="mask">
 		<!-- Logo and navigation -->
 		<div class="h-header">
@@ -319,7 +319,7 @@
 
 	<a href="/2019/07/21/Spring AOP/" itemprop="url">
 		<time datetime="2019-07-21T10:10:43.034Z" itemprop="dateUpdated">
-	  		2019-07-21
+	  		2019-08-28
 	  </time>
 	</a> 
 
@@ -349,8 +349,8 @@
 <p>AOP 技术恰恰相反，它利用一种称为”横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其命名为”Aspect”，即切面。所谓”切面”，简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性。</p>
 <p>AOP 使用”横切”技术，AOP把软件系统分为两个部分：核心关注点和横切关注点。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处基本相似，比如权限认证、日志、事物。AOP的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。</p>
 <h2 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h2><ul>
-<li>切面（Aspect）<br>类是对物体特征的抽象，切面就是对横切关注点的抽象，例如数据库的事务贯穿了整个代码层面，这就是一个切面，它可以定义后面需要的各类通知、切点和引入内容。</li>
-<li>通知（Advice）<br>通知是切面开启后，切面的方法。它根据在代理对象真实方法调用前后的顺序和逻辑区分。<br>前置通知（before）：在动态代理反射原有对象方法或者执行环绕通知前执行的通知功能。<br>后置通知（after）：在动态代理反射原有对象方法或者执行环绕通知后执行的通知功能。不论是否抛出异常都会执行。<br>返回通知（afterReturning）：在动态代理反射原有对象方法或者执行环绕通知后正常返回（无异常）执行的通知功能。<br>异常通知（afterThrowing）：在动态代理反射原有对象方法或者执行环绕通知产生异常后执行的通知功能。<br>环绕通知（around）：在动态代理中，它可以取代当前被拦截对象的方法，提供回调原有被拦截对象的方法。<ul>
+<li>切面（Aspect）<br> 类是对物体特征的抽象，切面就是对横切关注点的抽象，例如数据库的事务贯穿了整个代码层面，这就是一个切面，它可以定义后面需要的各类通知、切点和引入内容。</li>
+<li>通知（Advice）<br> 通知是切面开启后，切面的方法。它根据在代理对象真实方法调用前后的顺序和逻辑区分。<br> 前置通知（before）：在动态代理反射原有对象方法或者执行环绕通知前执行的通知功能。<br> 后置通知（after）：在动态代理反射原有对象方法或者执行环绕通知后执行的通知功能。不论是否抛出异常都会执行。<br> 返回通知（afterReturning）：在动态代理反射原有对象方法或者执行环绕通知后正常返回（无异常）执行的通知功能。<br> 异常通知（afterThrowing）：在动态代理反射原有对象方法或者执行环绕通知产生异常后执行的通知功能。<br> 环绕通知（around）：在动态代理中，它可以取代当前被拦截对象的方法，提供回调原有被拦截对象的方法。<ul>
 <li>引入（Introduction）<br>引入允许我们在现有的类里添加自定义的类和方法。</li>
 <li>切点（Pointcut）<br>这是一个告诉 Spring AOP 在什么时候启动拦截并织入对应的流程中，因为并不是所有的开发都需要启动 AOP，它往往通过切点表达式进行限定。</li>
 <li>连接点（Join point）<br>连接点对应的是具体需要拦截的东西，比如通过切点的切点表达式去判断哪个方法是连接点，从而织入对应的通知。</li>
@@ -375,7 +375,7 @@
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/11.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/Random-img/12.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -433,7 +433,7 @@ pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合MyBatis">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -458,7 +458,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合Spring Data JPA">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
 							</a>
 						</div>
 					</li>											
@@ -482,7 +482,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot热部署/" title="Spring Boot热部署">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot热部署">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/19.jpg" alt="Spring Boot热部署">
 							</a>
 						</div>
 					</li>											
@@ -507,7 +507,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Thymeleaf/" title="Spring Boot整合Thymeleaf模板引擎">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
 							</a>
 						</div>
 					</li>											
@@ -530,7 +530,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot入门案例/" title="Spring Boot入门案例">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot入门案例">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/20.jpg" alt="Spring Boot入门案例">
 							</a>
 						</div>
 					</li>											
@@ -555,7 +555,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC文件上传/" title="SpringMVC文件上传">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="SpringMVC文件上传">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="SpringMVC文件上传">
 							</a>
 						</div>
 					</li>											
@@ -579,7 +579,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC拦截器/" title="SpringMVC拦截器">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="SpringMVC拦截器">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/24.jpg" alt="SpringMVC拦截器">
 							</a>
 						</div>
 					</li>											
@@ -605,7 +605,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC执行流程/" title="SpringMVC执行流程">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="SpringMVC执行流程">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/14.jpg" alt="SpringMVC执行流程">
 							</a>
 						</div>
 					</li>											
@@ -628,7 +628,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC入门案例/" title="SpringMVC入门案例">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="SpringMVC入门案例">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="SpringMVC入门案例">
 							</a>
 						</div>
 					</li>											
@@ -652,7 +652,7 @@ Spring Web MVC是基于Servlet API构建的原始Web框架，从一开始就包�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC/" title="SpringMVC">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="SpringMVC">
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/Random-img/23.jpg" alt="SpringMVC">
 							</a>
 						</div>
 					</li>											
@@ -928,7 +928,7 @@ Spring Web MVC是基于Servlet API构建的原始Web框架，从一开始就包�
 
 		</p>
 		<p>
-			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.
+			<a href="https://github.com/Baoi98/Baoi98.github.io" title="Baoi98" target="_blank" rel="noopener">Baoi98</a> by Yellow.
 			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
 			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
 		</p>
