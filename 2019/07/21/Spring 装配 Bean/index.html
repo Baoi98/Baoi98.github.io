@@ -319,7 +319,7 @@
 
 	<a href="/2019/07/21/Spring 装配 Bean/" itemprop="url">
 		<time datetime="2019-07-21T10:10:04.129Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -351,7 +351,7 @@
 <li>Java的接口和类中实现配置</li>
 <li>隐式Bean的发现机制和自动装配原则</li>
 </ol>
-<h2 id="XML配置Bean"><a href="#XML配置Bean" class="headerlink" title="XML配置Bean"></a>XML配置Bean</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;source&quot; class=&quot;com.ssm.entity.Source&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;fruit&quot; value=&quot;橙汁&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;sugar&quot; value=&quot;少糖&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;size&quot; value=&quot;大杯&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;juiceMaker&quot; class=&quot;com.ssm.entity.JuiceMaker&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;beverageShop&quot; value=&quot;贡茶&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;source&quot; ref=&quot;source&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="XML配置Bean"><a href="#XML配置Bean" class="headerlink" title="XML配置Bean"></a>XML配置Bean</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"source"</span> <span class="attr">class</span>=<span class="string">"com.ssm.entity.Source"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"fruit"</span> <span class="attr">value</span>=<span class="string">"橙汁"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sugar"</span> <span class="attr">value</span>=<span class="string">"少糖"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"size"</span> <span class="attr">value</span>=<span class="string">"大杯"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"juiceMaker"</span> <span class="attr">class</span>=<span class="string">"com.ssm.entity.JuiceMaker"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"beverageShop"</span> <span class="attr">value</span>=<span class="string">"贡茶"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"source"</span> <span class="attr">ref</span>=<span class="string">"source"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>id 属性是 Spring 找到这个 Bean 的编号，id 不是必须的属性，如果没有声明 id，Spring 会采用“全限类名#{number}”的格式生成编号。<br>class 是一个类的全限定名。<br>property 元素是定义类的属性，name 属性定义属性名称，value 定义值。<br>ref 属性是引用对应的 Bean 的 id。</p>
 <h2 id="注解配置Bean"><a href="#注解配置Bean" class="headerlink" title="注解配置Bean"></a>注解配置Bean</h2><p>在 Spring3.0 之后已经不再推荐使用 XML 的方式装配 Bean，更多时候推荐使用注解配置，使用注解可以大量减少 XML 的配置代码，注解既能实现 XML 的功能，也提供了自动装配的功能，满足了“约定优于配置”的开发原则。</p>
@@ -360,16 +360,16 @@
 <li>组件扫描：通过定义资源的方式，让 Spring IOC 容器扫描对应的包，从而把 Bean 装配进来。</li>
 <li>自动装配：通过注解定义，使得一些依赖关系可以通过注解完成。</li>
 </ol>
-<h4 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Component(value=&quot;user&quot;)</span><br><span class="line">public class User&#123;</span><br><span class="line">	@Value(&quot;1&quot;)</span><br><span class="line">	private Long id;</span><br><span class="line">	@Value(&quot;user_name&quot;)</span><br><span class="line">	private String userName;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(value=<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"1"</span>)</span><br><span class="line">	<span class="keyword">private</span> Long id;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"user_name"</span>)</span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>@Component 注解代表 Spring IOC 会把这个类扫描生成 Bean 实例，其中 value 属性的值等同于 XML 方式中的 id，value 值不写 Spring IOC 容器就默认首字母为小写的类名替代。<br>@Value 代表的是值的注入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@ComponentScan</span><br><span class="line">public class PojoConfig&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PojoConfig</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这时候需要在<strong>同一个包</strong>下创建一个 Java Config 告诉 Spring IOC 容器到哪里去扫描对象，@ComponentScan 代表进行扫描，默认是扫描当前包下的路径。它有两个配置选项，第一个是 basePackages，第二个是 basePackageClasses。</p>
 <h3 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h3><p>在 Spring IOC 容器中，Spring 是先完成 Bean 的定义和生成，然后寻找需要注入的资源，当 Spring 生成所有的 Bean 后，如果发现了这个注解，它就会在 Bean 中查找对应的类型注入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserService&#123;</span><br><span class="line">	public void UserInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UserInfo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class UserController&#123;</span><br><span class="line">	@Autowired</span><br><span class="line">	private UserService userService;</span><br><span class="line"></span><br><span class="line">	...................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">	...................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里我们定义一个 User 的接口，在 Controller 层通过 @Autowired 注解注入，Spring 在扫描到这个注解后会自动寻找对应的类型注入。</p>
 <p>有时，IOC 容器会寻找类型失败，默认情况会抛出异常，可以通过 @Autowired(required = false) 将其设置为不一定成功注入，当 IOC 容器没有找到对应的类型时，不会抛出异常。</p>
@@ -377,7 +377,7 @@
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/17.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/17.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -435,7 +435,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -460,7 +460,7 @@ pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -485,7 +485,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
 							</a>
 						</div>
 					</li>											
@@ -509,7 +509,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot热部署/" title="Spring Boot热部署">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/19.jpg" alt="Spring Boot热部署">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Spring Boot热部署">
 							</a>
 						</div>
 					</li>											
@@ -534,7 +534,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Thymeleaf/" title="Spring Boot整合Thymeleaf模板引擎">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
 							</a>
 						</div>
 					</li>											
@@ -557,7 +557,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot入门案例/" title="Spring Boot入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/20.jpg" alt="Spring Boot入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/20.jpg" alt="Spring Boot入门案例">
 							</a>
 						</div>
 					</li>											
@@ -582,7 +582,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC文件上传/" title="SpringMVC文件上传">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="SpringMVC文件上传">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="SpringMVC文件上传">
 							</a>
 						</div>
 					</li>											
@@ -606,7 +606,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC拦截器/" title="SpringMVC拦截器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/24.jpg" alt="SpringMVC拦截器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="SpringMVC拦截器">
 							</a>
 						</div>
 					</li>											
@@ -632,7 +632,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC执行流程/" title="SpringMVC执行流程">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/14.jpg" alt="SpringMVC执行流程">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="SpringMVC执行流程">
 							</a>
 						</div>
 					</li>											
@@ -655,7 +655,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC入门案例/" title="SpringMVC入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="SpringMVC入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="SpringMVC入门案例">
 							</a>
 						</div>
 					</li>											

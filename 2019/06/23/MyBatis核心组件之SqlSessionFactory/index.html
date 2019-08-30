@@ -319,7 +319,7 @@
 
 	<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" itemprop="url">
 		<time datetime="2019-06-23T15:28:20.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -354,18 +354,18 @@
 <p><img src="https://img-blog.csdnimg.cn/20190513095114160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt=" "></p>
 <h2 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h2><p>使用MyBatis首先是使用配置或者代码去生产SqlSessionFactory，而MyBatis提供了构造器SqlSessionFactoryBuilder。它提供了一个类org.apache.ibatis.session.Configuration作为引导，采用的是Builder模式。</p>
 <p>在MyBatis中，既可以通过读取配置的XML文件的形式生成SqlSessionFactory，也可以通过Java代码的形式去生成SqlSessionFactory。每个基于MyBatis的应用都是以一个SqlSessionFactory的实例为中心的，而SqlSessionFactory唯一的作用就是生产MyBatis的核心接口对象SqlSession，所以它的责任是唯一的，我们往往可以通过单例模式处理它。下面为两种方式创建SqlSessionFactory的代码。</p>
-<h5 id="使用XML构建SqlSessionFactory"><a href="#使用XML构建SqlSessionFactory" class="headerlink" title="使用XML构建SqlSessionFactory"></a>使用XML构建SqlSessionFactory</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;!-- 设置别名 --&gt;</span><br><span class="line">	&lt;typeAliases&gt;</span><br><span class="line">		&lt;package name=&quot;com.etc.ssm.entity&quot;/&gt;</span><br><span class="line">	&lt;/typeAliases&gt;</span><br><span class="line">	&lt;!-- 加载数据库属性文件 --&gt;</span><br><span class="line">    &lt;properties resource=&quot;db.properties&quot;&gt;&lt;/properties&gt;</span><br><span class="line">    &lt;environments default=&quot;development&quot;&gt;</span><br><span class="line">        &lt;environment id=&quot;development&quot;&gt;</span><br><span class="line">            &lt;!--使用JDBC实务管理--&gt;</span><br><span class="line">            &lt;transactionManager type=&quot;JDBC&quot;&gt;&lt;/transactionManager&gt;</span><br><span class="line">            &lt;!--连接池  POOLED为连接池方式 --&gt;</span><br><span class="line">            &lt;dataSource type=&quot;POOLED&quot;&gt;</span><br><span class="line">                &lt;property name=&quot;driver&quot; value=&quot;$&#123;jdbc.driver&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line">                &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line">                &lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</span><br><span class="line">                &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</span><br><span class="line">            &lt;/dataSource&gt;</span><br><span class="line">        &lt;/environment&gt;</span><br><span class="line">    &lt;/environments&gt;</span><br><span class="line">    &lt;!--  引入映射文件 --&gt;</span><br><span class="line">    &lt;mappers&gt;</span><br><span class="line">		&lt;mapper resource=&quot;com.etc.ssm.mapper.UserMapper.xml&quot;/&gt;</span><br><span class="line">	&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="使用XML构建SqlSessionFactory"><a href="#使用XML构建SqlSessionFactory" class="headerlink" title="使用XML构建SqlSessionFactory"></a>使用XML构建SqlSessionFactory</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 设置别名 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.etc.ssm.entity"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 加载数据库属性文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"db.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--使用JDBC实务管理--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--连接池  POOLED为连接池方式 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driver&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--  引入映射文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com.etc.ssm.mapper.UserMapper.xml"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>typeAliase节点：定义一个别名，代表com.etc.ssm.entity包下所有的类在MyBatis上下文中可以使用别名去代替全限定名。<br>properties节点：可以引入指定目录下的配置文件。<br>environments节点：描述的是数据库，其中transactionManager节点是配置事务管理器，采用MyBatis中JDBC的管理器方式，采用dataSource节点配置数据库，POOLED表示采用MyBatis内部提供的连接池方式。<br>mappers节点：引入映射器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testXmlSqlSessionFactory() &#123;</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = null;</span><br><span class="line">	String resource = &quot;sqlMapConfig.xml&quot;;</span><br><span class="line">	InputStream inputStream;</span><br><span class="line">	try &#123;</span><br><span class="line">		inputStream = Resource.getResourceAsStream(resource);</span><br><span class="line">	&#125; catch (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testXmlSqlSessionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = <span class="keyword">null</span>;</span><br><span class="line">	String resource = <span class="string">"sqlMapConfig.xml"</span>;</span><br><span class="line">	InputStream inputStream;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		inputStream = Resource.getResourceAsStream(resource);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="使用代码创建SqlSessionFactory"><a href="#使用代码创建SqlSessionFactory" class="headerlink" title="使用代码创建SqlSessionFactory"></a>使用代码创建SqlSessionFactory</h5><p>这种方法创建SqlSessionFactory不推荐使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//数据库连接池信息</span><br><span class="line">PooledDataSource dataSource=new PooledDataSource();</span><br><span class="line">dataSource.setDriver(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">dataSource.setUsername(&quot;root&quot;);</span><br><span class="line">dataSource.setPassword(&quot;123456&quot;);</span><br><span class="line">dataSource.setUrl(&quot;jdbc:mysql://localhost:3306/ssm&quot;);</span><br><span class="line">dataSource.setDefaultAutoCommit(false);</span><br><span class="line">//采用MyBatis的JDBC事务方式</span><br><span class="line">TransactionFactory transactionFactory =new JdbcTransactionFactory();</span><br><span class="line">Environment environment=new Environment(&quot;development&quot;,transactionFactory,</span><br><span class="line">dataSource);</span><br><span class="line">/创建 Configuration对象</span><br><span class="line">Configuration configuration=new Configuration(environment);</span><br><span class="line">//注册一个MyBatis上下文别名</span><br><span class="line">configuration.getTypeAliasRegistry().registerAlias(&quot;user&quot;,User.class);</span><br><span class="line">//加入一个映射器</span><br><span class="line">configuration.addMapper(UserMapper.class);</span><br><span class="line">//使用 SqlSessionFactoryBuilder 构建SqlSessionFactory</span><br><span class="line">SqlSessionFactory SqlSessionFactory=</span><br><span class="line">new SqlSessionFactoryBuilder().,build(configuration);</span><br><span class="line">return SqlSessionFactory;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库连接池信息</span></span><br><span class="line">PooledDataSource dataSource=<span class="keyword">new</span> PooledDataSource();</span><br><span class="line">dataSource.setDriver(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">dataSource.setPassword(<span class="string">"123456"</span>);</span><br><span class="line">dataSource.setUrl(<span class="string">"jdbc:mysql://localhost:3306/ssm"</span>);</span><br><span class="line">dataSource.setDefaultAutoCommit(<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//采用MyBatis的JDBC事务方式</span></span><br><span class="line">TransactionFactory transactionFactory =<span class="keyword">new</span> JdbcTransactionFactory();</span><br><span class="line">Environment environment=<span class="keyword">new</span> Environment(<span class="string">"development"</span>,transactionFactory,</span><br><span class="line">dataSource);</span><br><span class="line">/创建 Configuration对象</span><br><span class="line">Configuration configuration=<span class="keyword">new</span> Configuration(environment);</span><br><span class="line"><span class="comment">//注册一个MyBatis上下文别名</span></span><br><span class="line">configuration.getTypeAliasRegistry().registerAlias(<span class="string">"user"</span>,User.class);</span><br><span class="line"><span class="comment">//加入一个映射器</span></span><br><span class="line">configuration.addMapper(UserMapper.class);</span><br><span class="line"><span class="comment">//使用 SqlSessionFactoryBuilder 构建SqlSessionFactory</span></span><br><span class="line">SqlSessionFactory SqlSessionFactory=</span><br><span class="line"><span class="keyword">new</span> SqlSessionFactoryBuilder().,build(configuration);</span><br><span class="line"><span class="keyword">return</span> SqlSessionFactory;</span><br></pre></td></tr></table></figure>
 
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/6.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/6.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -380,7 +380,7 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession" rel="prev">
+			<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper" rel="prev">
 				&laquo;上一篇
 			</a>
 		
@@ -425,7 +425,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
 							</a>
 						</div>
 					</li>											
@@ -450,7 +450,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
 							</a>
 						</div>
 					</li>											
@@ -473,7 +473,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
 							</a>
 						</div>
 					</li>											
@@ -489,14 +489,14 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 								六月 23日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;...
+								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
 							</a>
 						</div>
 					</li>											
@@ -519,7 +519,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
 							</a>
 						</div>
 					</li>											
@@ -542,7 +542,30 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/10.jpg" alt="MyBatis映射器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+								MyBatis核心组件之SqlSession			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
 							</a>
 						</div>
 					</li>											
@@ -573,30 +596,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
-								MyBatis核心组件之SqlSession			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
 							</a>
 						</div>
 					</li>											
@@ -620,7 +620,7 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 						<div class="relate-post-cover">
 							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -645,7 +645,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											

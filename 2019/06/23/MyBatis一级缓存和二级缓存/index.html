@@ -319,7 +319,7 @@
 
 	<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" itemprop="url">
 		<time datetime="2019-06-23T15:50:40.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -347,20 +347,20 @@
 		<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>mybatis提供了缓存机制减轻数据库压力，提高数据库性能。</p>
 <p>mybatis的缓存分为两级：一级缓存、二级缓存。</p>
 <h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><p>一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSession层面的缓存，这个缓存不需要POJO对象可序列化。<br><img src="https://images2017.cnblogs.com/blog/1254583/201710/1254583-20171026214546023-1354746770.png" alt=" "><br>测试一级缓存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testFindUser() throws IOException &#123;</span><br><span class="line">	//读取核心配置文件</span><br><span class="line">	String file = &quot;sqlMapConfig.xml&quot;;</span><br><span class="line">	InputStream in = Resources.getResourceAsStream(file);</span><br><span class="line">	//日志</span><br><span class="line">	Logger logger = Logger.getLogger(MybatisFirstTest.class);</span><br><span class="line">	//创建sqlsessionfactory</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);</span><br><span class="line">	//创建sqlSession</span><br><span class="line">	SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">	UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">	User u = userMapper.getUser(1L);		</span><br><span class="line">	logger.info(&quot;再获取一次POJO....&quot;);</span><br><span class="line">	User u1 = userMapper.getUser(1L);	</span><br><span class="line">	</span><br><span class="line">	sqlSession.close();	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUser</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	<span class="comment">//读取核心配置文件</span></span><br><span class="line">	String file = <span class="string">"sqlMapConfig.xml"</span>;</span><br><span class="line">	InputStream in = Resources.getResourceAsStream(file);</span><br><span class="line">	<span class="comment">//日志</span></span><br><span class="line">	Logger logger = Logger.getLogger(MybatisFirstTest.class);</span><br><span class="line">	<span class="comment">//创建sqlsessionfactory</span></span><br><span class="line">	SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(in);</span><br><span class="line">	<span class="comment">//创建sqlSession</span></span><br><span class="line">	SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">	UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">	User u = userMapper.getUser(<span class="number">1L</span>);		</span><br><span class="line">	logger.info(<span class="string">"再获取一次POJO...."</span>);</span><br><span class="line">	User u1 = userMapper.getUser(<span class="number">1L</span>);	</span><br><span class="line">	</span><br><span class="line">	sqlSession.close();	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这段代码对同一对象进行两次获取，但是在日志中显示只有一条SQL语句被执行，原因是使用了同一个SqlSession对象获取数据，当一个SqlSession第一次通过SQL和参数获取对象后会将其缓存起来，如果下一次SQL和参数没有发生变化，并且缓存没有超时或者需要刷新时，它就会从缓存中直接取数据。</p>
 <h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><p>二级缓存是在SqlSessionFactory上的缓存，默认情况下，MyBatis系统不会开启二级缓存，需要手动开启，开启二级缓存只需要在映射文件上添加代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache/&gt;</span><br></pre></td></tr></table></figure>
 
 <p>这个时候MyBatis会序列化和反序列化对应的POJO对象，也就要求POJO需要实现序列化接口。如果实体类没有实现序列化接口，MyBatis会抛出异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class User implements Serializable&#123;</span><br><span class="line">	public static final long serialVersionUID = 598736524547906734L;</span><br><span class="line">	.........................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">598736524547906734L</span>;</span><br><span class="line">	.........................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个时候从日志上就可以看到不同的SqlSession在获取同一条记录时，都是只发送过一次SQL获取数据，MyBatis将其保存在SqlSessionFactory层面，提供给各个SqlSession使用。<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558770445535&di=30005c247568f0820d814080ed91e201&imgtype=0&src=http://image.wenzhihuai.com/images/20180120120015.png" alt=" "></p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/9.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/9.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -375,12 +375,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置" rel="prev">
+			<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联" rel="next">
+			<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -420,7 +420,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
 							</a>
 						</div>
 					</li>											
@@ -443,7 +443,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
 							</a>
 						</div>
 					</li>											
@@ -459,14 +459,14 @@ SqlSession的执行过程构建SqlSessionFactory过程
 								六月 23日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;...
+								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
 							</a>
 						</div>
 					</li>											
@@ -489,7 +489,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
 							</a>
 						</div>
 					</li>											
@@ -512,7 +512,30 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/10.jpg" alt="MyBatis映射器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+								MyBatis核心组件之SqlSession			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
 							</a>
 						</div>
 					</li>											
@@ -543,30 +566,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
-								MyBatis核心组件之SqlSession			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
 							</a>
 						</div>
 					</li>											
@@ -592,7 +592,7 @@ Sql...
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
 							</a>
 						</div>
 					</li>											
@@ -616,7 +616,7 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 						<div class="relate-post-cover">
 							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -641,7 +641,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											

@@ -319,7 +319,7 @@
 
 	<a href="/2019/06/23/MyBatis运行原理/" itemprop="url">
 		<time datetime="2019-06-23T15:52:40.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -347,28 +347,28 @@
 		<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>MyBatis的运行过程分为两大步：</p>
 <ol>
 <li>读取配置文件缓存到Configuration对象中，用于创建SqlSessionFactory</li>
-<li>SqlSession的执行过程<br><img src="http://images2017.cnblogs.com/blog/1182881/201710/1182881-20171009082644168-1006411411.png" alt><h4 id="构建SqlSessionFactory过程"><a href="#构建SqlSessionFactory过程" class="headerlink" title="构建SqlSessionFactory过程"></a>构建SqlSessionFactory过程</h4></li>
+<li>SqlSession的执行过程<h4 id="构建SqlSessionFactory过程"><a href="#构建SqlSessionFactory过程" class="headerlink" title="构建SqlSessionFactory过程"></a>构建SqlSessionFactory过程</h4></li>
 <li>通过 org.apache.ibatis.builder.xml.XMLConfigBuilder 解析配置的XML文件，读出所配置的参数，并将读取的内容存入 org.apache.ibatis.session.Configuration 类对象中。而Configuration采用的是<strong>单例模式</strong>，几乎所有的MyBatis配置内容都会存放在这个单例对象中。</li>
 <li>使用Configuration对象创建SqlSessionFactory。MyBatis中的SqlSessionFactory是一个接口，不是一个实现类，所以MyBatis提供了一个默认的实现类 org.apache.ibatis.session.defaults.DefaultSqlSessionFactory。在大部分的情况下没必要自己去创建SqlSessionFactory的实现类，这种创建方式就是一种Builder模式。</li>
 </ol>
 <p>XMLConfigBuilder中解析XML方法源码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class XMLConfigBuilder extends BaseBuilder &#123;</span><br><span class="line">	......................</span><br><span class="line">	public Configuration parse() &#123;</span><br><span class="line">	    if (parsed) &#123;</span><br><span class="line">	      throw new BuilderException(&quot;Each XMLConfigBuilder can only be used once.&quot;);</span><br><span class="line">	    &#125;</span><br><span class="line">	    parsed = true;</span><br><span class="line">	    parseConfiguration(parser.evalNode(&quot;/configuration&quot;));</span><br><span class="line">	    return configuration;</span><br><span class="line">	&#125;</span><br><span class="line">	private void parseConfiguration(XNode root) &#123;</span><br><span class="line">	    try &#123;</span><br><span class="line">	      propertiesElement(root.evalNode(&quot;properties&quot;)); //issue #117 read properties first</span><br><span class="line">	      typeAliasesElement(root.evalNode(&quot;typeAliases&quot;));</span><br><span class="line">	      pluginElement(root.evalNode(&quot;plugins&quot;));</span><br><span class="line">	      objectFactoryElement(root.evalNode(&quot;objectFactory&quot;));</span><br><span class="line">	      objectWrapperFactoryElement(root.evalNode(&quot;objectWrapperFactory&quot;));</span><br><span class="line">	      settingsElement(root.evalNode(&quot;settings&quot;));</span><br><span class="line">	      environmentsElement(root.evalNode(&quot;environments&quot;)); // read it after objectFactory and objectWrapperFactory issue #631</span><br><span class="line">	      databaseIdProviderElement(root.evalNode(&quot;databaseIdProvider&quot;));</span><br><span class="line">	      typeHandlerElement(root.evalNode(&quot;typeHandlers&quot;));</span><br><span class="line">	      mapperElement(root.evalNode(&quot;mappers&quot;));</span><br><span class="line">	    &#125; catch (Exception e) &#123;</span><br><span class="line">	      throw new BuilderException(&quot;Error parsing SQL Mapper Configuration. Cause: &quot; + e, e);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	............................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XMLConfigBuilder</span> <span class="keyword">extends</span> <span class="title">BaseBuilder</span> </span>&#123;</span><br><span class="line">	......................</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Configuration <span class="title">parse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">if</span> (parsed) &#123;</span><br><span class="line">	      <span class="keyword">throw</span> <span class="keyword">new</span> BuilderException(<span class="string">"Each XMLConfigBuilder can only be used once."</span>);</span><br><span class="line">	    &#125;</span><br><span class="line">	    parsed = <span class="keyword">true</span>;</span><br><span class="line">	    parseConfiguration(parser.evalNode(<span class="string">"/configuration"</span>));</span><br><span class="line">	    <span class="keyword">return</span> configuration;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseConfiguration</span><span class="params">(XNode root)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">	      propertiesElement(root.evalNode(<span class="string">"properties"</span>)); <span class="comment">//issue #117 read properties first</span></span><br><span class="line">	      typeAliasesElement(root.evalNode(<span class="string">"typeAliases"</span>));</span><br><span class="line">	      pluginElement(root.evalNode(<span class="string">"plugins"</span>));</span><br><span class="line">	      objectFactoryElement(root.evalNode(<span class="string">"objectFactory"</span>));</span><br><span class="line">	      objectWrapperFactoryElement(root.evalNode(<span class="string">"objectWrapperFactory"</span>));</span><br><span class="line">	      settingsElement(root.evalNode(<span class="string">"settings"</span>));</span><br><span class="line">	      environmentsElement(root.evalNode(<span class="string">"environments"</span>)); <span class="comment">// read it after objectFactory and objectWrapperFactory issue #631</span></span><br><span class="line">	      databaseIdProviderElement(root.evalNode(<span class="string">"databaseIdProvider"</span>));</span><br><span class="line">	      typeHandlerElement(root.evalNode(<span class="string">"typeHandlers"</span>));</span><br><span class="line">	      mapperElement(root.evalNode(<span class="string">"mappers"</span>));</span><br><span class="line">	    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	      <span class="keyword">throw</span> <span class="keyword">new</span> BuilderException(<span class="string">"Error parsing SQL Mapper Configuration. Cause: "</span> + e, e);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	............................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们可以看到它是通过一个一个节点的解析XML的内容得到对应的信息，最后构建出一个Configuration对象。<br>有了Configuration对象，就可以通过SqlSessionFactoryBuilder的build方法构建SqlSessionFactory对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class SqlSessionFactoryBuilder &#123;</span><br><span class="line">	...................</span><br><span class="line">	public SqlSessionFactory build(Reader reader, String environment, Properties properties) &#123;</span><br><span class="line">	    try &#123;</span><br><span class="line">	      XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);</span><br><span class="line">	      return build(parser.parse());</span><br><span class="line">	    &#125; catch (Exception e) &#123;</span><br><span class="line">	      throw ExceptionFactory.wrapException(&quot;Error building SqlSession.&quot;, e);</span><br><span class="line">	    &#125; finally &#123;</span><br><span class="line">	      ErrorContext.instance().reset();</span><br><span class="line">	      try &#123;</span><br><span class="line">	        reader.close();</span><br><span class="line">	      &#125; catch (IOException e) &#123;</span><br><span class="line">	        // Intentionally ignore. Prefer previous error.</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public SqlSessionFactory build(Configuration config) &#123;</span><br><span class="line">    return new DefaultSqlSessionFactory(config);</span><br><span class="line">  &#125;</span><br><span class="line">  .......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SqlSessionFactoryBuilder</span> </span>&#123;</span><br><span class="line">	...................</span><br><span class="line">	<span class="function"><span class="keyword">public</span> SqlSessionFactory <span class="title">build</span><span class="params">(Reader reader, String environment, Properties properties)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">	      XMLConfigBuilder parser = <span class="keyword">new</span> XMLConfigBuilder(reader, environment, properties);</span><br><span class="line">	      <span class="keyword">return</span> build(parser.parse());</span><br><span class="line">	    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	      <span class="keyword">throw</span> ExceptionFactory.wrapException(<span class="string">"Error building SqlSession."</span>, e);</span><br><span class="line">	    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	      ErrorContext.instance().reset();</span><br><span class="line">	      <span class="keyword">try</span> &#123;</span><br><span class="line">	        reader.close();</span><br><span class="line">	      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">	        <span class="comment">// Intentionally ignore. Prefer previous error.</span></span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> SqlSessionFactory <span class="title">build</span><span class="params">(Configuration config)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DefaultSqlSessionFactory(config);</span><br><span class="line">  &#125;</span><br><span class="line">  .......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="SqlSession执行过程"><a href="#SqlSession执行过程" class="headerlink" title="SqlSession执行过程"></a>SqlSession执行过程</h4><p>有了SqlSessionFactory对象就可以轻易的获取SqlSession，SqlSession也是个接口，给出了查询、插入、更新、删除的方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class DefaultSqlSessionFactory implements SqlSessionFactory &#123;</span><br><span class="line">	..................</span><br><span class="line">	public SqlSession openSession() &#123;</span><br><span class="line">    	return openSessionFromDataSource(configuration.getDefaultExecutorType(), null, false);</span><br><span class="line">  	&#125;</span><br><span class="line">  	..................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultSqlSessionFactory</span> <span class="keyword">implements</span> <span class="title">SqlSessionFactory</span> </span>&#123;</span><br><span class="line">	..................</span><br><span class="line">	<span class="function"><span class="keyword">public</span> SqlSession <span class="title">openSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> openSessionFromDataSource(configuration.getDefaultExecutorType(), <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">  	&#125;</span><br><span class="line">  	..................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="Mapper的动态代理"><a href="#Mapper的动态代理" class="headerlink" title="Mapper的动态代理"></a>Mapper的动态代理</h6><p>SqlSession中提供了一个getMapper方法，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br></pre></td></tr></table></figure>
 
 <p>源码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class DefaultSqlSession implements SqlSession &#123;</span><br><span class="line">	............................</span><br><span class="line">	public &lt;T&gt; T getMapper(Class&lt;T&gt; type) &#123;</span><br><span class="line">   		return configuration.&lt;T&gt;getMapper(type, this);</span><br><span class="line">  	&#125;</span><br><span class="line">	............................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultSqlSession</span> <span class="keyword">implements</span> <span class="title">SqlSession</span> </span>&#123;</span><br><span class="line">	............................</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getMapper</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">   		<span class="keyword">return</span> configuration.&lt;T&gt;getMapper(type, <span class="keyword">this</span>);</span><br><span class="line">  	&#125;</span><br><span class="line">	............................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Configuration &#123;</span><br><span class="line">	................</span><br><span class="line">	public &lt;T&gt; T getMapper(Class&lt;T&gt; type, SqlSession sqlSession) &#123;</span><br><span class="line">	    return mapperRegistry.getMapper(type, sqlSession);</span><br><span class="line">	&#125;</span><br><span class="line">	.................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Configuration</span> </span>&#123;</span><br><span class="line">	................</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getMapper</span><span class="params">(Class&lt;T&gt; type, SqlSession sqlSession)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> mapperRegistry.getMapper(type, sqlSession);</span><br><span class="line">	&#125;</span><br><span class="line">	.................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class MapperRegistry &#123;</span><br><span class="line">	  private Configuration config;</span><br><span class="line">	  private final Map&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt; knownMappers = new HashMap&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt;();</span><br><span class="line">	</span><br><span class="line">	  public MapperRegistry(Configuration config) &#123;</span><br><span class="line">	    this.config = config;</span><br><span class="line">	  &#125;</span><br><span class="line">	</span><br><span class="line">	  @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">	  public &lt;T&gt; T getMapper(Class&lt;T&gt; type, SqlSession sqlSession) &#123;</span><br><span class="line">	    final MapperProxyFactory&lt;T&gt; mapperProxyFactory = (MapperProxyFactory&lt;T&gt;) knownMappers.get(type);</span><br><span class="line">	    if (mapperProxyFactory == null)</span><br><span class="line">	      throw new BindingException(&quot;Type &quot; + type + &quot; is not known to the MapperRegistry.&quot;);</span><br><span class="line">	    try &#123;</span><br><span class="line">	      return mapperProxyFactory.newInstance(sqlSession);</span><br><span class="line">	    &#125; catch (Exception e) &#123;</span><br><span class="line">	      throw new BindingException(&quot;Error getting mapper instance. Cause: &quot; + e, e);</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	  ...........................................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapperRegistry</span> </span>&#123;</span><br><span class="line">	  <span class="keyword">private</span> Configuration config;</span><br><span class="line">	  <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt; knownMappers = <span class="keyword">new</span> HashMap&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt;();</span><br><span class="line">	</span><br><span class="line">	  <span class="function"><span class="keyword">public</span> <span class="title">MapperRegistry</span><span class="params">(Configuration config)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">this</span>.config = config;</span><br><span class="line">	  &#125;</span><br><span class="line">	</span><br><span class="line">	  <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">	  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getMapper</span><span class="params">(Class&lt;T&gt; type, SqlSession sqlSession)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">final</span> MapperProxyFactory&lt;T&gt; mapperProxyFactory = (MapperProxyFactory&lt;T&gt;) knownMappers.get(type);</span><br><span class="line">	    <span class="keyword">if</span> (mapperProxyFactory == <span class="keyword">null</span>)</span><br><span class="line">	      <span class="keyword">throw</span> <span class="keyword">new</span> BindingException(<span class="string">"Type "</span> + type + <span class="string">" is not known to the MapperRegistry."</span>);</span><br><span class="line">	    <span class="keyword">try</span> &#123;</span><br><span class="line">	      <span class="keyword">return</span> mapperProxyFactory.newInstance(sqlSession);</span><br><span class="line">	    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	      <span class="keyword">throw</span> <span class="keyword">new</span> BindingException(<span class="string">"Error getting mapper instance. Cause: "</span> + e, e);</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	  ...........................................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以很明显的看出，它运用到了Configuration对象的getMapper方法获取对应的接口对象，又运用了映射器的注册器Mapperregistry获取对应的接口对象。首先会判断是否注册一个Mapper，如果没有则抛出异常信息，如果有就会启用MapperProxyFactory工厂生成一个代理实例。</p>
 <h6 id="SqlSession的四大对象"><a href="#SqlSession的四大对象" class="headerlink" title="SqlSession的四大对象"></a>SqlSession的四大对象</h6><ul>
@@ -381,7 +381,7 @@
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/11.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/11.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -439,7 +439,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
 							</a>
 						</div>
 					</li>											
@@ -462,7 +462,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
 							</a>
 						</div>
 					</li>											
@@ -478,14 +478,14 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 								六月 23日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;...
+								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
 							</a>
 						</div>
 					</li>											
@@ -508,7 +508,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
 							</a>
 						</div>
 					</li>											
@@ -531,7 +531,30 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/10.jpg" alt="MyBatis映射器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+								MyBatis核心组件之SqlSession			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
 							</a>
 						</div>
 					</li>											
@@ -562,30 +585,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
-								MyBatis核心组件之SqlSession			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
 							</a>
 						</div>
 					</li>											
@@ -611,7 +611,7 @@ Sql...
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
 							</a>
 						</div>
 					</li>											
@@ -635,7 +635,7 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 						<div class="relate-post-cover">
 							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -660,7 +660,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											

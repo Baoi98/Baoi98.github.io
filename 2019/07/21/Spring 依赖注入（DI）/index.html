@@ -319,7 +319,7 @@
 
 	<a href="/2019/07/21/Spring 依赖注入（DI）/" itemprop="url">
 		<time datetime="2019-07-21T10:09:24.955Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -354,21 +354,21 @@
 <p>构造器注入和 setter 注入是主要的方式，而接口注入是从别的地方注入的方式，例如web工程中配置的数据源是通过服务器配置的，可以通过 JNDI 的形式通过接口将它注入 Spring IOC 容器中。</p>
 <h2 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h2><p>构造器注入依赖于构造方法实现，构造方法可以是有参数的或者是无参数的。大部分情况下我们是通过类的构造方法创建类对象，Spring 可以采用反射的方式，通过使用构造方法来完成注入，这就是构造器注入的原理。</p>
 <p>构造器注入代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class User&#123;</span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private String note;</span><br><span class="line">	...............................</span><br><span class="line">	public User(String name,String note)&#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.note = note;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String note;</span><br><span class="line">	...............................</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String name,String note)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.note = note;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;user&quot; class=&quot;com.ssm.entity.User&quot;&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;0&quot; value=&quot;总经理&quot;/&gt;</span><br><span class="line">	&lt;constructor-arg index=&quot;1&quot; value=&quot;管理者&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"com.ssm.entity.User"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"总经理"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"管理者"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>constructor-arg 元素用于定义类构造方法的参数，其中 index 用于定义参数的位置，value 是设置值。</p>
 <p>构造器注入比较简单，但是缺点也很明显，参数少时可读性比较好，当参数量较多时，构造器注入就比较复杂，代码维护难。</p>
 <h2 id="setter-注入"><a href="#setter-注入" class="headerlink" title="setter 注入"></a>setter 注入</h2><p>setter 注入时 Spring 中最主流的注入方式，它利用 Java Bean 规范定义的 setter 方法完成注入，灵活并且代码可读性高，它消除了使用构造器注入时参数过多的麻烦，通过 setter 注入为其设置的值，其实也是通过 Java 的反射技术实现的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;user&quot; class=&quot;com.ssm.entity.User&quot;&gt;</span><br><span class="line">	&lt;property name=&quot;name&quot; value=&quot;工程师&quot;/&gt;</span><br><span class="line">	&lt;property name=&quot;note&quot; value=&quot;重要人员&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"com.ssm.entity.User"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"工程师"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"note"</span> <span class="attr">value</span>=<span class="string">"重要人员"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>Spring 会通过反射调用没有参数的构造方法生成对象，同时通过反射对应的 setter 方法注入配置的值，这种方式是 Spring 最为主要的方式，应用十分广泛。</p>
 <h2 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h2><p>有些时候资源是来自外界，比如数据库连接资源完全可以在 Tomcat 下配置，通过 JNDI 的形式去获取它，这样数据库链接资源是属于开发工程外的资源，这时就可以使用接口注入的形式获取它。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/15.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/15.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -426,7 +426,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -451,7 +451,7 @@ pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -476,7 +476,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
 							</a>
 						</div>
 					</li>											
@@ -500,7 +500,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot热部署/" title="Spring Boot热部署">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/19.jpg" alt="Spring Boot热部署">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Spring Boot热部署">
 							</a>
 						</div>
 					</li>											
@@ -525,7 +525,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Thymeleaf/" title="Spring Boot整合Thymeleaf模板引擎">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
 							</a>
 						</div>
 					</li>											
@@ -548,7 +548,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot入门案例/" title="Spring Boot入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/20.jpg" alt="Spring Boot入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/20.jpg" alt="Spring Boot入门案例">
 							</a>
 						</div>
 					</li>											
@@ -573,7 +573,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC文件上传/" title="SpringMVC文件上传">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="SpringMVC文件上传">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="SpringMVC文件上传">
 							</a>
 						</div>
 					</li>											
@@ -597,7 +597,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC拦截器/" title="SpringMVC拦截器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/24.jpg" alt="SpringMVC拦截器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="SpringMVC拦截器">
 							</a>
 						</div>
 					</li>											
@@ -623,7 +623,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC执行流程/" title="SpringMVC执行流程">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/14.jpg" alt="SpringMVC执行流程">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="SpringMVC执行流程">
 							</a>
 						</div>
 					</li>											
@@ -646,7 +646,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC入门案例/" title="SpringMVC入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="SpringMVC入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="SpringMVC入门案例">
 							</a>
 						</div>
 					</li>											

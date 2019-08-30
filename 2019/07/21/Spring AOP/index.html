@@ -319,7 +319,7 @@
 
 	<a href="/2019/07/21/Spring AOP/" itemprop="url">
 		<time datetime="2019-07-21T10:10:43.034Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -360,22 +360,22 @@
 </ul>
 <h2 id="XML配置开发Spring-AOP"><a href="#XML配置开发Spring-AOP" class="headerlink" title="XML配置开发Spring AOP"></a>XML配置开发Spring AOP</h2><p>Spring 提供了两种方式配置 AOP，注解配置和XML文件配置，在这我们只介绍XML文件配置方式。<br>| AOP配置元素         | 用途                             | 备注                         |<br>| ——————- | ——————————– | —————————- |<br>| aop:advisor         | 定义AOP的通知器                  | 一种较老的方式，目前很少使用 |<br>| aop:aspect          | 定义一个切面                     | /                            |<br>| aop:before          | 定义前置通知                     | /                            |<br>| aop:after           | 定义后置通知                     | /                            |<br>| aop:around          | 定义环绕方式                     | /                            |<br>| aop:after-returning | 定义返回通知                     | /                            |<br>| aop:after-throwing  | 定义异常通知                     | /                            |<br>| aop:config          | 顶层的AOP配置元素                | AOP的配置根节点              |<br>| aop:declare-parents | 给通知引入新的额外接口，增强功能 | /                            |<br>| aop:pointcut        | 定义切点                         | /                            |</p>
 <h6 id="简单的-AOP-案例："><a href="#简单的-AOP-案例：" class="headerlink" title="简单的 AOP 案例："></a>简单的 AOP 案例：</h6><p>定义接口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface PhoneService&#123;</span><br><span class="line">	public void call();</span><br><span class="line">	public void send_sms();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PhoneService</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send_sms</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>实现类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class PhoneServiceImpl&#123;</span><br><span class="line">	public void call()&#123;</span><br><span class="line">		System.out.println(&quot;***打电话&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	public void send_sms()&#123;</span><br><span class="line">		System.out.println(&quot;***发短信&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneServiceImpl</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"***打电话"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send_sms</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"***发短信"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>通知类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pulbic class MyAdvice&#123;</span><br><span class="line">	public void beforeLog()&#123;</span><br><span class="line">		System.out.println(“准备执行移动业务======”);</span><br><span class="line">	&#125;</span><br><span class="line">	public void afterLog()&#123;</span><br><span class="line">		System.out.println(&quot;本次业务需要10元======&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pulbic <span class="class"><span class="keyword">class</span> <span class="title">MyAdvice</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeLog</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(“准备执行移动业务======”);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterLog</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"本次业务需要10元======"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>XML配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;phone&quot; class=&quot;com.etc.service.impl.PhoneServiceImpl&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id=&quot;myAdvice&quot; class=&quot;com.etc.common.MyAdvice&quot;&gt;&lt;/bean&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">	&lt;!—配置切点，即需要将方法织入的位置--&gt;</span><br><span class="line">	&lt;aop:pointcut id=&quot;pc&quot; expression=“execution(* com.etc.service.impl.PhoneServiceImpl.*(...))”/&gt;</span><br><span class="line">	&lt;!—配置切面feeAdvice是Bean的id --&gt;</span><br><span class="line">	&lt;aop:aspect ref=&quot;myAdvice&quot;&gt;</span><br><span class="line">		&lt;aop:before method=&quot;beforLog&quot; pointcut-ref=&quot;pc&quot;/&gt;</span><br><span class="line">		&lt;aop:after method=&quot;afterLog&quot; pointcut-ref=&quot;pc&quot;/&gt;</span><br><span class="line">	&lt;/aop:aspect&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"phone"</span> <span class="attr">class</span>=<span class="string">"com.etc.service.impl.PhoneServiceImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myAdvice"</span> <span class="attr">class</span>=<span class="string">"com.etc.common.MyAdvice"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">!—配置切点，即需要将方法织入的位置--</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"pc"</span> <span class="attr">expression</span>=<span class="string">“execution(*</span> <span class="attr">com.etc.service.impl.PhoneServiceImpl.</span>*(<span class="attr">...</span>))”/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">!—配置切面feeAdvice是Bean的id</span> <span class="attr">--</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"myAdvice"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">"beforLog"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pc"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">"afterLog"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pc"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>&lt; aop:aspect &gt;：用于定义切面类<br>&lt; aop:before &gt;：定义前置通知<br>&lt; aop:after &gt;：定义后置通知<br>&lt; aop:after-throwing &gt;：定义异常通知<br>&lt; aop:after-retruning &gt;：定义返回通知</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/12.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/12.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -433,7 +433,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -458,7 +458,7 @@ pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -483,7 +483,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
 							</a>
 						</div>
 					</li>											
@@ -507,7 +507,7 @@ J...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot热部署/" title="Spring Boot热部署">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/19.jpg" alt="Spring Boot热部署">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Spring Boot热部署">
 							</a>
 						</div>
 					</li>											
@@ -532,7 +532,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot整合Thymeleaf/" title="Spring Boot整合Thymeleaf模板引擎">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Spring Boot整合Thymeleaf模板引擎">
 							</a>
 						</div>
 					</li>											
@@ -555,7 +555,7 @@ Thymeleaf 是 Web 和独立环境的现代服务器端 Java 模板引擎，能�
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringBoot入门案例/" title="Spring Boot入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/20.jpg" alt="Spring Boot入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/20.jpg" alt="Spring Boot入门案例">
 							</a>
 						</div>
 					</li>											
@@ -580,7 +580,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC文件上传/" title="SpringMVC文件上传">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="SpringMVC文件上传">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="SpringMVC文件上传">
 							</a>
 						</div>
 					</li>											
@@ -604,7 +604,7 @@ CommonsMultipartResol...
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC拦截器/" title="SpringMVC拦截器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/24.jpg" alt="SpringMVC拦截器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="SpringMVC拦截器">
 							</a>
 						</div>
 					</li>											
@@ -630,7 +630,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC执行流程/" title="SpringMVC执行流程">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/14.jpg" alt="SpringMVC执行流程">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="SpringMVC执行流程">
 							</a>
 						</div>
 					</li>											
@@ -653,7 +653,7 @@ SpringMVC请求流程SpringMVC中处理请求最为重要的组件就是：Dispa
 						<div class="relate-post-cover">
 							<a href="/2019/08/27/SpringMVC入门案例/" title="SpringMVC入门案例">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="SpringMVC入门案例">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="SpringMVC入门案例">
 							</a>
 						</div>
 					</li>											

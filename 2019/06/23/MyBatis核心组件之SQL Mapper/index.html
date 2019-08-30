@@ -319,7 +319,7 @@
 
 	<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" itemprop="url">
 		<time datetime="2019-06-23T15:46:23.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -357,22 +357,22 @@
 </li>
 </ul>
 <p>下面提供两种方式实现映射器，首先我们先定义一个POJO对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class User&#123;</span><br><span class="line">	private Long id;</span><br><span class="line">	private String username;</span><br><span class="line">	private String password;</span><br><span class="line">	</span><br><span class="line">	/** getter 和 setter 方法**/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Long id;</span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** getter 和 setter 方法**/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="XML实现映射器"><a href="#XML实现映射器" class="headerlink" title="XML实现映射器"></a>XML实现映射器</h2><p>用XML定义映射器分为两个部分：接口和XML。<br>首先，定义一个映射器接口,提供一个通过id获取用户的方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserMapper&#123;</span><br><span class="line">	public User getUser(Long id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(Long id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot; &gt;</span><br><span class="line">&lt;mapper namespace=&quot;com.etc.ssm.mapper.UserMapper&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 获取用户 --&gt;</span><br><span class="line">	&lt;select id=&quot;getUser&quot; parameterType=&quot;long&quot; resultType=&quot;user&quot;&gt;</span><br><span class="line">		select * from tb_user where id= #&#123;id&#125;</span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.etc.ssm.mapper.UserMapper"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 获取用户 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getUser"</span> <span class="attr">parameterType</span>=<span class="string">"long"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">		select * from tb_user where id= #&#123;id&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="注意：select元素节点的id属性值要与其对应的方法名相同！"><a href="#注意：select元素节点的id属性值要与其对应的方法名相同！" class="headerlink" title="注意：select元素节点的id属性值要与其对应的方法名相同！"></a>注意：select元素节点的id属性值要与其对应的方法名相同！</h6><p>mapper元素节点：属性namespace所对应的是一个接口的全限定名，MyBatis上下文就可以通过它找到对应的接口。<br>select元素节点：表明这是一条查询语句，属性id标识了这条SQL，属性parameterType=”long“说明传递给SQL的是一个long型的参数，resultType=”user”表示返回的是一个user类型的返回值，user是之前配置文件中设置过的别名。</p>
 <h2 id="注解实现映射器"><a href="#注解实现映射器" class="headerlink" title="注解实现映射器"></a>注解实现映射器</h2><p>注解实现映射器相对于XML实现映射器较为简单，它只需要一个接口就可以，通过MyBatis的注解来注入SQL语句。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface UserMapper&#123;</span><br><span class="line">	@Select(&quot;select * from tb_user where id= #&#123;id&#125;&quot;);</span><br><span class="line">	public User getUser(Long id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span></span>&#123;</span><br><span class="line">	<span class="meta">@Select</span>(<span class="string">"select * from tb_user where id= #&#123;id&#125;"</span>);</span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(Long id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>需要注意的是，当XML方式与注解方式同时定义时，XML方式会覆盖掉注解方式，所以MyBatis官方推荐使用的是XML实现映射器的方式，但是不同场景有不同的选择，在SQL语句量较少的情况下，使用注解方式会效率更高，但是与代码的耦合度较高。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/5.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/5.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -387,12 +387,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联" rel="prev">
+			<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession" rel="next">
+			<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -432,7 +432,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
 							</a>
 						</div>
 					</li>											
@@ -457,7 +457,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
 							</a>
 						</div>
 					</li>											
@@ -480,7 +480,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
 							</a>
 						</div>
 					</li>											
@@ -496,14 +496,14 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 								六月 23日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;...
+								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
 							</a>
 						</div>
 					</li>											
@@ -526,7 +526,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
 							</a>
 						</div>
 					</li>											
@@ -549,7 +549,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/10.jpg" alt="MyBatis映射器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
 							</a>
 						</div>
 					</li>											
@@ -572,7 +572,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
 							</a>
 						</div>
 					</li>											
@@ -598,7 +598,7 @@ Sql...
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
 							</a>
 						</div>
 					</li>											
@@ -622,7 +622,7 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 						<div class="relate-post-cover">
 							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -647,7 +647,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											

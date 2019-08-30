@@ -319,7 +319,7 @@
 
 	<a href="/2019/06/23/MyBatis映射器/" itemprop="url">
 		<time datetime="2019-06-23T15:50:40.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-08-30
 	  </time>
 	</a> 
 
@@ -347,7 +347,7 @@
 		<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效消除JDBC底层的代码。<br>| 元素名称         | 描述                                                       | 备注                                                |<br>| —————- | ———————————————————- | ————————————————— |<br>| select           | 查询语句，最常用、最复杂的元素之一                         | 可以自定义参数，返回结果集等                        |<br>| insert           | 插入语句                                                   | 执行后返回一个整数，代表插入的条数                  |<br>| update           | 更新语句                                                   | 执行后返回一个整数，代表更新的条数                  |<br>| delete           | 删除语句                                                   | 执行后返回一个整数，代表删除的条数                  |<br>| <del>parameterMap</del> | 定义参数映射关系                                           | 即将被删除的元素，<strong>不建议大家使用</strong>                |<br>| sql              | 定义一部分SQL，在各个地方引用它                            | 例如，一张表列名，一次定义，可以在多个SQL语句中使用 |<br>| resultMap        | 用来描述从数据库结果集中加载对象，它是最复杂、最强大的元素 | 提供映射规则                                        |<br>| cache            | 给定命名空间的缓存配置                                     |                                                     |<br>| cache-ref        | 其他命名空间缓存配置的引用                                 |                                                     |</p>
 <h2 id="select元素"><a href="#select元素" class="headerlink" title="select元素"></a>select元素</h2><p>先来看看select元素的几个重要配置：<br>| 元素             | 说明                                                         | 备注                                                       |<br>| —————- | ———————————————————— | ———————————————————- |<br>| id               | 它和Mapper的命名空间组合起来是唯一的，供MyBatis调用          | 如果命名空间和id结合起来不唯一，MyBatis会抛出异常          |<br>| parameterType    | 类的全命名，也可以是别名，但是别名必须是MyBatis内部定义的    | 可以选择JavaBean、Map等简单参数类型传递给SQL               |<br>| <del>parameterMap</del> | 即将废弃的元素                                               |                                                            |<br>| resultType       | 定义类的全路径，结果集将通过JavaBean的规范映射或者定义成int、double等参数，也可以使用别名 | 常用的参数之一                                             |<br>| resultMap        | 它是映射集的引用，执行强大的映射功能，resultMap能提供自定义的映射规则 | MyBatis最复杂的元素，可以配置映射规则、级联、typeHandler等 |<br>| useCache         | 启动二级缓存的开关，是否要求MyBatis将此次结果缓存            | 取值为布尔值，默认值为true                                 |</p>
 <p>简单的select例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findArticleById&quot; parameterType=&quot;integer&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">    SELECT * FROM article WHERE id = #&#123;id&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findArticleById"</span> <span class="attr">parameterType</span>=<span class="string">"integer"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></span><br><span class="line">    SELECT * FROM article WHERE id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>id配合Mapper的全限定名，成为一个唯一的标识，标识这条SQL</li>
@@ -366,10 +366,10 @@
 <li>使用map接口传递参数</li>
 </ul>
 <p>接口定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(Map&lt;String,Object&gt;parameterMap);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByMap</span><span class="params">(Map&lt;String,Object&gt;parameterMap)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>映射器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; parameterType=&quot;map&quot; resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserByMap"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>注意，参数id和name，要求的是map的键！</strong></p>
 <ul>
@@ -377,48 +377,48 @@
 </ul>
 <p>使用map传递参数有个弊端–代码可读性差，MyBatis提供了一个注解@Param，可以通过它去定义映射器的参数名称。</p>
 <p>接口定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(@Param(&quot;id&quot;)Integer id,@Param(&quot;name&quot;)String name);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByMap</span><span class="params">(@Param(<span class="string">"id"</span>)</span>Integer id,@<span class="title">Param</span><span class="params">(<span class="string">"name"</span>)</span>String name)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>映射器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserByMap"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125; and name = #&#123;name&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>注意，这里使用了@Param注解就不需要给出parameterType属性，MyBatis可以自动探索。</strong></p>
 <ul>
 <li>通过JavaBean传递多个参数</li>
 </ul>
 <p>定义POJO</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class UserSelect&#123;</span><br><span class="line">	private Integer id;</span><br><span class="line">	private String name;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSelect</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>接口定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findUserByMap(UserSelect userSelect);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByMap</span><span class="params">(UserSelect userSelect)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>映射器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findUserByMap&quot; parameterType=&quot;com.ssm.vo.UserSelect&quot;  resultType=&quot;user&quot;&gt;</span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;userSelect.id&#125; and name = #&#123;userSelect.name&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserByMap"</span> <span class="attr">parameterType</span>=<span class="string">"com.ssm.vo.UserSelect"</span>  <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;userSelect.id&#125; and name = #&#123;userSelect.name&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="insert、update、delete元素"><a href="#insert、update、delete元素" class="headerlink" title="insert、update、delete元素"></a>insert、update、delete元素</h2><p>由于insert、update、delete这三个元素使用方法类似，这里就将三种元素放在一起。</p>
 <p>MyBatis在执行完insert、update、delete语句之后，会返回一个整数来表示其影响的数据库记录数。</p>
 <p><strong>insert</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insert&quot; parameterType=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    insert into article (article_user_id, article_title, article_summary,</span><br><span class="line">      article_view_count, article_comment_count, </span><br><span class="line">      article_like_count, article_is_comment, article_status, </span><br><span class="line">      article_update_time, article_create_time, </span><br><span class="line">      article_html, article_content)</span><br><span class="line">    values ( #&#123;articleUserId,jdbcType=INTEGER&#125;, #&#123;articleTitle,jdbcType=VARCHAR&#125;, </span><br><span class="line">      #&#123;articleViewCount,jdbcType=INTEGER&#125;, #&#123;articleCommentCount,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleLikeCount,jdbcType=INTEGER&#125;, #&#123;articleIsComment,jdbcType=INTEGER&#125;, #&#123;articleStatus,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;, #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;, </span><br><span class="line">      #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;, #&#123;articleContent,jdbcType=LONGVARCHAR&#125;)</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span> <span class="attr">parameterType</span>=<span class="string">"com.ronin.blog.entity.Article"</span> &gt;</span></span><br><span class="line">    insert into article (article_user_id, article_title, article_summary,</span><br><span class="line">      article_view_count, article_comment_count, </span><br><span class="line">      article_like_count, article_is_comment, article_status, </span><br><span class="line">      article_update_time, article_create_time, </span><br><span class="line">      article_html, article_content)</span><br><span class="line">    values ( #&#123;articleUserId,jdbcType=INTEGER&#125;, #&#123;articleTitle,jdbcType=VARCHAR&#125;, </span><br><span class="line">      #&#123;articleViewCount,jdbcType=INTEGER&#125;, #&#123;articleCommentCount,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleLikeCount,jdbcType=INTEGER&#125;, #&#123;articleIsComment,jdbcType=INTEGER&#125;, #&#123;articleStatus,jdbcType=INTEGER&#125;, </span><br><span class="line">      #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;, #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;, </span><br><span class="line">      #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;, #&#123;articleContent,jdbcType=LONGVARCHAR&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="主键回填"><a href="#主键回填" class="headerlink" title="主键回填"></a>主键回填</h5><p>可以看出上面这条语句没有插入id列，因为MySql中表格采用了主键自增，MySql数据库会自动生成主键，我们也可以在MyBatis插入数据时获取到数据库生成的主键值。在insert语句中有个开关属性 useGeneratedKeys，用来控制是否打开这个功能，默认值是false。打开时要配置其属性 keyProperty 或 keyColumn，告诉系统把生成的主键放入哪个属性,如果存在多个主键，用逗号（，）隔开。</p>
 <p><strong>update</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id=&quot;updateByPrimaryKey&quot; parameterType=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    update article</span><br><span class="line">    set article_user_id = #&#123;articleUserId,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_title = #&#123;articleTitle,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_summary = #&#123;articleSummary,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_view_count = #&#123;articleViewCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_comment_count = #&#123;articleCommentCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_like_count = #&#123;articleLikeCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_is_comment = #&#123;articleIsComment,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_status = #&#123;articleStatus,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_update_time = #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_create_time = #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_html = #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;,</span><br><span class="line">      article_content = #&#123;articleContent,jdbcType=LONGVARCHAR&#125;</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line">  &lt;/update&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"com.ronin.blog.entity.Article"</span> &gt;</span></span><br><span class="line">    update article</span><br><span class="line">    set article_user_id = #&#123;articleUserId,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_title = #&#123;articleTitle,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_summary = #&#123;articleSummary,jdbcType=VARCHAR&#125;,</span><br><span class="line">      article_view_count = #&#123;articleViewCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_comment_count = #&#123;articleCommentCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_like_count = #&#123;articleLikeCount,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_is_comment = #&#123;articleIsComment,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_status = #&#123;articleStatus,jdbcType=INTEGER&#125;,</span><br><span class="line">      article_update_time = #&#123;articleUpdateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_create_time = #&#123;articleCreateTime,jdbcType=TIMESTAMP&#125;,</span><br><span class="line">      article_html = #&#123;articleHtml,jdbcType=LONGVARCHAR&#125;,</span><br><span class="line">      article_content = #&#123;articleContent,jdbcType=LONGVARCHAR&#125;</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>delete</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;delete id=&quot;deleteByPrimaryKey&quot; parameterType=&quot;java.lang.Integer&quot; &gt;</span><br><span class="line">    delete from article</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line">&lt;/delete&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"deleteByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Integer"</span> &gt;</span></span><br><span class="line">    delete from article</span><br><span class="line">    where article_id = #&#123;articleId,jdbcType=INTEGER&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="sql元素"><a href="#sql元素" class="headerlink" title="sql元素"></a>sql元素</h2><p>sql元素的作用在于可以定义一条SQL的一部分，方便后面的SQL引用它，把重复的SQL语句抽取出来，降低耦合性。</p>
 <p>定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;sql id=&quot;articleAndTagLine&quot;&gt;</span><br><span class="line">    a.* , t.tag_id , t.tag_description , t.tag_name , u.user_id , u.user_name</span><br><span class="line">&lt;/sql&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"articleAndTagLine"</span>&gt;</span></span><br><span class="line">    a.* , t.tag_id , t.tag_description , t.tag_name , u.user_id , u.user_name</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>引用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectTopArticle&quot; resultMap=&quot;BaseResultMap&quot;&gt;</span><br><span class="line">    select &lt;include refid=&quot;articleLine&quot;/&gt; from article</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectTopArticle"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></span><br><span class="line">    select <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"articleLine"</span>/&gt;</span> from article</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="resultMap元素"><a href="#resultMap元素" class="headerlink" title="resultMap元素"></a>resultMap元素</h2><p>resultMap的作用是定义映射规则、级联的更新、定制类型转化器等。resultMap定义的主要是一个结果集的映射关系，就是SQL到JavaBean的映射关系定义，它也支持级联等特性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap id=&quot;BaseResultMap&quot; type=&quot;com.ronin.blog.entity.Article&quot; &gt;</span><br><span class="line">    &lt;id column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;title&quot; property=&quot;title&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;keywords&quot; property=&quot;keywords&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;desci&quot; property=&quot;desci&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;pic&quot; property=&quot;pic&quot; jdbcType=&quot;VARCHAR&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;click&quot; property=&quot;click&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;time&quot; property=&quot;time&quot; jdbcType=&quot;TIMESTAMP&quot; /&gt;</span><br><span class="line">    &lt;result column=&quot;catalog_id&quot; property=&quot;catalogId&quot; jdbcType=&quot;INTEGER&quot; /&gt;</span><br><span class="line">  &lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>	
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.ronin.blog.entity.Article"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"title"</span> <span class="attr">property</span>=<span class="string">"title"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"keywords"</span> <span class="attr">property</span>=<span class="string">"keywords"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"desci"</span> <span class="attr">property</span>=<span class="string">"desci"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"pic"</span> <span class="attr">property</span>=<span class="string">"pic"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"click"</span> <span class="attr">property</span>=<span class="string">"click"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"time"</span> <span class="attr">property</span>=<span class="string">"time"</span> <span class="attr">jdbcType</span>=<span class="string">"TIMESTAMP"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"catalog_id"</span> <span class="attr">property</span>=<span class="string">"catalogId"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/Random-img/10.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/10.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -433,12 +433,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期" rel="prev">
+			<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置" rel="next">
+			<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -478,7 +478,7 @@ SqlSession的执行过程构建SqlSessionFactory过程
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
 							</a>
 						</div>
 					</li>											
@@ -503,7 +503,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
 							</a>
 						</div>
 					</li>											
@@ -526,7 +526,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
 							</a>
 						</div>
 					</li>											
@@ -542,14 +542,14 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 								六月 23日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;...
+								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
 							</a>
 						</div>
 					</li>											
@@ -572,7 +572,30 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
+								MyBatis核心组件之SqlSession			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								六月 23日, 2019				
+							</p>
+							<p class="relate-post-content">
+								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
 							</a>
 						</div>
 					</li>											
@@ -603,30 +626,7 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
-								MyBatis核心组件之SqlSession			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
 							</a>
 						</div>
 					</li>											
@@ -652,7 +652,7 @@ Sql...
 						<div class="relate-post-cover">
 							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
 							</a>
 						</div>
 					</li>											
@@ -676,7 +676,7 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 						<div class="relate-post-cover">
 							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
 							</a>
 						</div>
 					</li>											
@@ -701,7 +701,7 @@ pom.xml12345...
 						<div class="relate-post-cover">
 							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
 							</a>
 						</div>
 					</li>											
