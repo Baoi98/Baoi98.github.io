@@ -1,0 +1,1103 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      Linux文件压缩 | Yellow
+    
+  </title>
+  <meta name="author" content="Yellow">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="http://47.103.73.17:81/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="http://47.103.73.17:81/img/1.jpg" data-random-max="24" data-random-src="http://47.103.73.17:81/img/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="http://47.103.73.17:81/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《Linux文件压缩》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2019/08/31/Linux文件压缩/" itemprop="url">
+		Linux文件压缩
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2019/08/31/Linux文件压缩/" itemprop="url">
+		<time datetime="2019-08-31T06:11:32.170Z" itemprop="datePublished">
+	  		2019-08-31
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2019/08/31/Linux文件压缩/" itemprop="url">
+		<time datetime="2019-08-31T06:11:32.170Z" itemprop="dateUpdated">
+	  		2019-08-31
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/Linux/" class=" ">
+			Linux
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>tar是在Linux中使用得非常广泛的文档打包格式。它的好处就是消耗非常少的CPU和时间去打包文件，它<br>仅仅只是一个打包工具，并不负责压缩。</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-c</td>
+<td align="center">建立一个归档文件</td>
+</tr>
+<tr>
+<td align="center">-x</td>
+<td align="center">解开一个文件</td>
+</tr>
+<tr>
+<td align="center">-z</td>
+<td align="center">是否使用gzip压缩</td>
+</tr>
+<tr>
+<td align="center">-j</td>
+<td align="center">是否使用bzip2压缩</td>
+</tr>
+<tr>
+<td align="center">-v</td>
+<td align="center">压缩的过程中显示文件</td>
+</tr>
+<tr>
+<td align="center">-f</td>
+<td align="center">使用档名，参数f后要街上档名</td>
+</tr>
+<tr>
+<td align="center">-tf</td>
+<td align="center">查看归档文件里面的文件</td>
+</tr>
+</tbody></table>
+<p>打包格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf name.tar directory</span><br></pre></td></tr></table></figure>
+
+<p>解包格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf name.tar</span><br></pre></td></tr></table></figure>
+
+<p>上面这个解包命令将会将文档解开在当前目录。也可以用下面的这个命令来解包到指定的路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf name.tar -C directory</span><br></pre></td></tr></table></figure>
+
+<h3 id="tag-gzip"><a href="#tag-gzip" class="headerlink" title="tag.gzip"></a>tag.gzip</h3><p>这种格式是我使用得最多的压缩格式。它在压缩时不会占用太多CPU的，而且可以得到一个非常理想的压缩率。 </p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-d</td>
+<td align="center">解压缩</td>
+</tr>
+<tr>
+<td align="center">-l</td>
+<td align="center">对每个压缩文件，显示压缩文件的大小，未压缩文件的大小，压缩比，未压缩文件的名字</td>
+</tr>
+<tr>
+<td align="center">-v</td>
+<td align="center">对每一个压缩和解压的文件，显示文件名和压缩比</td>
+</tr>
+<tr>
+<td align="center">-num</td>
+<td align="center">用数字num调整压缩的速度，-1或–fast表示最快压缩方法（低压缩比），-9或–best表示最慢压缩方法（高压缩比）。系统缺省值为6</td>
+</tr>
+</tbody></table>
+<p>压缩方式文件或目录： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf name.tar.gz filename/directory</span><br></pre></td></tr></table></figure>
+
+<p>解压缩方式：<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf name.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>上面这个解包命令将会将文档解包在当前目录下面。当然，你也可以用下面的这个命令来指定解包的路径： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf name.tar.gz -C directory</span><br></pre></td></tr></table></figure>
+
+<h3 id="tar-bzip2"><a href="#tar-bzip2" class="headerlink" title="tar.bzip2"></a>tar.bzip2</h3><p>这种压缩格式是我们提到的所有方式中压缩率最好的。当然它比前面的两种方式要占用更多的CPU与时间。<br>| 参数 |                             说明                             |<br>| :–: | :———————————————————-: |<br>|  -d  |                            解压缩                            |<br>|  -z  |                           压缩参数                           |<br>| -num | 用数字num调整压缩的速度，-1或–fast表示最快压缩方法（低压缩比），-9或–best表示最慢压缩方法（高压缩比）。系统缺省值为6 |</p>
+<p>压缩文件或目录: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jcvf name.tar.bz2 filename/directory</span><br></pre></td></tr></table></figure>
+
+<p>解压缩方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxvf name.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<p>上面这个解包命令将会将文档解开在当前目录下面。当然，你也可以用下面的这个命令来指定解包的路径： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxvf name.tar.bz2 -C directory</span><br></pre></td></tr></table></figure>	
+	</div>
+	
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/7.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/08/31/Linux/" title="Linux" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux安装Java/" title="Linux安装Java">
+								Linux安装Java			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								简述本篇文章使用的Linux系统为Ubuntu 16.04，JDK为1.8.0_152。
+JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzdCddw提取...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux安装Java/" title="Linux安装Java">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Linux安装Java">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">
+								Linux用户组与文件权限管理			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Linux用户组在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、文件所在组、其它组的概念
+
+所有者
+
+文件所在组
+
+其它组
+
+
+所有者
+一般为文件的创建者，谁创建了该文件，谁就是该文件的所有者
+...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="Linux用户组与文件权限管理">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">
+								Linux软件包管理			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Advanced Packaging Tool（APT）Advanced Packaging Tool（apt）是Linux下的一款安装包管理工具。最初只有.tar.gz的打包文件，用户必须编译每个他想在GNU/Linux上运行的软件...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Linux软件包管理">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">
+								Linux文件上传工具-Xftp			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								XtpXftp是一个功能强大的SFTP、FTP 文件传输软件。使用了 Xftp 以后，MS Windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。Xftp 能同时适应初级用户和高级用户的需要。它...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/17.jpg" alt="Linux文件上传工具-Xftp">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">
+								Linux远程控制管理工具-XShell			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								XShellXshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Linux远程控制管理工具-XShell">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux/" title="Linux">
+								Linux			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Linux简介Linux 是一种自由和开放源码的类 UNIX 操作系统，使用 Linux 内核。目前存在着许多不同的 Linux 发行版，可安装在各种各样的电脑硬件设备，从手机、平板电脑、路由器和影音游戏控制台，到桌上型电脑，大型电脑...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux/" title="Linux">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="Linux">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">
+								Linux目录结构和常用命令			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Linux目录结构
+
+
+目录
+说明
+
+
+
+bin
+存放二进制可执行文件(ls,cat,mkdir等)
+
+
+boot
+存放用于系统引导时使用的各种文件
+
+
+dev
+用于存放设备文件
+
+
+etc
+存放系统配置文件
+
+
+home
+存放所有用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/1.jpg" alt="Linux目录结构和常用命令">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">
+								Spring Boot整合tk.MyBatis			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 tk.mybaits 是基于Mybatis框架开发的一个工具，相较于 mybatis，tk.mybaits 可以不用书写 sql 语句，通过调用它提供的方法实现对单表的数据操作，极大地提高了项目开发效率。
+
+pom.xml12345...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">
+								Spring Boot整合MyBatis			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+SpringBoot 提供了整合 MyBatis 的功能，通过简单的配置就能完成。
+pom.xml1234567891011121314151617181920212223242526272829303132333435363738...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/27/SpringBoot整合MyBatis/" title="Spring Boot整合MyBatis">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/3.jpg" alt="Spring Boot整合MyBatis">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">
+								Spring Boot整合Spring Data JPA			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 27日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+JPAJPA是Java Persistence API的简称，中文名Java持久层API，是SUN公司在JDK 5.0后提出的Java持久化规范，通过注解或XML描述对象－关系表的映射关系，并将运行期的实体对象持久化到数据库中。
+J...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/27/SpringBoot整合Spring Data JPA/" title="Spring Boot整合Spring Data JPA">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Spring Boot整合Spring Data JPA">
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2019, content by Yellow. All Rights Reserved.
+			
+			
+		</p>
+		<p>
+			<a href="https://github.com/Baoi98/Baoi98.github.io" title="Baoi98" target="_blank" rel="noopener">Baoi98</a> by Yellow.
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p>
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;" name="TOTOP" class="fa fa-arrow-up"></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
