@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      MyBatis | Yellow
+      Java面向对象三大特性 | Yellow
     
   </title>
   <meta name="author" content="Yellow">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《MyBatis》
+			当前文章&nbsp;:&nbsp;《Java面向对象三大特性》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/06/22/MyBatis/" itemprop="url">
-		MyBatis
+	<a href="/2019/09/03/Java面向对象三大特征/" itemprop="url">
+		Java面向对象三大特性
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/06/22/MyBatis/" itemprop="url">
-		<time datetime="2019-06-22T14:40:20.000Z" itemprop="datePublished">
-	  		2019-06-22
+	<a href="/2019/09/03/Java面向对象三大特征/" itemprop="url">
+		<time datetime="2019-09-03T05:53:35.072Z" itemprop="datePublished">
+	  		2019-09-03
 	  </time>
 	</a>
 	&nbsp;
@@ -317,9 +317,9 @@
 
 	更新于
 
-	<a href="/2019/06/22/MyBatis/" itemprop="url">
-		<time datetime="2019-06-22T14:40:20.000Z" itemprop="dateUpdated">
-	  		2019-08-30
+	<a href="/2019/09/03/Java面向对象三大特征/" itemprop="url">
+		<time datetime="2019-09-03T05:53:35.072Z" itemprop="dateUpdated">
+	  		2019-09-04
 	  </time>
 	</a> 
 
@@ -330,8 +330,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/MyBatis/" class=" ">
-			MyBatis
+		<a href="/tags/Java/" class=" ">
+			Java
+		</a>
+	
+		<a href="/tags/面试题/" class=" ">
+			面试题
 		</a>
 	
 		
@@ -344,52 +348,26 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p><img src="http://www.mybatis.org/images/mybatis-logo.png" alt></p>
-<p>MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
-<p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）</p>
-<p>当前，最新版本是MyBatis 3.5.1 ，其发布时间是2019年4月8日。</p>
-<h3 id="持久层的概念和MyBatis的特点"><a href="#持久层的概念和MyBatis的特点" class="headerlink" title="持久层的概念和MyBatis的特点"></a>持久层的概念和MyBatis的特点</h3><p>上面介绍到MyBatis是一个持久层的框架，它是对JDBC进行了简单的封装，那么我们来讲讲什么是持久层。</p>
-<p>持久层是三层架构（控制层、业务逻辑层、持久层）中的一层，持久层可以将业务数据存储到磁盘，具备长期存储的能力，只要磁盘不损坏，在断电或者其他情况下，重新开启系统仍然可以读取到这些数据。一般执行持久任务的都是数据库系统，持久层可以使用巨大的磁盘空间，也比较廉价，它的缺点就是比较慢。当然，慢是针对内存来说的，在一般的系统中运行是不存在问题的。但是在互联网的秒杀场景下，慢是不能接受的，极有可能导致宕机，在这样的场景下考虑使用Redis处理。</p>
-<h5 id="MyBatis的三大特点："><a href="#MyBatis的三大特点：" class="headerlink" title="MyBatis的三大特点："></a>MyBatis的三大特点：</h5><ul>
-<li>不屏蔽SQL，意味着可以更为精确的定位SQL语句，可以对其进行优化和改造，这有利于互联网系统性能的提高，符合互联网需要性能优化的特点。</li>
-<li>提供强大、灵活的映射机制，方便Java开发者使用，提供动态SQL的功能，允许我们根据不同条件组装SQL，这个功能远比其他工具或者Java编码的可读性和可维护性高的多，满足各种应用系统的同时也满足了需求经常变化的互联网应用的要求。</li>
-<li>在MaBatis中，提供了使用Mapper的接口编程，只要一个接口和一个XML就能创建映射器，进一步简化我们的工作，使得很多框架API在MyBatis中消失，开发者能更集中于业务逻辑。</li>
-</ul>
-<h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><p>这里我们介绍一下什么叫做ORM。</p>
-<p>ORM也称对象关系映射，是一种程序技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。从效果上说，它其实是创建了一个可在编程语言里使用的–“虚拟对象数据库”。</p>
-<p>面向对象是从软件工程基本原则（如耦合、聚合、封装）的基础上发展起来的，而关系数据库则是从数学理论发展而来的，两套理论存在显著的区别。为了解决这个不匹配的现象，对象关系映射技术应运而生。</p>
-<p>对象关系映射（ORM）提供了概念性的、易于理解的模型化数据的方法。<br>ORM方法论基于三个核心原则： </p>
+		<h3 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h3><hr>
+<p>面向对象的三个基本特性是：封装、继承、多态</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>封装是面向对象的特性之一，是对象和类概念的主要特性。</p>
+<p>封装就是把客观事物封装成抽象的类，将需要的信息放入类中，也可以成为一种信息隐藏技术，类可以把自己的属性和方法暴露出来给可信的类或者对象操作，也可以将信息隐藏。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>继承是面向对象编程语言的主要功能，子类继承父类，子类可以获得除private权限以外的所有父类的属性和方法，并且可以在无需重新编写原来的类的情况下对某些功能进行扩展。Java中只支持单继承。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态性是指允许将父对象设置成为和一个或多个的它的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同方式运行。</p>
+<p>概述成一句话：相同的行为在不同的情况下表现出不同的效果。</p>
+<p>实现多态的两种方式：</p>
 <ul>
-<li>简单：以最基本的形式建模数据。</li>
-<li>传达性：数据库结构被任何人都能理解的语言文档化。</li>
-<li>精确性：基于数据模型创建正确标准化的结构。</li>
+<li><p>静态多态：重载（发生在编译器）</p>
+<p>​    在一个类中，方法名相同，入参列表不同</p>
+</li>
+<li><p>动态多态：重写 （发生在运行期）</p>
+<p>​    存在于子类与父类中，子类重写父类的方法，方法名和入参列表相同</p>
+</li>
 </ul>
-<p>典型地，建模者通过收集来自那些熟悉应用程序但不熟练的数据建模者的人的信息开发信息模型。建模者必须能够用非技术企业专家可以理解的术语在概念层次上与数据结构进行通讯。建模者也必须能以简单的单元分析信息，对样本数据进行处理。ORM专门被设计为改进这种联系。</p>
-<p>简单的说：ORM相当于中继数据。具体到产品上，例如ADO.NET Entity Framework。DLINQ中实体类的属性[Table]就算是一种中继数据。</p>
-<h3 id="MyBatis与Hibernate"><a href="#MyBatis与Hibernate" class="headerlink" title="MyBatis与Hibernate"></a>MyBatis与Hibernate</h3><p>说到ORM框架，第一个想到的持久层框架应该就是Hibernate，Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的ORM框架，hibernate可以自动生成SQL语句，自动执行。</p>
-<p>MyBatis严格来说是一个半ORM框架，相对于Hibernate，它并没有像Hibernate一样完全的ORM，但是正是因为它的半ORM以及简单快速的开发效率，让MyBatis成为现在互联网项目首选的持久层框架之一。</p>
-<h5 id="MyBatis与Hibernate两者对比"><a href="#MyBatis与Hibernate两者对比" class="headerlink" title="MyBatis与Hibernate两者对比"></a>MyBatis与Hibernate两者对比</h5><ol>
-<li>开发速度</li>
-</ol>
-<p>就开发速度而言，Hibernate的真正掌握要比Mybatis来得难些。Mybatis框架相对简单很容易上手，但也相对简陋些。</p>
-<p>比起两者的开发速度，不仅仅要考虑到两者的特性及性能，更要根据项目需求去考虑究竟哪一个更适合项目开发，比如：一个项目中用到的复杂查询基本没有，就是简单的增删改查，这样选择hibernate效率就很快了，因为基本的sql语句已经被封装好了，根本不需要你去写sql语句，这就节省了大量的时间，但是对于一个大型项目，复杂语句较多，这样再去选择hibernate就不是一个太好的选择，选择mybatis就会加快许多，而且语句的管理也比较方便。</p>
-<ol start="2">
-<li>开发工作量</li>
-</ol>
-<p>Hibernate和MyBatis都有相应的代码生成工具。可以生成简单基本的DAO层方法。针对高级查询，Mybatis需要手动编写SQL语句，以及ResultMap。而Hibernate有良好的映射机制，开发者无需关心SQL的生成与结果映射，可以更专注于业务流程。</p>
-<ol start="3">
-<li>SQL优化</li>
-</ol>
-<p>Hibernate的查询会将表中的所有字段查询出来，这一点会有性能消耗。Hibernate也可以自己写SQL来指定需要查询的字段，但这样就破坏了Hibernate开发的简洁性。而Mybatis的SQL是手动编写的，所以可以按需求指定查询的字段。</p>
-<p>Hibernate HQL语句的调优需要将SQL打印出来，而Hibernate的SQL被很多人嫌弃因为太丑了。MyBatis的SQL是自己手动写的所以调整方便。但Hibernate具有自己的日志统计。Mybatis本身不带日志统计，使用Log4j进行日志记录。</p>
-<ol start="4">
-<li>对象管理的对比</li>
-</ol>
-<p>Hibernate 是完整的对象/关系映射解决方案，它提供了对象状态管理（state management）的功能，使开发者不再需要理会底层数据库系统的细节。也就是说，相对于常见的 JDBC/SQL 持久层方案中需要管理 SQL 语句，Hibernate采用了更自然的面向对象的视角来持久化 Java 应用中的数据。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/2.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/25.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -404,10 +382,14 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory" rel="prev">
+			<a href="/2019/09/03/SpringBoot整合Spring Data Redis/" title="Spring Boot整合Spring Data Redis" rel="prev">
 				&laquo;上一篇
 			</a>
 		
+		
+			<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -426,26 +408,31 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">
-								Mybatis运行原理			
+							<a class="relate-post-title" href="/2019/09/04/String是最基本的数据类型？/" title="String是最基本的数据类型？">
+								String是最基本的数据类型？			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 4日, 2019				
 							</p>
 							<p class="relate-post-content">
-								原理MyBatis的运行过程分为两大步：
-
-读取配置文件缓存到Configuration对象中，用于创建SqlSessionFactory
-SqlSession的执行过程构建SqlSessionFactory过程
-通过 org.apa...
+								String 是最基本的数据类型吗？
+基本数据类型
+byte – 1字节
+int – 4字节
+char – 2字节
+long – 8字节
+float – 4字节
+double – 8字节
+boolean – 1字节
+short – 2...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
+							<a href="/2019/09/04/String是最基本的数据类型？/" title="String是最基本的数据类型？">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/27.jpg" alt="String是最基本的数据类型？">
 							</a>
 						</div>
 					</li>											
@@ -453,24 +440,23 @@ SqlSession的执行过程构建SqlSessionFactory过程
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">
-								MyBatis一级缓存和二级缓存			
+							<a class="relate-post-title" href="/2019/08/31/Linux安装Java/" title="Linux安装Java">
+								Linux安装Java			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。
-mybatis的缓存分为两级：一级缓存、二级缓存。
-一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSe...
+								简述本篇文章使用的Linux系统为Ubuntu 16.04，JDK为1.8.0_152。
+JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzdCddw提取...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
+							<a href="/2019/08/31/Linux安装Java/" title="Linux安装Java">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Linux安装Java">
 							</a>
 						</div>
 					</li>											
@@ -478,22 +464,24 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">
-								MyBatis核心组件的生命周期			
+							<a class="relate-post-title" href="/2019/09/03/SpringBoot整合Spring Data Redis/" title="Spring Boot整合Spring Data Redis">
+								Spring Boot整合Spring Data Redis			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 3日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以...
+								
+RedisRedis 遵守BSD协议，是一个高性能的key-value键值对的非关系型数据库。Redis运行在内存中，所有的操作都是原子性的，支持事务，读写速度每秒可执行上万次。
+Redis 与其他 key - value 缓存产品...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
+							<a href="/2019/09/03/SpringBoot整合Spring Data Redis/" title="Spring Boot整合Spring Data Redis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/26.jpg" alt="Spring Boot整合Spring Data Redis">
 							</a>
 						</div>
 					</li>											
@@ -501,22 +489,25 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis配置/" title="MyBatis配置">
-								MyBatis配置			
+							<a class="relate-post-title" href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">
+								Linux安装MySql			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
+								简述本篇文章Linux系统使用的是Ubuntu 16.04版本，系统数据源修改可浏览https://blog.csdn.net/qq_36525300/article/details/89222477文章。
+安装步骤
+更新数据源
+安装...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
+							<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="Linux安装MySql">
 							</a>
 						</div>
 					</li>											
@@ -524,22 +515,23 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis级联/" title="MyBatis级联">
-								MyBatis级联			
+							<a class="relate-post-title" href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">
+								Linux安装Tomcat			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维...
+								简述本篇文章使用Linux系统为Ubuntu 16.04版本，Tomcat版本为8.5.32
+Tomcat安装包Tomcat 8.5.32下载链接：https://pan.baidu.com/s/15kOUyqzaQajqWhaa7P...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
+							<a href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/15.jpg" alt="Linux安装Tomcat">
 							</a>
 						</div>
 					</li>											
@@ -547,76 +539,33 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">
-								MyBatis映射器			
+							<a class="relate-post-title" href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">
+								Linux用户组与文件权限管理			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效...
-							</p>
-						</div>
+								Linux用户组在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、文件所在组、其它组的概念
 
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">
-								MyBatis核心组件之SqlSession			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								SqlSession在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而Sq...
-							</p>
-						</div>
+所有者
 
-						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSession/" title="MyBatis核心组件之SqlSession">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSession">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">
-								MyBatis核心组件之SQL Mapper			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
-							</p>
-							<p class="relate-post-content">
-								简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
+文件所在组
 
-描述映射规则
+其它组
 
-提供SQL语句，并可以配置SQL参数类型、返回类型、缓存刷新等信息
 
-配置缓存
-
+所有者
+一般为文件的创建者，谁创建了该文件，谁就是该文件的所有者
 ...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
+							<a href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="Linux用户组与文件权限管理">
 							</a>
 						</div>
 					</li>											
@@ -624,25 +573,22 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">
-								MyBatis核心组件之SqlSessionFactory			
+							<a class="relate-post-title" href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">
+								Linux软件包管理			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								MyBatis的核心组件MyBatis的核心组件分为4个部分：
-
-SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成SqlSessionFactory，采用的是分布构建的Builder模式。
-Sql...
+								Advanced Packaging Tool（APT）Advanced Packaging Tool（apt）是Linux下的一款安装包管理工具。最初只有.tar.gz的打包文件，用户必须编译每个他想在GNU/Linux上运行的软件...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
+							<a href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Linux软件包管理">
 							</a>
 						</div>
 					</li>											
@@ -650,24 +596,86 @@ Sql...
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">
-								Spring Boot整合tk.MyBatis			
+							<a class="relate-post-title" href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">
+								Linux文件上传工具-Xftp			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 28日, 2019				
+								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								 tk.mybaits 是基于Mybatis框架开发的一个工具，相较于 mybatis，tk.mybaits 可以不用书写 sql 语句，通过调用它提供的方法实现对单表的数据操作，极大地提高了项目开发效率。
-
-pom.xml12345...
+								XtpXftp是一个功能强大的SFTP、FTP 文件传输软件。使用了 Xftp 以后，MS Windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。Xftp 能同时适应初级用户和高级用户的需要。它...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
+							<a href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/17.jpg" alt="Linux文件上传工具-Xftp">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">
+								Linux远程控制管理工具-XShell			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								XShellXshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Linux远程控制管理工具-XShell">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">
+								Linux文件压缩			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								tartar是在Linux中使用得非常广泛的文档打包格式。它的好处就是消耗非常少的CPU和时间去打包文件，它仅仅只是一个打包工具，并不负责压缩。
+
+
+
+参数
+说明
+
+
+
+-c
+建立一个归档文件
+
+
+-x
+解开一个文件
+
+
+-z
+是否使...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="Linux文件压缩">
 							</a>
 						</div>
 					</li>											
