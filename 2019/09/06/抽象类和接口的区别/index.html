@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Linux安装Tomcat | Yellow
+      抽象类和接口的区别 | Yellow
     
   </title>
   <meta name="author" content="Yellow">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Linux安装Tomcat》
+			当前文章&nbsp;:&nbsp;《抽象类和接口的区别》
 		
 	</p>
 
@@ -277,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/31/Linux安装Tomcat/" itemprop="url">
-		Linux安装Tomcat
+	<a href="/2019/09/06/抽象类和接口的区别/" itemprop="url">
+		抽象类和接口的区别
 	</a>
 
 	</div>
@@ -291,9 +291,9 @@
 
 	发布于
 
-	<a href="/2019/08/31/Linux安装Tomcat/" itemprop="url">
-		<time datetime="2019-08-31T10:06:09.678Z" itemprop="datePublished">
-	  		2019-08-31
+	<a href="/2019/09/06/抽象类和接口的区别/" itemprop="url">
+		<time datetime="2019-09-06T05:22:10.477Z" itemprop="datePublished">
+	  		2019-09-06
 	  </time>
 	</a>
 	&nbsp;
@@ -309,9 +309,9 @@
 
 	更新于
 
-	<a href="/2019/08/31/Linux安装Tomcat/" itemprop="url">
-		<time datetime="2019-08-31T10:06:09.678Z" itemprop="dateUpdated">
-	  		2019-08-31
+	<a href="/2019/09/06/抽象类和接口的区别/" itemprop="url">
+		<time datetime="2019-09-06T05:22:10.477Z" itemprop="dateUpdated">
+	  		2019-09-06
 	  </time>
 	</a> 
 
@@ -322,12 +322,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Linux/" class=" ">
-			Linux
+		<a href="/tags/Java/" class=" ">
+			Java
 		</a>
 	
-		<a href="/tags/Tomcat/" class=" ">
-			Tomcat
+		<a href="/tags/面试题/" class=" ">
+			面试题
 		</a>
 	
 		
@@ -340,38 +340,68 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>本篇文章使用Linux系统为Ubuntu 16.04版本，Tomcat版本为8.5.32</p>
-<h3 id="Tomcat安装包"><a href="#Tomcat安装包" class="headerlink" title="Tomcat安装包"></a>Tomcat安装包</h3><p>Tomcat 8.5.32下载链接：<a href="https://pan.baidu.com/s/15kOUyqzaQajqWhaa7Pd5Vg" target="_blank" rel="noopener">https://pan.baidu.com/s/15kOUyqzaQajqWhaa7Pd5Vg</a><br>提取码：6mc1</p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li>通过Xftp工具将下载的Tomcat压缩包上传到/usr/local/目录下（若没有Xftp工具，可浏览另一篇文章<a href="https://blog.csdn.net/qq_36525300/article/details/89216023" target="_blank" rel="noopener">https://blog.csdn.net/qq_36525300/article/details/89216023</a>下载）</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20190412100346181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
-<ol start="2">
-<li>解压缩，删除压缩包</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-tomcat-8.5.23.tar.gz</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf apache-tomcat-8.5.23.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>解压后，目录多了一个tomcat文件夹<br><img src="https://img-blog.csdnimg.cn/20190412100718513.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NTI1MzAw,size_16,color_FFFFFF,t_70" alt></p>
-<ol start="3">
-<li>进入tomcat文件夹的bin目录，启动tomcat容器</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/apache-tomcat-8.5.23/bin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>停止tomcat容器</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shutdown.sh</span><br></pre></td></tr></table></figure>
-
+		<h3 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h3><hr>
+<h5 id="抽象类（abstract-class）"><a href="#抽象类（abstract-class）" class="headerlink" title="抽象类（abstract class）"></a>抽象类（abstract class）</h5><p>含有abstract修饰的类成为抽象类，抽象类不能被实例化，抽象类中的抽象方法只做方法声明，不包含实现，只能够作为父类被继承实现。含有抽象方法的类必须定义为抽象类，但是一个抽象类中可以没有抽象方法。</p>
+<h5 id="接口（interface）"><a href="#接口（interface）" class="headerlink" title="接口（interface）"></a>接口（interface）</h5><p>接口可以说成是抽象类的一种特例，接口中所有的方法都必须是抽象的。接口中的方法默认定义为public abstract类型，接口中的成员变量类型默认为public static final.</p>
+<p>接口的成员包括方法、属性、索引器、事件，不能够包含常量、字段、构造函数、析构函数、静态成员。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><table>
+<thead>
+<tr>
+<th align="center">比较</th>
+<th align="center">抽象类</th>
+<th align="center">接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">默认的实现方法</td>
+<td align="center">可以有默认的方法实现</td>
+<td align="center">接口是完全抽象的，不存在方法的实现</td>
+</tr>
+<tr>
+<td align="center">实现</td>
+<td align="center">子类使用extends继承抽象类，如果子类不是抽象类，子类需要提供抽象类中所有声明的方法的实现</td>
+<td align="center">子类使用implement实现接口，需要提供接口中所有声明的方法的实现</td>
+</tr>
+<tr>
+<td align="center">构造器</td>
+<td align="center">抽象类可以有构造器</td>
+<td align="center">接口不能有构造器</td>
+</tr>
+<tr>
+<td align="center">与正常Java类的区别</td>
+<td align="center">除了不能实例化，抽象类和普通Java类没有任何区别</td>
+<td align="center">接口是完全不同的类型</td>
+</tr>
+<tr>
+<td align="center">访问修饰符</td>
+<td align="center">抽象方法可以有public、protected和default这些修饰符</td>
+<td align="center">接口方法默认修饰符是public，不可以使用其他修饰符</td>
+</tr>
+<tr>
+<td align="center">main方法</td>
+<td align="center">抽象类可以有main方法，可以运行</td>
+<td align="center">接口没有main方法，不能运行</td>
+</tr>
+<tr>
+<td align="center">多继承</td>
+<td align="center">抽象方法可以继承一个类和实现多个接口</td>
+<td align="center">接口只可以继承一个或多个其他接口</td>
+</tr>
+<tr>
+<td align="center">速度</td>
+<td align="center">抽象类速度比接口快</td>
+<td align="center">接口速度有点慢，它需要去寻找在类中实现的方法</td>
+</tr>
+<tr>
+<td align="center">添加新方法</td>
+<td align="center">往抽象类中添加新方法，可以提供默认的实现，不需要改变原本的代码</td>
+<td align="center">往接口中添加方法，需要改变实现该接口的类</td>
+</tr>
+</tbody></table>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/15.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/32.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -386,12 +416,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/08/31/Linux安装Java/" title="Linux安装Java" rel="next">
+			<a href="/2019/09/06/重载和重写的区别/" title="重载和重写的区别" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -412,25 +438,169 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">
-								Linux安装MySql			
+							<a class="relate-post-title" href="/2019/09/06/重载和重写的区别/" title="重载和重写的区别">
+								重载和重写的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 6日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述本篇文章Linux系统使用的是Ubuntu 16.04版本，系统数据源修改可浏览https://blog.csdn.net/qq_36525300/article/details/89222477文章。
-安装步骤
-更新数据源
-安装...
+								重载和重写的区别
+重写 Override（运行期的多态）从字面上看，重写就是重新写一遍，重写是存在于继承的祖父类关系当中，表示子类重写父类的方法，方法名称和参数完全相同。
+子类重写父类方法时，只能够比父类抛出更少的异常，或者是抛出父类...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">				
+							<a href="/2019/09/06/重载和重写的区别/" title="重载和重写的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="Linux安装MySql">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/13.jpg" alt="重载和重写的区别">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/04/String、SpringBuffer、StringBuilder的区别/" title="String、SpringBuffer、StringBuilder的区别">
+								String、SpringBuffer、StringBuilder的区别			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 4日, 2019				
+							</p>
+							<p class="relate-post-content">
+								String、SpringBuffer、StringBuilder的区别
+Java中提供了三种可以存储和操作字符串的类：
+
+String
+StringBuffer
+StringBuilder
+
+从大体上看：
+
+String：字符串常量...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/04/String、SpringBuffer、StringBuilder的区别/" title="String、SpringBuffer、StringBuilder的区别">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/30.jpg" alt="String、SpringBuffer、StringBuilder的区别">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/04/final,finally,finalize的区别/" title="final,finally,finalize的区别">
+								final,finally,finalize的区别			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 4日, 2019				
+							</p>
+							<p class="relate-post-content">
+								final,finally,finalize的区别
+final用于声明属性、方法和类，分别表示属性不可变，方法不可被重写，类不可被继承
+finally异常处理语句结构的一部分，用于表示不论有没有捕获到异常都要执行的代码段
+finali...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/04/final,finally,finalize的区别/" title="final,finally,finalize的区别">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/29.jpg" alt="final,finally,finalize的区别">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/04/int和Integer的区别/" title="int和Integer的区别">
+								int和Integer的区别			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 4日, 2019				
+							</p>
+							<p class="relate-post-content">
+								int和Integer的区别
+Java提供了两种不同的类型：
+
+引用类型
+原始类型（基本数据类型）
+
+int是Java的原始数据类型，Integer是Java为int提供的封装类。int的默认值是0，Integer的默认值是null。...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/04/int和Integer的区别/" title="int和Integer的区别">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="int和Integer的区别">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/04/String是最基本的数据类型？/" title="String是最基本的数据类型？">
+								String是最基本的数据类型？			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 4日, 2019				
+							</p>
+							<p class="relate-post-content">
+								String 是最基本的数据类型吗？
+基本数据类型
+byte – 1字节
+int – 4字节
+char – 2字节
+long – 8字节
+float – 4字节
+double – 8字节
+boolean – 1字节
+short – 2...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/04/String是最基本的数据类型？/" title="String是最基本的数据类型？">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/27.jpg" alt="String是最基本的数据类型？">
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/03/Java面向对象三大特征/" title="Java面向对象三大特性">
+								Java面向对象三大特性			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 3日, 2019				
+							</p>
+							<p class="relate-post-content">
+								面向对象的三大特性
+面向对象的三个基本特性是：封装、继承、多态
+封装封装是面向对象的特性之一，是对象和类概念的主要特性。
+封装就是把客观事物封装成抽象的类，将需要的信息放入类中，也可以成为一种信息隐藏技术，类可以把自己的属性和方法暴露...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/03/Java面向对象三大特征/" title="Java面向对象三大特性">				
+								
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/25.jpg" alt="Java面向对象三大特性">
 							</a>
 						</div>
 					</li>											
@@ -462,33 +632,24 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">
-								Linux用户组与文件权限管理			
+							<a class="relate-post-title" href="/2019/09/03/SpringBoot整合Spring Data Redis/" title="Spring Boot整合Spring Data Redis">
+								Spring Boot整合Spring Data Redis			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 3日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Linux用户组在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、文件所在组、其它组的概念
-
-所有者
-
-文件所在组
-
-其它组
-
-
-所有者
-一般为文件的创建者，谁创建了该文件，谁就是该文件的所有者
-...
+								
+RedisRedis 遵守BSD协议，是一个高性能的key-value键值对的非关系型数据库。Redis运行在内存中，所有的操作都是原子性的，支持事务，读写速度每秒可执行上万次。
+Redis 与其他 key - value 缓存产品...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux用户组与文件权限管理/" title="Linux用户组与文件权限管理">				
+							<a href="/2019/09/03/SpringBoot整合Spring Data Redis/" title="Spring Boot整合Spring Data Redis">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="Linux用户组与文件权限管理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/26.jpg" alt="Spring Boot整合Spring Data Redis">
 							</a>
 						</div>
 					</li>											
@@ -496,22 +657,25 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">
-								Linux软件包管理			
+							<a class="relate-post-title" href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">
+								Linux安装MySql			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
 								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Advanced Packaging Tool（APT）Advanced Packaging Tool（apt）是Linux下的一款安装包管理工具。最初只有.tar.gz的打包文件，用户必须编译每个他想在GNU/Linux上运行的软件...
+								简述本篇文章Linux系统使用的是Ubuntu 16.04版本，系统数据源修改可浏览https://blog.csdn.net/qq_36525300/article/details/89222477文章。
+安装步骤
+更新数据源
+安装...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">				
+							<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Linux软件包管理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="Linux安装MySql">
 							</a>
 						</div>
 					</li>											
@@ -519,181 +683,23 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">
-								Linux文件上传工具-Xftp			
+							<a class="relate-post-title" href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">
+								Linux安装Tomcat			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
 								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								XtpXftp是一个功能强大的SFTP、FTP 文件传输软件。使用了 Xftp 以后，MS Windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。Xftp 能同时适应初级用户和高级用户的需要。它...
+								简述本篇文章使用Linux系统为Ubuntu 16.04版本，Tomcat版本为8.5.32
+Tomcat安装包Tomcat 8.5.32下载链接：https://pan.baidu.com/s/15kOUyqzaQajqWhaa7P...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">				
+							<a href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/17.jpg" alt="Linux文件上传工具-Xftp">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">
-								Linux远程控制管理工具-XShell			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
-							</p>
-							<p class="relate-post-content">
-								XShellXshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Linux远程控制管理工具-XShell">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">
-								Linux文件压缩			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
-							</p>
-							<p class="relate-post-content">
-								tartar是在Linux中使用得非常广泛的文档打包格式。它的好处就是消耗非常少的CPU和时间去打包文件，它仅仅只是一个打包工具，并不负责压缩。
-
-
-
-参数
-说明
-
-
-
--c
-建立一个归档文件
-
-
--x
-解开一个文件
-
-
--z
-是否使...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="Linux文件压缩">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux/" title="Linux">
-								Linux			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
-							</p>
-							<p class="relate-post-content">
-								Linux简介Linux 是一种自由和开放源码的类 UNIX 操作系统，使用 Linux 内核。目前存在着许多不同的 Linux 发行版，可安装在各种各样的电脑硬件设备，从手机、平板电脑、路由器和影音游戏控制台，到桌上型电脑，大型电脑...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux/" title="Linux">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="Linux">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">
-								Linux目录结构和常用命令			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
-							</p>
-							<p class="relate-post-content">
-								Linux目录结构
-
-
-目录
-说明
-
-
-
-bin
-存放二进制可执行文件(ls,cat,mkdir等)
-
-
-boot
-存放用于系统引导时使用的各种文件
-
-
-dev
-用于存放设备文件
-
-
-etc
-存放系统配置文件
-
-
-home
-存放所有用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/1.jpg" alt="Linux目录结构和常用命令">
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">
-								抽象类和接口的区别			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 6日, 2019				
-							</p>
-							<p class="relate-post-content">
-								抽象类和接口的区别
-抽象类（abstract class）含有abstract修饰的类成为抽象类，抽象类不能被实例化，抽象类中的抽象方法只做方法声明，不包含实现，只能够作为父类被继承实现。含有抽象方法的类必须定义为抽象类，但是一个抽象...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">				
-								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/32.jpg" alt="抽象类和接口的区别">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/15.jpg" alt="Linux安装Tomcat">
 							</a>
 						</div>
 					</li>											
