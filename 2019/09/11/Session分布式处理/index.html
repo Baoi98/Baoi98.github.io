@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Linux用户组与文件权限管理 | Yellow
+      Session分布式处理 | Yellow
     
   </title>
   <meta name="author" content="Yellow">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Linux用户组与文件权限管理》
+			当前文章&nbsp;:&nbsp;《Session分布式处理》
 		
 	</p>
 
@@ -277,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/31/Linux用户组与文件权限管理/" itemprop="url">
-		Linux用户组与文件权限管理
+	<a href="/2019/09/11/Session分布式处理/" itemprop="url">
+		Session分布式处理
 	</a>
 
 	</div>
@@ -291,9 +291,9 @@
 
 	发布于
 
-	<a href="/2019/08/31/Linux用户组与文件权限管理/" itemprop="url">
-		<time datetime="2019-08-31T07:14:08.732Z" itemprop="datePublished">
-	  		2019-08-31
+	<a href="/2019/09/11/Session分布式处理/" itemprop="url">
+		<time datetime="2019-09-11T11:20:34.782Z" itemprop="datePublished">
+	  		2019-09-11
 	  </time>
 	</a>
 	&nbsp;
@@ -309,9 +309,9 @@
 
 	更新于
 
-	<a href="/2019/08/31/Linux用户组与文件权限管理/" itemprop="url">
-		<time datetime="2019-08-31T07:14:08.732Z" itemprop="dateUpdated">
-	  		2019-08-31
+	<a href="/2019/09/11/Session分布式处理/" itemprop="url">
+		<time datetime="2019-09-11T11:20:34.782Z" itemprop="dateUpdated">
+	  		2019-09-11
 	  </time>
 	</a> 
 
@@ -322,8 +322,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Linux/" class=" ">
-			Linux
+		<a href="/tags/Java/" class=" ">
+			Java
+		</a>
+	
+		<a href="/tags/面试题/" class=" ">
+			面试题
 		</a>
 	
 		
@@ -336,54 +340,38 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h3 id="Linux用户组"><a href="#Linux用户组" class="headerlink" title="Linux用户组"></a>Linux用户组</h3><p>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者、文件所在组、其它组的概念</p>
+		<h3 id="Session分布式处理"><a href="#Session分布式处理" class="headerlink" title="Session分布式处理"></a>Session分布式处理</h3><hr>
+<h5 id="Session复制"><a href="#Session复制" class="headerlink" title="Session复制"></a>Session复制</h5><p>在支持session复制的web服务器上，通过修改web服务器的配置，可以实现将session同步到其他web服务器上，达到每个web服务器上都保存一致的session。</p>
 <ul>
-<li><p>所有者</p>
-</li>
-<li><p>文件所在组</p>
-</li>
-<li><p>其它组</p>
-</li>
+<li>优点：代码上不需要做支持和修改。</li>
+<li>缺点：需要依赖支持和web服务器，一旦更换成不支持的web服务器就不能使用，在数据量很大的情况下不仅占用网络资源，而且会导致延迟。</li>
+<li>适用场景：只适用于web服务器比较少且session数据量少的情况。</li>
+<li>可用方案：开源方案 tomcat-redis-session-manager，暂不支持Tomcat8.</li>
 </ul>
-<p><strong>所有者</strong></p>
-<p>一般为文件的创建者，谁创建了该文件，谁就是该文件的所有者</p>
-<p>用ls ‐ahl命令可以看到文件的所有者</p>
-<p>可以使用chown 用户名 文件名来修改文件的所有者</p>
-<p><strong>文件所在组</strong></p>
-<p>当某个用户创建了一个文件后，这个文件的所在组就是该用户所在的组</p>
-<p>用ls ‐al命令可以看到文件的所有组</p>
-<p>也可以使用chgrp 组名 文件名来修改文件所在的组</p>
-<p><strong>其它组</strong></p>
-<p>除开文件的所有者和所在组的用户外，系统的其它用户都是文件的其它组</p>
-<h4 id="用户账户"><a href="#用户账户" class="headerlink" title="用户账户"></a>用户账户</h4><p><strong>普通用户</strong></p>
-<p>普通用户在系统上的任务是进行普通操作</p>
-<p><strong>超级管理员（root）</strong></p>
-<p>超级管理员在系统上的任务是对普通用户和整个系统进行管理。对系统具有绝对的控制权，能够对系统进行一切操作。用 root 表示，root 用户在系统中拥有最高权限，默认下 Ubuntu 用户的 root 用户是不能登录的。</p>
-<h3 id="Linux文件全限管理"><a href="#Linux文件全限管理" class="headerlink" title="Linux文件全限管理"></a>Linux文件全限管理</h3><p>使用 ls 不带参数只显示文件名称，通过 ls –al 可以显示文件或者目录的权限信息。</p>
-<p>ls -l 文件名 显示信息包括：文件类型 (d 目录，- 普通文件，l 链接文件)，文件权限，文件的用户，文件的所属组，文件的大小，文件的创建时间，文件的名称</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- 1 ronin ronin 675 Apr 12 8:38 filename</span><br></pre></td></tr></table></figure>
-
-<p>-：普通文件<br>rw-：说明用户 ronin 有读写权限，没有运行权限<br>r–：表示用户组 ronin 只有读权限，没有写和运行的权限<br>r–：其他用户只有读权限，没有写权限和运行的权限</p>
-<h3 id="全限指令"><a href="#全限指令" class="headerlink" title="全限指令"></a>全限指令</h3><p><strong>chown</strong><br>是change owner的意思，主要的作用是改变文件或者目录的所有者，所有者包含用户和用户组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] 用户名称 文件或目录</span><br><span class="line">chown [-R] 用户名称 用户组名称 文件或目录</span><br></pre></td></tr></table></figure>
-
-<p><strong>chmod</strong><br>改变访问权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [who] [+ | - | =] [mode] 文件名</span><br></pre></td></tr></table></figure>
-
-<h3 id="数字设定法"><a href="#数字设定法" class="headerlink" title="数字设定法"></a>数字设定法</h3><p>数字设定法中数字表示的含义</p>
+<h5 id="Session粘滞"><a href="#Session粘滞" class="headerlink" title="Session粘滞"></a>Session粘滞</h5><p>将用户的每次请求都通过某种方法强制分发到某个web服务器上，只要这个web服务器存储了对应的session数据，就可以实现会话跟踪。</p>
 <ul>
-<li>0 表示没有任何权限</li>
-<li>1 表示有可执行权限 = x</li>
-<li>2 表示有可写权限 = w</li>
-<li>4 表示有可读权限 = r</li>
+<li>优点：使用简单，没有额外开销。</li>
+<li>缺点：一旦某个web服务器重启或宕机，相对应的session数据将会丢失，而且需要依赖负载均衡机制。</li>
+<li>适用场景：对稳定性要求不是很高的业务情景。</li>
 </ul>
-<p>若要 rwx 属性则 4+2+1=7</p>
-<p>若要 rw- 属性则 4+2=6</p>
-<p>若要 r-x 属性则 4+1=5</p>
+<h5 id="Session集中管理"><a href="#Session集中管理" class="headerlink" title="Session集中管理"></a>Session集中管理</h5><p>在单独的服务器或服务器集群上使用缓存技术，如redis存储session数据，集中管理所有的session，所有的web服务器都从这个存储介质中存取对应的session，实现session共享。</p>
+<ul>
+<li>优点：可靠性高，减少web服务器的资源开销。</li>
+<li>缺点：实现上有些复杂，配置较多。</li>
+<li>适用场景：web服务器较多、要求高可用性的情况。</li>
+<li>可用方案：开源方案Spring Session，也可以自己实现，主要是重写HttpServletRequestWrapper中的getSession方法。</li>
+</ul>
+<h5 id="基于Cookie管理"><a href="#基于Cookie管理" class="headerlink" title="基于Cookie管理"></a>基于Cookie管理</h5><p>这种方式每次发起请求的时候都需要将session数据放到cookie中传递给服务端。</p>
+<ul>
+<li>优点：不需要依赖额外外部存储，不需要额外配置。</li>
+<li>缺点：不安全，容易被盗取或篡改；cookie数量和长度有限制，需要消耗更多网络带宽。</li>
+<li>适用场景：数据不重要、不敏感且数据量小的情况。</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>这四种方式，相对来说，session集中管理更加可靠，使用也是最多的。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/14.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/28.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -398,12 +386,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/31/Linux安装Java/" title="Linux安装Java" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理" rel="next">
+			<a href="/2019/09/10/Session与Cookie区别/" title="Session与Cookie区别" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -424,25 +408,26 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">
-								Linux安装MySql			
+							<a class="relate-post-title" href="/2019/09/10/Session与Cookie区别/" title="Session与Cookie区别">
+								Session与Cookie区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述本篇文章Linux系统使用的是Ubuntu 16.04版本，系统数据源修改可浏览https://blog.csdn.net/qq_36525300/article/details/89222477文章。
-安装步骤
-更新数据源
-安装...
+								Session与Cookie区别
+
+cookie数据是存放在客户的浏览器上，session数据是存放在服务器上。
+cookie不是很安全，可以通过分析存放在本地的cookie进行cookie欺骗，考虑安全应该使用session。
+se...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux安装MySql/" title="Linux安装MySql">				
+							<a href="/2019/09/10/Session与Cookie区别/" title="Session与Cookie区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/24.jpg" alt="Linux安装MySql">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/37.jpg" alt="Session与Cookie区别">
 							</a>
 						</div>
 					</li>											
@@ -450,23 +435,27 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">
-								Linux安装Tomcat			
+							<a class="relate-post-title" href="/2019/09/10/HTTP请求的GET与POST方式的区别/" title="HTTP请求的GET与POST方式的区别">
+								HTTP请求的GET与POST方式的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述本篇文章使用Linux系统为Ubuntu 16.04版本，Tomcat版本为8.5.32
-Tomcat安装包Tomcat 8.5.32下载链接：https://pan.baidu.com/s/15kOUyqzaQajqWhaa7P...
+								HTTP请求的GET与POST方式的区别
+
+根据HTTP规范，GET请求用于信息获取，而且应该是安全的、幂等的。
+根据HTTP规范，POST表示可能修改服务器上资源的请求。
+
+GET首先，GET方式提交的数据最多只能是1024字节，因...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux安装Tomcat/" title="Linux安装Tomcat">				
+							<a href="/2019/09/10/HTTP请求的GET与POST方式的区别/" title="HTTP请求的GET与POST方式的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/15.jpg" alt="Linux安装Tomcat">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/36.jpg" alt="HTTP请求的GET与POST方式的区别">
 							</a>
 						</div>
 					</li>											
@@ -474,23 +463,23 @@ Tomcat安装包Tomcat 8.5.32下载链接：https://pan.baidu.com/s/15kOUyqzaQajq
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux安装Java/" title="Linux安装Java">
-								Linux安装Java			
+							<a class="relate-post-title" href="/2019/09/10/自定义注解的场景及实现/" title="自定义注解的场景及实现">
+								自定义注解的场景及实现			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述本篇文章使用的Linux系统为Ubuntu 16.04，JDK为1.8.0_152。
-JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzdCddw提取...
+								自定义注解的场景及实现
+登录、权限拦截、日志处理，以及各种的Java框架，如：Spring、MyBatis、JUnit等都用到了注解。提到注解就要说帆帆，Java自定义注解是在运行时依靠Java的反射机制获取注解。实际开发中，假如我们...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux安装Java/" title="Linux安装Java">				
+							<a href="/2019/09/10/自定义注解的场景及实现/" title="自定义注解的场景及实现">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/21.jpg" alt="Linux安装Java">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/35.jpg" alt="自定义注解的场景及实现">
 							</a>
 						</div>
 					</li>											
@@ -498,22 +487,28 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">
-								Linux软件包管理			
+							<a class="relate-post-title" href="/2019/09/09/反射的用途及实现/" title="反射的用途及实现">
+								反射的用途及实现			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Advanced Packaging Tool（APT）Advanced Packaging Tool（apt）是Linux下的一款安装包管理工具。最初只有.tar.gz的打包文件，用户必须编译每个他想在GNU/Linux上运行的软件...
+								反射的用途及实现
+反射机制是Java语言中一个非常重要的特性，它允许程序在运行时进行自我检查，同时也允许对其内部成员进行操作。
+反射机制提供的功能主要有：
+
+得到一个对象所属的类；
+获取一个类的所有成员变量和方法；
+在运行时创建对象；...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux软件包管理/" title="Linux软件包管理">				
+							<a href="/2019/09/09/反射的用途及实现/" title="反射的用途及实现">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/22.jpg" alt="Linux软件包管理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/34.jpg" alt="反射的用途及实现">
 							</a>
 						</div>
 					</li>											
@@ -521,22 +516,26 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">
-								Linux文件上传工具-Xftp			
+							<a class="relate-post-title" href="/2019/09/09/运行时异常和一般异常有何异同/" title="运行时异常和一般异常有何异同">
+								运行时异常和一般异常有何异同			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								XtpXftp是一个功能强大的SFTP、FTP 文件传输软件。使用了 Xftp 以后，MS Windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。Xftp 能同时适应初级用户和高级用户的需要。它...
+								运行时异常和一般异常有何异同
+相同点运行时异常（runtime exception）与一般异常（checked exception）同属于Exception的子类。
+不同点
+定义不同
+运行时异常都是RuntimeException类及...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux文件上传工具-Xftp/" title="Linux文件上传工具-Xftp">				
+							<a href="/2019/09/09/运行时异常和一般异常有何异同/" title="运行时异常和一般异常有何异同">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/17.jpg" alt="Linux文件上传工具-Xftp">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/33.jpg" alt="运行时异常和一般异常有何异同">
 							</a>
 						</div>
 					</li>											
@@ -544,22 +543,23 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">
-								Linux远程控制管理工具-XShell			
+							<a class="relate-post-title" href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">
+								抽象类和接口的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 6日, 2019				
 							</p>
 							<p class="relate-post-content">
-								XShellXshell是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的...
+								抽象类和接口的区别
+抽象类（abstract class）含有abstract修饰的类成为抽象类，抽象类不能被实例化，抽象类中的抽象方法只做方法声明，不包含实现，只能够作为父类被继承实现。含有抽象方法的类必须定义为抽象类，但是一个抽象...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux远程控制管理工具-XShell/" title="Linux远程控制管理工具-XShell">				
+							<a href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/19.jpg" alt="Linux远程控制管理工具-XShell">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/32.jpg" alt="抽象类和接口的区别">
 							</a>
 						</div>
 					</li>											
@@ -567,40 +567,24 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">
-								Linux文件压缩			
+							<a class="relate-post-title" href="/2019/09/06/重载和重写的区别/" title="重载和重写的区别">
+								重载和重写的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 6日, 2019				
 							</p>
 							<p class="relate-post-content">
-								tartar是在Linux中使用得非常广泛的文档打包格式。它的好处就是消耗非常少的CPU和时间去打包文件，它仅仅只是一个打包工具，并不负责压缩。
-
-
-
-参数
-说明
-
-
-
--c
-建立一个归档文件
-
-
--x
-解开一个文件
-
-
--z
-是否使...
+								重载和重写的区别
+重写 Override（运行期的多态）从字面上看，重写就是重新写一遍，重写是存在于继承的祖父类关系当中，表示子类重写父类的方法，方法名称和参数完全相同。
+子类重写父类方法时，只能够比父类抛出更少的异常，或者是抛出父类...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux文件压缩/" title="Linux文件压缩">				
+							<a href="/2019/09/06/重载和重写的区别/" title="重载和重写的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="Linux文件压缩">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/13.jpg" alt="重载和重写的区别">
 							</a>
 						</div>
 					</li>											
@@ -608,22 +592,31 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux/" title="Linux">
-								Linux			
+							<a class="relate-post-title" href="/2019/09/04/String、SpringBuffer、StringBuilder的区别/" title="String、SpringBuffer、StringBuilder的区别">
+								String、SpringBuffer、StringBuilder的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 4日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Linux简介Linux 是一种自由和开放源码的类 UNIX 操作系统，使用 Linux 内核。目前存在着许多不同的 Linux 发行版，可安装在各种各样的电脑硬件设备，从手机、平板电脑、路由器和影音游戏控制台，到桌上型电脑，大型电脑...
+								String、SpringBuffer、StringBuilder的区别
+Java中提供了三种可以存储和操作字符串的类：
+
+String
+StringBuffer
+StringBuilder
+
+从大体上看：
+
+String：字符串常量...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux/" title="Linux">				
+							<a href="/2019/09/04/String、SpringBuffer、StringBuilder的区别/" title="String、SpringBuffer、StringBuilder的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="Linux">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/30.jpg" alt="String、SpringBuffer、StringBuilder的区别">
 							</a>
 						</div>
 					</li>											
@@ -631,47 +624,25 @@ JDK下载JDK 1.8.0_152下载链接：https://pan.baidu.com/s/1AgiZ5DHnJjCVxBKPzd
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">
-								Linux目录结构和常用命令			
+							<a class="relate-post-title" href="/2019/09/04/final,finally,finalize的区别/" title="final,finally,finalize的区别">
+								final,finally,finalize的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
+								九月 4日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Linux目录结构
-
-
-目录
-说明
-
-
-
-bin
-存放二进制可执行文件(ls,cat,mkdir等)
-
-
-boot
-存放用于系统引导时使用的各种文件
-
-
-dev
-用于存放设备文件
-
-
-etc
-存放系统配置文件
-
-
-home
-存放所有用...
+								final,finally,finalize的区别
+final用于声明属性、方法和类，分别表示属性不可变，方法不可被重写，类不可被继承
+finally异常处理语句结构的一部分，用于表示不论有没有捕获到异常都要执行的代码段
+finali...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/Linux目录结构和常用命令/" title="Linux目录结构和常用命令">				
+							<a href="/2019/09/04/final,finally,finalize的区别/" title="final,finally,finalize的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/1.jpg" alt="Linux目录结构和常用命令">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/29.jpg" alt="final,finally,finalize的区别">
 							</a>
 						</div>
 					</li>											
@@ -679,25 +650,28 @@ home
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/11/Session分布式处理/" title="Session分布式处理">
-								Session分布式处理			
+							<a class="relate-post-title" href="/2019/09/04/int和Integer的区别/" title="int和Integer的区别">
+								int和Integer的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								九月 11日, 2019				
+								九月 4日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Session分布式处理
-Session复制在支持session复制的web服务器上，通过修改web服务器的配置，可以实现将session同步到其他web服务器上，达到每个web服务器上都保存一致的session。
+								int和Integer的区别
+Java提供了两种不同的类型：
 
-优点：代码上不需...
+引用类型
+原始类型（基本数据类型）
+
+int是Java的原始数据类型，Integer是Java为int提供的封装类。int的默认值是0，Integer的默认值是null。...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/09/11/Session分布式处理/" title="Session分布式处理">				
+							<a href="/2019/09/04/int和Integer的区别/" title="int和Integer的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="Session分布式处理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="int和Integer的区别">
 							</a>
 						</div>
 					</li>											
