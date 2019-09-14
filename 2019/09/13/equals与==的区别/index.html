@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      MyBatis核心组件之SqlSession | Yellow
+      equals与==的区别 | Yellow
     
   </title>
   <meta name="author" content="Yellow">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《MyBatis核心组件之SqlSession》
+			当前文章&nbsp;:&nbsp;《equals与==的区别》
 		
 	</p>
 
@@ -277,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" itemprop="url">
-		MyBatis核心组件之SqlSession
+	<a href="/2019/09/13/equals与==的区别/" itemprop="url">
+		equals与==的区别
 	</a>
 
 	</div>
@@ -291,9 +291,9 @@
 
 	发布于
 
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" itemprop="url">
-		<time datetime="2019-06-23T15:46:23.000Z" itemprop="datePublished">
-	  		2019-06-23
+	<a href="/2019/09/13/equals与==的区别/" itemprop="url">
+		<time datetime="2019-09-13T13:38:08.002Z" itemprop="datePublished">
+	  		2019-09-13
 	  </time>
 	</a>
 	&nbsp;
@@ -309,9 +309,9 @@
 
 	更新于
 
-	<a href="/2019/06/23/MyBatis核心组件之SqlSession/" itemprop="url">
-		<time datetime="2019-06-23T15:46:23.000Z" itemprop="dateUpdated">
-	  		2019-08-30
+	<a href="/2019/09/13/equals与==的区别/" itemprop="url">
+		<time datetime="2019-09-13T13:38:08.002Z" itemprop="dateUpdated">
+	  		2019-09-14
 	  </time>
 	</a> 
 
@@ -322,8 +322,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/MyBatis/" class=" ">
-			MyBatis
+		<a href="/tags/Java/" class=" ">
+			Java
+		</a>
+	
+		<a href="/tags/面试题/" class=" ">
+			面试题
 		</a>
 	
 		
@@ -336,24 +340,17 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><p>在MyBatis中，SqlSession是其和新街口。在MyBatis中有两个实现类，DefaultSqlSession和SqlSessionManager。DefaultSqlSession是单线程使用的，而SqlSessionManager是在多线程环境下使用的。</p>
-<p>SqlSession的作用类似于一个JDBC中的Connection对象，代表着一个连接资源的启用。具体而言，它的作用有3个：</p>
-<ul>
-<li>获取Mapper接口</li>
-<li>发送SQL给数据库</li>
-<li>控制数据库事务</li>
+		<h3 id="equals与-的区别"><a href="#equals与-的区别" class="headerlink" title="equals与==的区别"></a>equals与==的区别</h3><hr>
+<p>==比较的是变量（栈）内存中存放的对象（堆）的内存地址，用来判断两个对象的地址是否相同，即是否是指向同一个对象。比较的是真正意义上的指针操作。</p>
+<p>equals用来比较的是两个对象的内容是否相等，由于所有的类都是继承自 java.lang.Object 类的，所以适用于所有对象，如果没有对该方法进行覆盖的话，调用的仍然是Object类中的方法，而Object中的equals方法返回的却是==的判断。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>==与equals的主要区别是：==常用于比较原生的类型，而equals()方法用于检查对象的相等性。</li>
+<li>另一个不同的是：如果==和equals()用于比较对象，当两个引用地址相同，==返回true，而equals()返回 true 或者 false 主要取决于重现实现。</li>
 </ul>
-<p>从上一篇文章中我们已经知道了怎么创建SqlSessionFactory，通过SqlSessionFactory的方法，我们可以直接创建处SqlSession对象，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = SqlSeesionFactory.openSession();</span><br></pre></td></tr></table></figure>
-
-<p>创建出SqlSession对象，我们可以通过SqlSession对象来控制数据库的事务：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义SqlSession</span></span><br><span class="line">SqlSession sqlSession  = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//打开SqlSession会话</span></span><br><span class="line">	sqlSession = SqlSessionFactory.openSession();</span><br><span class="line">	<span class="comment">//业务逻辑代码.....</span></span><br><span class="line">	<span class="comment">// 提交事务</span></span><br><span class="line">	sqlSession.commit();</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">	<span class="comment">//事务回滚</span></span><br><span class="line">	sqlSession.rollback();</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	<span class="comment">//在finally语句中确保资源顺利关闭</span></span><br><span class="line">	<span class="keyword">if</span>(sqlSession != <span class="keyword">null</span>)&#123;</span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码中，使用commit方法提交事务，出错后通过rollback回滚事务，保证了代码运行时的数据的一致性。</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/6.jpg"></div>
+	<div id="current-post-cover" data-scr="http://47.103.73.17:81/img/Random-img/30.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -368,12 +365,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper" rel="prev">
+			<a href="/2019/09/14/List和Set区别/" title="List和Set区别" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory" rel="next">
+			<a href="/2019/09/12/MVC设计思想/" title="MVC设计思想" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -394,26 +391,26 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">
-								Mybatis运行原理			
+							<a class="relate-post-title" href="/2019/09/14/List和Set区别/" title="List和Set区别">
+								List和Set区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 14日, 2019				
 							</p>
 							<p class="relate-post-content">
-								原理MyBatis的运行过程分为两大步：
+								List和Set区别
 
-读取配置文件缓存到Configuration对象中，用于创建SqlSessionFactory
-SqlSession的执行过程构建SqlSessionFactory过程
-通过 org.apa...
+List，Set 都是继承于 Collection 接口。
+List 特点：元素有放入顺序，元素可以重复。
+Set 特点：元素无放入顺序，元素不可以重复（元素虽然无放入顺序，但是元素在 Set 集合中的位置是由...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis运行原理/" title="Mybatis运行原理">				
+							<a href="/2019/09/14/List和Set区别/" title="List和Set区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Mybatis运行原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="List和Set区别">
 							</a>
 						</div>
 					</li>											
@@ -421,24 +418,25 @@ SqlSession的执行过程构建SqlSessionFactory过程
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">
-								MyBatis一级缓存和二级缓存			
+							<a class="relate-post-title" href="/2019/09/12/MVC设计思想/" title="MVC设计思想">
+								MVC设计思想			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 12日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述mybatis提供了缓存机制减轻数据库压力，提高数据库性能。
-mybatis的缓存分为两级：一级缓存、二级缓存。
-一级缓存一级缓存是在SqlSession上的缓存，默认情况下，MyBatis系统会开启一级缓存，也就是对于SqlSe...
+								MVC设计思想
+MVC是三个单词的首字母缩写：Model（模型），View（视图），Controller（控制）。MVC认为，不管程序是简单还是复杂，从结构上看都可以分为三层：
+
+最上面的是直接面对最终用户的视图层（View），它提供...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis一级缓存和二级缓存/" title="MyBatis一级缓存和二级缓存">				
+							<a href="/2019/09/12/MVC设计思想/" title="MVC设计思想">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/9.jpg" alt="MyBatis一级缓存和二级缓存">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/14.jpg" alt="MVC设计思想">
 							</a>
 						</div>
 					</li>											
@@ -446,22 +444,26 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">
-								MyBatis映射器			
+							<a class="relate-post-title" href="/2019/09/12/JDCB流程/" title="JDBC流程">
+								JDBC流程			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 12日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述映射器是MyBatis最复杂且最重要的组件，它由一个接口加上XML文件（或者注解）组成。在映射器中可以配置参数、各类SQL语句、存储过程、缓存、级联等复杂内容，并且通过建议的映射规则映射到指定的POJO或者其他对象上，映射器能有效...
+								JDBC流程
+
+向 DriverManager 类注册驱动数据库的驱动程序。
+调用 DriverManager.getConnection() 方法，通过 JDBC URL、用户名、密码获取数据库连接。
+获取 Connection 后...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis映射器/" title="MyBatis映射器">				
+							<a href="/2019/09/12/JDCB流程/" title="JDBC流程">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/10.jpg" alt="MyBatis映射器">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="JDBC流程">
 							</a>
 						</div>
 					</li>											
@@ -469,22 +471,25 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">
-								MyBatis核心组件的生命周期			
+							<a class="relate-post-title" href="/2019/09/11/Session分布式处理/" title="Session分布式处理">
+								Session分布式处理			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 11日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述MyBatis的四大核心组件已经基本掌握，本篇文章就来谈谈四大核心组件的生命周期。首先，什么是生命周期？所谓的生命周期就是每一个对象存活的时间，例如一个对象一次用完后就要关闭，被Java虚拟机（JVM）销毁，以免继续占用资源，所以...
+								Session分布式处理
+Session复制在支持session复制的web服务器上，通过修改web服务器的配置，可以实现将session同步到其他web服务器上，达到每个web服务器上都保存一致的session。
+
+优点：代码上不需...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件的生命周期/" title="MyBatis核心组件的生命周期">				
+							<a href="/2019/09/11/Session分布式处理/" title="Session分布式处理">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/4.jpg" alt="MyBatis核心组件的生命周期">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="Session分布式处理">
 							</a>
 						</div>
 					</li>											
@@ -492,22 +497,26 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis级联/" title="MyBatis级联">
-								MyBatis级联			
+							<a class="relate-post-title" href="/2019/09/10/Session与Cookie区别/" title="Session与Cookie区别">
+								Session与Cookie区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述级联是一个数据库实体的概念，级联不是必须的，级联的好处是获取关联数据十分方便，但是级联过多会增加系统的复杂度，同时降低系统的性能，所以当级联的层级超过3层时，就不要考虑使用级联，这样会导致多个对象的关联，导致系统耦合度增加，难以维...
+								Session与Cookie区别
+
+cookie数据是存放在客户的浏览器上，session数据是存放在服务器上。
+cookie不是很安全，可以通过分析存放在本地的cookie进行cookie欺骗，考虑安全应该使用session。
+se...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis级联/" title="MyBatis级联">				
+							<a href="/2019/09/10/Session与Cookie区别/" title="Session与Cookie区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/7.jpg" alt="MyBatis级联">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/37.jpg" alt="Session与Cookie区别">
 							</a>
 						</div>
 					</li>											
@@ -515,22 +524,27 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis配置/" title="MyBatis配置">
-								MyBatis配置			
+							<a class="relate-post-title" href="/2019/09/10/HTTP请求的GET与POST方式的区别/" title="HTTP请求的GET与POST方式的区别">
+								HTTP请求的GET与POST方式的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述123456789101112131415161718192021222324252627282930&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configu...
+								HTTP请求的GET与POST方式的区别
+
+根据HTTP规范，GET请求用于信息获取，而且应该是安全的、幂等的。
+根据HTTP规范，POST表示可能修改服务器上资源的请求。
+
+GET首先，GET方式提交的数据最多只能是1024字节，因...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis配置/" title="MyBatis配置">				
+							<a href="/2019/09/10/HTTP请求的GET与POST方式的区别/" title="HTTP请求的GET与POST方式的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/8.jpg" alt="MyBatis配置">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/36.jpg" alt="HTTP请求的GET与POST方式的区别">
 							</a>
 						</div>
 					</li>											
@@ -538,30 +552,23 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">
-								MyBatis核心组件之SQL Mapper			
+							<a class="relate-post-title" href="/2019/09/10/自定义注解的场景及实现/" title="自定义注解的场景及实现">
+								自定义注解的场景及实现			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 10日, 2019				
 							</p>
 							<p class="relate-post-content">
-								简述映射器（SQL Mapper）是MyBatis中最重要、最复杂的组件，它是由一个接口和对应的XML文件组成，它可以配置以下内容：
-
-描述映射规则
-
-提供SQL语句，并可以配置SQL参数类型、返回类型、缓存刷新等信息
-
-配置缓存
-
-...
+								自定义注解的场景及实现
+登录、权限拦截、日志处理，以及各种的Java框架，如：Spring、MyBatis、JUnit等都用到了注解。提到注解就要说帆帆，Java自定义注解是在运行时依靠Java的反射机制获取注解。实际开发中，假如我们...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SQL Mapper/" title="MyBatis核心组件之SQL Mapper">				
+							<a href="/2019/09/10/自定义注解的场景及实现/" title="自定义注解的场景及实现">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/5.jpg" alt="MyBatis核心组件之SQL Mapper">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/35.jpg" alt="自定义注解的场景及实现">
 							</a>
 						</div>
 					</li>											
@@ -569,25 +576,28 @@ mybatis的缓存分为两级：一级缓存、二级缓存。
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">
-								MyBatis核心组件之SqlSessionFactory			
+							<a class="relate-post-title" href="/2019/09/09/反射的用途及实现/" title="反射的用途及实现">
+								反射的用途及实现			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 23日, 2019				
+								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								MyBatis的核心组件MyBatis的核心组件分为4个部分：
+								反射的用途及实现
+反射机制是Java语言中一个非常重要的特性，它允许程序在运行时进行自我检查，同时也允许对其内部成员进行操作。
+反射机制提供的功能主要有：
 
-SqlSessionFactoryBuilder（构造器）：它会根据配置或者代码来生成SqlSessionFactory，采用的是分布构建的Builder模式。
-Sql...
+得到一个对象所属的类；
+获取一个类的所有成员变量和方法；
+在运行时创建对象；...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/23/MyBatis核心组件之SqlSessionFactory/" title="MyBatis核心组件之SqlSessionFactory">				
+							<a href="/2019/09/09/反射的用途及实现/" title="反射的用途及实现">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/6.jpg" alt="MyBatis核心组件之SqlSessionFactory">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/34.jpg" alt="反射的用途及实现">
 							</a>
 						</div>
 					</li>											
@@ -595,23 +605,26 @@ Sql...
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/06/22/MyBatis/" title="MyBatis">
-								MyBatis			
+							<a class="relate-post-title" href="/2019/09/09/运行时异常和一般异常有何异同/" title="运行时异常和一般异常有何异同">
+								运行时异常和一般异常有何异同			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								六月 22日, 2019				
+								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								
-MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。...
+								运行时异常和一般异常有何异同
+相同点运行时异常（runtime exception）与一般异常（checked exception）同属于Exception的子类。
+不同点
+定义不同
+运行时异常都是RuntimeException类及...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/06/22/MyBatis/" title="MyBatis">				
+							<a href="/2019/09/09/运行时异常和一般异常有何异同/" title="运行时异常和一般异常有何异同">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/2.jpg" alt="MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/33.jpg" alt="运行时异常和一般异常有何异同">
 							</a>
 						</div>
 					</li>											
@@ -619,24 +632,23 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">
-								Spring Boot整合tk.MyBatis			
+							<a class="relate-post-title" href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">
+								抽象类和接口的区别			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 28日, 2019				
+								九月 6日, 2019				
 							</p>
 							<p class="relate-post-content">
-								 tk.mybaits 是基于Mybatis框架开发的一个工具，相较于 mybatis，tk.mybaits 可以不用书写 sql 语句，通过调用它提供的方法实现对单表的数据操作，极大地提高了项目开发效率。
-
-pom.xml12345...
+								抽象类和接口的区别
+抽象类（abstract class）含有abstract修饰的类成为抽象类，抽象类不能被实例化，抽象类中的抽象方法只做方法声明，不包含实现，只能够作为父类被继承实现。含有抽象方法的类必须定义为抽象类，但是一个抽象...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/28/SpringBoot整合tk.MyBatis/" title="Spring Boot整合tk.MyBatis">				
+							<a href="/2019/09/06/抽象类和接口的区别/" title="抽象类和接口的区别">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/11.jpg" alt="Spring Boot整合tk.MyBatis">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/32.jpg" alt="抽象类和接口的区别">
 							</a>
 						</div>
 					</li>											
