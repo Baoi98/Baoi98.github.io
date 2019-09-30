@@ -677,25 +677,24 @@ home
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/26/volatile实现原理/" title="volatile实现原理">
-								volatile实现原理			
+							<a class="relate-post-title" href="/2019/09/30/CAS乐观锁/" title="CAS乐观锁">
+								CAS乐观锁			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								九月 26日, 2019				
+								九月 30日, 2019				
 							</p>
 							<p class="relate-post-content">
-								volatile实现原理
-
-在JVM底层volatile是采用“内存屏障”来实现的。
-缓存一致性协议（MESI协议）它确保每个缓存中使用的共享变量的副本是一致的。其核心思想如下：当某个CPU在写数据时，如果发现操作的变量是共享变量，则...
+								CAS乐观锁
+CAS是一项乐观锁技术，当多个线程尝试使用CAS同时更新同一个变量时，只有其中一个线程能更新变量的值，而其他线程都失败，失败的线程并不会被挂起，而是被告知在这次竞争中失败，并可以再次尝试。
+CAS操作包含三个操作数–内存...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/09/26/volatile实现原理/" title="volatile实现原理">				
+							<a href="/2019/09/30/CAS乐观锁/" title="CAS乐观锁">				
 								
-								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.103.73.17:81/img/Random-img/28.jpg" alt="volatile实现原理">
+								<img class="lazy" src="http://47.103.73.17:81/img/placeholder.jpg" data-src="http://47.403.73.17:81/img/Random-img/3.jpg" alt="CAS乐观锁">
 							</a>
 						</div>
 					</li>											
